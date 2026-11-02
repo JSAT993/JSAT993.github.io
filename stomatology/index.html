@@ -1,0 +1,1461 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Стоматология «Штиль»</title>
+<meta name="description" content="Частная стоматология в Москве: лечение, гигиена, имплантация, ортодонтия, лечение в седации. Онлайн-запись к врачу на свободное время.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Стоматология «Штиль»: лечить зубы спокойно">
+<meta property="og:description" content="Онлайн-запись к врачу на свободное время. Лечение в седации для тех, кому страшно.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230e7c74'/%3E%3Cpath d='M32 19c-3-2-8-3-11 0-4 3-3 10-1 15 2 4 2 13 5 13s3-8 7-8 4 8 7 8 3-9 5-13c2-5 3-12-1-15-3-3-8-2-11 0z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Идея: всё вокруг зуба и улыбки. Первый экран — большой глянцевый зуб, который парит, по эмали пробегает блик,
+   вокруг вспыхивают искры и плавают карточки с фактами. Под словом «спокойно» рисуется дуга-улыбка.
+   Страница белая с мятным, на фоне медленно плавают мягкие пятна. Кабинет #admin — тот же светлый фон. */
+:root {
+  --bg: #f7fcfb;
+  --surface: #ffffff;
+  --ink0: #10302e; --muted0: #4b6562; --line0: #d9ebe7;
+  --ink: var(--ink0); --muted: var(--muted0); --line: var(--line0);
+  --teal: #0e7c74; --accent: var(--teal); --on-accent: #ffffff;
+  --mint: #e2f6f1;
+  --coral: #ff8a65; --coral-h: #ff7a52; --on-coral: #1d1410;
+  --sand: #f8eedd;
+  --blob1: #c6efe4; --blob2: #d3e9fb; --blob3: #ffe0d3; --blob-o: 0.7;
+  --enamel: #ffffff; --enamel2: #e6f4f1; --enamel3: #b9dbd4; --tooth-shadow: rgba(14, 124, 116, 0.28);
+  --chip: rgba(255, 255, 255, 0.86); --card-shadow: 0 24px 50px -30px rgba(14, 70, 66, 0.35);
+  --t-sand: #f8eedd; --t-aqua: #dcf4ee; --t-sky: #e0eefa; --t-coral: #ffe7dd;
+  --ic-sand: #9a6a1f; --ic-aqua: #0e7c74; --ic-sky: #1d5f8f; --ic-coral: #c0502c;
+  --foot: #0f4f57; --on-foot: #eefaf8; --on-foot-m: #c4e4df;
+  --off: rgba(16, 48, 46, 0.06);
+  --ok: #1f7a46; --ok-bg: #dcf2e4;
+  --warn: #8a5300; --warn-bg: #fdecc8;
+  --bad: #b3261e; --bad-bg: #fbe1de;
+  --booked-bg: #d6ecfb; --booked: #164b74;
+  --scrim: rgba(6, 30, 34, 0.5);
+  --stage: #dcebe8; --frame: #10302e;
+  --display: "Raleway", "Segoe UI", system-ui, sans-serif;
+  --text: "Golos Text", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1719; --surface: #13232a; --ink0: #e2f0ed; --muted0: #a3bdb9; --line0: #24403c;
+    --teal: #5fd1bd; --on-accent: #0c1716; --mint: #163330;
+    --coral: #ff9b7a; --coral-h: #ffab8f; --sand: #2b2519;
+    --blob1: #0f3a35; --blob2: #10294a; --blob3: #33201c; --blob-o: 0.6;
+    --enamel: #f6fcfb; --enamel2: #d3e9e5; --enamel3: #8fbab3; --tooth-shadow: rgba(0, 0, 0, 0.55);
+    --chip: rgba(19, 35, 42, 0.88); --card-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.7);
+    --t-sand: #2b2519; --t-aqua: #12302c; --t-sky: #132a38; --t-coral: #34211b;
+    --ic-sand: #f0c987; --ic-aqua: #7fe0cd; --ic-sky: #9cccf2; --ic-coral: #ffab8f;
+    --foot: #071214; --on-foot: #e2f0ed; --on-foot-m: #a3bdb9;
+    --off: rgba(226, 240, 237, 0.06);
+    --ok: #8fdcaa; --ok-bg: #173826; --warn: #f5c56b; --warn-bg: #3a2c12; --bad: #ffb4ab; --bad-bg: #3d1916;
+    --booked-bg: #17324a; --booked: #a9d4f5; --scrim: rgba(0, 0, 0, 0.6); --stage: #050c0e; --frame: #24403c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1719; --surface: #13232a; --ink0: #e2f0ed; --muted0: #a3bdb9; --line0: #24403c;
+  --teal: #5fd1bd; --on-accent: #0c1716; --mint: #163330;
+  --coral: #ff9b7a; --coral-h: #ffab8f; --sand: #2b2519;
+  --blob1: #0f3a35; --blob2: #10294a; --blob3: #33201c; --blob-o: 0.6;
+  --enamel: #f6fcfb; --enamel2: #d3e9e5; --enamel3: #8fbab3; --tooth-shadow: rgba(0, 0, 0, 0.55);
+  --chip: rgba(19, 35, 42, 0.88); --card-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.7);
+  --t-sand: #2b2519; --t-aqua: #12302c; --t-sky: #132a38; --t-coral: #34211b;
+  --ic-sand: #f0c987; --ic-aqua: #7fe0cd; --ic-sky: #9cccf2; --ic-coral: #ffab8f;
+  --foot: #071214; --on-foot: #e2f0ed; --on-foot-m: #a3bdb9;
+  --off: rgba(226, 240, 237, 0.06);
+  --ok: #8fdcaa; --ok-bg: #173826; --warn: #f5c56b; --warn-bg: #3a2c12; --bad: #ffb4ab; --bad-bg: #3d1916;
+  --booked-bg: #17324a; --booked: #a9d4f5; --scrim: rgba(0, 0, 0, 0.6); --stage: #050c0e; --frame: #24403c;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; overflow-x: clip; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16.5px/1.6 var(--text); overflow-x: clip; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--bg); }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+[id] { scroll-margin-top: 80px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1, h2 { font-family: var(--display); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+h2 { font-size: clamp(2rem, 4.6cqi, 3.2rem); margin-bottom: 14px; }
+h3 { font-weight: 600; font-size: 1.1rem; line-height: 1.3; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.eyebrow svg { width: 16px; height: 16px; }
+.lead2 { color: var(--muted); max-width: 40em; margin-bottom: 30px; }
+.wrap { max-width: 1200px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+section { padding-block: 80px; position: relative; }
+.frame { container-type: inline-size; container-name: site; }
+.site { position: relative; isolation: isolate; }
+
+/* мягкие пятна на фоне всей страницы: стоят на месте, пока страница прокручивается */
+.blobs { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; opacity: var(--blob-o); }
+.blobs i { position: absolute; border-radius: 50%; filter: blur(70px); }
+.blobs .b1 { width: 46vmax; height: 46vmax; left: -12vmax; top: -10vmax; background: var(--blob1); animation: drift1 60s ease-in-out infinite alternate; }
+.blobs .b2 { width: 40vmax; height: 40vmax; right: -14vmax; top: 18vh; background: var(--blob2); animation: drift2 70s ease-in-out infinite alternate; }
+.blobs .b3 { width: 30vmax; height: 30vmax; left: 30vw; bottom: -16vmax; background: var(--blob3); animation: drift3 80s ease-in-out infinite alternate; }
+@keyframes drift1 { to { transform: translate(14vw, 18vh) scale(1.1); } }
+@keyframes drift2 { to { transform: translate(-18vw, 22vh) scale(0.9); } }
+@keyframes drift3 { to { transform: translate(-20vw, -30vh) scale(1.15); } }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 24px; border-radius: 999px; border: 0; background: var(--coral); color: var(--on-coral); font-weight: 600; text-decoration: none; cursor: pointer; transition: transform 0.15s, background-color 0.2s, box-shadow 0.2s; box-shadow: 0 10px 24px -14px rgba(192, 80, 44, 0.8); }
+.btn:hover { background: var(--coral-h); transform: translateY(-1px); }
+.btn.ghost { background: color-mix(in srgb, var(--surface) 60%, transparent); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn.ghost:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
+.btn.soft { background: var(--mint); color: var(--ink); box-shadow: none; }
+.btn.wide { width: 100%; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.link-btn { background: none; border: 0; padding: 0; color: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+/* шапка */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: transparent; transition: background-color 0.35s, box-shadow 0.35s; }
+html.head-solid .top { background: color-mix(in srgb, var(--bg) 86%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 10px 30px -24px rgba(14, 70, 66, 0.5); }
+.bar { display: flex; align-items: center; gap: 18px; min-height: 68px; }
+.logo { display: flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; margin-right: auto; }
+.logo svg { width: 38px; height: 38px; flex: none; }
+.logo b { font-family: var(--display); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.01em; }
+.logo small { display: block; font-size: 0.72rem; color: var(--muted); font-weight: 500; margin-top: -2px; }
+.nav { display: flex; gap: 2px; }
+.nav a { text-decoration: none; padding: 10px 12px; border-radius: 999px; color: var(--muted); font-weight: 500; }
+.nav a:hover { color: var(--ink); background: var(--mint); }
+.bar .btn { min-height: 44px; padding: 0 18px; }
+.head-phone { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 6px; font-weight: 600; text-decoration: none; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.head-phone svg { width: 18px; height: 18px; color: var(--accent); flex: none; }
+html.admin-view .head-phone { display: none; }
+.form-hint { font-size: 0.86rem; color: var(--muted); font-weight: 400; }
+.doc-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 4px; }
+.doc-links .link-btn, .doc-links a { min-height: 44px; display: inline-flex; align-items: center; }
+.menu-btn { display: none; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); font-weight: 600; cursor: pointer; }
+html.admin-view .nav, html.admin-view #headBook, html.admin-view .menu-btn { display: none !important; }
+.admin-back { display: none; }
+html.admin-view .admin-back { display: inline-flex; }
+
+/* первый экран */
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; padding-block: 24px 40px; }
+.hero > * { min-width: 0; }
+.hero h1 { font-size: clamp(2.6rem, 6.2cqi, 4.8rem); }
+.smile { position: relative; display: inline-block; white-space: nowrap; }
+.smile svg { position: absolute; left: -2%; width: 104%; height: 0.42em; bottom: -0.3em; overflow: visible; }
+.smile path { fill: none; stroke: var(--coral); stroke-width: 9; stroke-linecap: round; stroke-dasharray: 240; stroke-dashoffset: 240; animation: draw 1.4s 0.4s cubic-bezier(0.5, 0, 0.2, 1) forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.hero .lead { font-size: 1.12rem; color: var(--muted); max-width: 32em; margin-top: 28px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.nearest { margin-top: 28px; max-width: 520px; background: var(--surface); border-radius: 26px; padding: 18px 20px; display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: center; box-shadow: var(--card-shadow); }
+.nearest .n-label { grid-column: 1 / -1; font-size: 0.88rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.nearest .n-label i { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px var(--ok-bg); animation: beat 2.4s ease-in-out infinite; }
+@keyframes beat { 50% { box-shadow: 0 0 0 7px var(--ok-bg); } }
+.nearest .n-time { font-family: var(--display); font-weight: 700; font-size: 1.5rem; line-height: 1.15; }
+.nearest .n-doc { color: var(--muted); font-size: 0.9rem; }
+.nearest .btn { min-height: 48px; grid-row: 2 / span 2; grid-column: 2; }
+
+/* сцена с зубом */
+.stage { position: relative; aspect-ratio: 1 / 1; max-width: 560px; width: 100%; justify-self: center; perspective: 900px; }
+.halo { position: absolute; inset: 9%; border-radius: 50%; background: radial-gradient(circle at 50% 45%, var(--blob1) 0 30%, color-mix(in srgb, var(--blob1) 55%, transparent) 55%, transparent 72%); transition: transform 0.8s ease; }
+.tilt { position: absolute; left: 22%; right: 22%; top: 14%; bottom: 20%; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); transform-style: preserve-3d; }
+.tooth { width: 100%; height: 100%; overflow: visible; animation: float 8s ease-in-out infinite; filter: drop-shadow(0 22px 26px var(--tooth-shadow)); transition: filter 0.6s; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.tooth .body { transform-box: fill-box; transform-origin: 50% 92%; animation: sway 6s ease-in-out infinite; }
+@keyframes sway { 0%, 100% { transform: rotate(-1.2deg); } 50% { transform: rotate(1.2deg); } }
+.tooth .sweep { transform: translateX(-320px); }
+#stage .sweep { animation: sweepslow 9s ease-in-out 1.5s infinite; }
+@keyframes sweepslow { 0% { transform: translateX(-320px); } 22%, 100% { transform: translateX(420px); } }
+@keyframes sweep { from { transform: translateX(-320px); } to { transform: translateX(420px); } }
+.ground { position: absolute; left: 32%; right: 32%; bottom: 13%; height: 5%; border-radius: 50%; background: radial-gradient(closest-side, var(--tooth-shadow), transparent); animation: ground 8s ease-in-out infinite; }
+@keyframes ground { 50% { transform: scale(0.88); opacity: 0.75; } }
+
+/* как проходит лечение: осмотр → лечение → пломба → полировка */
+.proc { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 28px; align-items: center; background: var(--surface); border-radius: 36px; padding: clamp(18px, 4cqi, 40px); box-shadow: var(--card-shadow); }
+.proc > * { min-width: 0; }
+.proc-stage { max-width: 440px; }
+.tooth .car, .tooth .fillp { transform-box: fill-box; transform-origin: center; }
+.tooth .car { transition: opacity 0.8s; }
+.tooth .fillp { opacity: 0; transition: opacity 2.4s ease-in; }
+.tooth .mag, .tooth .drill, .tooth .strip { opacity: 0; transition: transform 1s cubic-bezier(0.3, 0.7, 0.2, 1), opacity 0.5s; }
+.tooth .mag { transform: translate(450px, 40px); }
+.tooth .drill { transform: translate(450px, -120px); }
+.tooth .strip { transform: translate(0, -60px); }
+.tooth .zoom { opacity: 0; transition: opacity 0.3s; }
+.tooth .chips circle { opacity: 0; }
+.stage[data-ph="look"] .mag { transform: translate(252px, 122px); opacity: 1; }
+.stage[data-ph="look"] .zoom { opacity: 1; transition-delay: 0.8s; }
+.stage[data-ph="look"] .scan { animation: scan 2.4s ease-in-out 0.9s infinite; }
+@keyframes scan { 0%, 100% { transform: translate(0, 0); } 30% { transform: translate(-5px, 4px); } 65% { transform: translate(4px, -3px); } }
+.stage[data-ph="drill"] .drill { transform: translate(258px, 120px); opacity: 1; }
+.stage[data-ph="drill"] .vib { animation: vib 0.1s linear 1s infinite; }
+@keyframes vib { 50% { transform: translate(0.8px, -0.8px); } }
+.stage[data-ph="drill"] .chips circle { animation: chip 0.6s ease-out infinite; animation-delay: calc(1s + var(--dl, 0s)); }
+@keyframes chip { 0% { opacity: 1; transform: translate(0, 0); } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)); } }
+.stage[data-ph="drill"] .car { animation: drillout 2.6s ease-in 1s forwards; }
+@keyframes drillout { to { transform: scale(0.15); opacity: 0.2; } }
+.stage[data-ph="fill"] .car, .stage[data-ph="polish"] .car, .stage[data-ph="shine"] .car, .stage[data-ph="rest"] .car { opacity: 0; transition-duration: 0.2s; }
+.stage[data-ph="fill"] .fillp { opacity: 1; transition: opacity 0.4s; }
+.stage[data-ph="polish"] .fillp { opacity: 0; }
+.stage[data-ph="polish"] .strip { transform: translate(0, 0); opacity: 1; }
+.stage[data-ph="polish"] .rub { animation: rub 0.5s ease-in-out 0.8s infinite alternate; }
+@keyframes rub { from { transform: translateX(-20px); } to { transform: translateX(20px); } }
+.stage[data-ph="shine"] .sweep { animation: sweep 1.6s ease-in-out 0.2s 1 both; }
+.stage[data-ph="shine"] .tooth { filter: drop-shadow(0 22px 26px var(--tooth-shadow)) drop-shadow(0 0 14px rgba(255, 255, 255, 0.9)); }
+.proc-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; counter-reset: p; }
+.proc-steps li { counter-increment: p; position: relative; padding: 14px 16px 14px 62px; border-radius: 20px; transition: background-color 0.4s; }
+.proc-steps li::before { content: counter(p); position: absolute; left: 16px; top: 14px; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; background: var(--mint); color: var(--ink); transition: background-color 0.4s, color 0.4s; }
+.proc-steps h3 { font-size: 1.05rem; }
+.proc-steps p { color: var(--muted); font-size: 0.93rem; margin-top: 2px; }
+.proc[data-st="look"] [data-s="look"], .proc[data-st="drill"] [data-s="drill"], .proc[data-st="fill"] [data-s="fill"], .proc[data-st="polish"] [data-s="polish"] { background: var(--t-coral); }
+.proc[data-st="look"] [data-s="look"]::before, .proc[data-st="drill"] [data-s="drill"]::before, .proc[data-st="fill"] [data-s="fill"]::before, .proc[data-st="polish"] [data-s="polish"]::before { background: var(--coral); color: var(--on-coral); }
+.proc-note { margin-top: 14px; font-size: 0.88rem; color: var(--muted); }
+.chip { position: absolute; display: flex; align-items: center; gap: 10px; padding: 10px 14px 10px 10px; border-radius: 18px; background: var(--chip); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: var(--card-shadow); font-size: 0.86rem; line-height: 1.25; max-width: 15em; animation: bob var(--dur, 7s) ease-in-out infinite; animation-delay: var(--d, 0s); }
+.chip b { display: block; font-weight: 600; font-size: 0.92rem; }
+.chip span { color: var(--muted); }
+.chip .ci { flex: none; width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--tint); color: var(--ic); }
+.chip .ci svg { width: 22px; height: 22px; }
+.chip.c1 { left: 0; top: 16%; --tint: var(--t-sky); --ic: var(--ic-sky); --dur: 6.5s; }
+.chip.c3 { left: 0; top: 60%; --tint: var(--t-aqua); --ic: var(--ic-aqua); --dur: 8s; --d: -4s; }
+@keyframes bob { 50% { transform: translateY(-6px); } }
+.pause { position: absolute; right: 2%; top: 2%; z-index: 3; width: 44px; height: 44px; border-radius: 50%; border: 0; display: grid; place-items: center; cursor: pointer; color: var(--ink); background: var(--chip); box-shadow: var(--card-shadow); }
+.pause svg { width: 16px; height: 16px; }
+.pause .i-play { display: none; }
+html.still .pause .i-play { display: block; }
+html.still .pause .i-pause { display: none; }
+html.still .blobs i, html.still .stage *, html.still .nearest .n-label i { animation-play-state: paused !important; }
+.warning { padding: 14px 18px; border-radius: 18px; font-weight: 600; font-size: 1.05rem; text-align: center; color: var(--ink); background: color-mix(in srgb, var(--surface) 75%, transparent); box-shadow: inset 0 0 0 1.5px var(--line); }
+
+/* услуги: четыре группы своих оттенков */
+.svc-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+.svc-col { display: grid; gap: 18px; min-width: 0; }
+.grp { border-radius: 30px; padding: 24px 24px 10px; background: var(--tint); }
+.grp-head { display: grid; grid-template-columns: 52px 1fr; gap: 2px 14px; align-items: center; margin-bottom: 8px; }
+.grp-ic { width: 52px; height: 52px; border-radius: 18px; display: grid; place-items: center; background: var(--surface); color: var(--ic); grid-row: span 2; }
+.grp-ic svg { width: 28px; height: 28px; }
+.grp h3 { font-family: var(--display); font-weight: 700; font-size: 1.35rem; }
+.grp-head p { color: var(--muted); font-size: 0.9rem; }
+.svc { display: grid; grid-template-columns: 1fr auto auto; gap: 2px 14px; width: calc(100% + 20px); margin-inline: -10px; padding: 14px 10px; align-items: center; text-align: left; border: 0; border-top: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); border-radius: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; transition: background-color 0.2s, border-radius 0.2s; }
+.grp-head + .svc { border-top: 0; }
+.svc:hover { background: color-mix(in srgb, var(--surface) 65%, transparent); border-radius: 16px; }
+.svc .nm { font-size: 1.02rem; font-weight: 600; }
+.svc .price { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; justify-self: end; }
+.svc .meta { color: var(--muted); font-size: 0.88rem; grid-column: 1 / 3; }
+.svc .arr { grid-column: 3; grid-row: 1 / span 2; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); color: var(--ic); transition: background-color 0.2s, color 0.2s; }
+.svc .arr svg { width: 18px; height: 18px; }
+.svc:hover .arr { background: var(--ic); color: var(--surface); }
+.grp-hint { margin-top: 14px; font-size: 0.88rem; color: var(--muted); }
+.grp.sand { --tint: var(--t-sand); --ic: var(--ic-sand); }
+.grp.aqua { --tint: var(--t-aqua); --ic: var(--ic-aqua); }
+.grp.sky { --tint: var(--t-sky); --ic: var(--ic-sky); }
+.grp.coral { --tint: var(--t-coral); --ic: var(--ic-coral); }
+
+/* седация */
+.sedation { border-radius: 36px; padding: clamp(24px, 5cqi, 56px); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: linear-gradient(135deg, var(--t-sky), var(--t-aqua)); position: relative; overflow: hidden; }
+.sedation > * { min-width: 0; position: relative; }
+.sedation .moon { position: absolute; right: -40px; top: -40px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, var(--surface), transparent 70%); opacity: 0.8; }
+.sed-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: s; }
+.sed-steps li { counter-increment: s; background: var(--surface); border-radius: 22px; padding: 18px 20px 18px 66px; position: relative; box-shadow: var(--card-shadow); }
+.sed-steps li::before { content: counter(s); position: absolute; left: 18px; top: 16px; width: 34px; height: 34px; border-radius: 50%; background: var(--coral); color: var(--on-coral); display: grid; place-items: center; font-weight: 700; }
+.sed-steps p { color: var(--muted); margin-top: 4px; }
+.sed-more { display: none; }
+.plist { margin: 0 0 6px; display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; }
+.plist dt { color: var(--ink); }
+.plist dd { margin: 0; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+#priceDlg h3 { font-family: var(--display); font-weight: 700; margin-top: 6px; }
+.m-bar { display: none; }
+html.admin-view .m-bar { display: none !important; }
+.sed-facts { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.sed-facts li { padding-left: 26px; position: relative; color: var(--muted); }
+.sed-facts li::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 12px; height: 12px; border-radius: 50%; border: 3px solid var(--accent); }
+
+/* врачи */
+.docs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.docs > * { min-width: 0; }
+.doc { background: var(--surface); border-radius: 28px; padding: 16px 16px 20px; display: grid; gap: 12px; align-content: start; grid-template-rows: auto auto auto auto 1fr auto; box-shadow: var(--card-shadow); transition: transform 0.25s; }
+.doc:hover { transform: translateY(-4px); }
+.photo { aspect-ratio: 4 / 3; border-radius: 20px; background: linear-gradient(160deg, var(--av), color-mix(in srgb, var(--av) 40%, var(--surface))); display: grid; place-items: end center; position: relative; overflow: hidden; }
+.photo svg { width: 58%; height: auto; color: rgba(16, 48, 46, 0.18); }
+.photo span { position: absolute; left: 10px; top: 10px; font-size: 0.75rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: rgba(255, 255, 255, 0.8); color: #10302e; }
+.doc .edu { font-size: 0.88rem; color: var(--muted); display: grid; gap: 4px; }
+.doc .edu b { color: var(--ink); font-weight: 600; }
+.avatar { width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 1.3rem; background: var(--av, var(--mint)); color: #10302e; }
+.doc .role { color: var(--accent); font-weight: 600; font-size: 0.92rem; }
+.doc ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.93rem; display: grid; gap: 2px; }
+.doc .sched-txt { font-size: 0.9rem; color: var(--muted); }
+
+/* запись */
+.booking { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items: start; }
+.booking > * { min-width: 0; }
+.bk-main { background: var(--surface); border-radius: 30px; padding: clamp(18px, 3cqi, 30px); box-shadow: var(--card-shadow); }
+.bk-steps { list-style: none; margin: 0 0 22px; padding: 0; display: flex; gap: 6px; flex-wrap: wrap; }
+.bk-steps button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 6px; border-radius: 999px; border: 0; background: var(--bg); color: var(--muted); font-weight: 600; font-size: 0.9rem; cursor: pointer; }
+.bk-steps button span { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--line); color: var(--ink); font-size: 0.85rem; }
+.bk-steps button[aria-current="step"] { background: var(--mint); color: var(--ink); }
+.bk-steps button[aria-current="step"] span, .bk-steps button.done span { background: var(--accent); color: var(--on-accent); }
+.bk-steps button:disabled { cursor: default; opacity: 0.6; }
+.bk-title { font-family: var(--display); font-weight: 700; font-size: 1.4rem; margin-bottom: 14px; }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.opt { text-align: left; border: 1.5px solid var(--line); background: var(--bg); border-radius: 18px; padding: 14px 16px; cursor: pointer; display: grid; gap: 2px; min-height: 64px; }
+.opt:hover { border-color: var(--accent); }
+.opt[aria-pressed="true"] { border-color: var(--accent); background: var(--mint); }
+.opt b { font-weight: 600; }
+.opt span { color: var(--muted); font-size: 0.88rem; }
+.opt.doc-opt { grid-template-columns: 48px 1fr; gap: 2px 12px; align-items: center; }
+.opt.doc-opt .avatar { width: 48px; height: 48px; font-size: 1rem; grid-row: span 2; }
+.dates { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 16px; scroll-snap-type: x proximity; }
+.date { flex: none; width: 74px; min-height: 76px; border-radius: 16px; border: 1.5px solid var(--line); background: var(--bg); cursor: pointer; display: grid; place-content: center; gap: 0; text-align: center; scroll-snap-align: start; }
+.date b { font-size: 1.25rem; font-family: var(--display); }
+.date small { font-size: 0.75rem; color: var(--muted); }
+.date[aria-pressed="true"] { border-color: var(--accent); background: var(--mint); }
+.date:disabled { opacity: 0.45; cursor: not-allowed; }
+.slot-group { margin-bottom: 14px; }
+.slot-group p { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 8px; }
+.slot { min-height: 44px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--bg); font-weight: 600; font-variant-numeric: tabular-nums; cursor: pointer; }
+.slot:hover { border-color: var(--accent); }
+.slot[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.empty-slots { padding: 18px; border-radius: 16px; background: var(--bg); color: var(--muted); }
+.bk-form { display: grid; gap: 14px; }
+.bk-form label { display: grid; gap: 6px; font-weight: 500; font-size: 0.93rem; }
+input[type="text"], input[type="tel"], textarea, select { width: 100%; min-height: 50px; padding: 12px 14px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--bg); color: var(--ink); font: 400 1rem var(--text); }
+textarea { min-height: 80px; resize: vertical; }
+input[aria-invalid="true"] { border-color: var(--bad); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.row2 > * { min-width: 0; }
+.consent { grid-template-columns: 24px 1fr; font-weight: 400 !important; font-size: 0.88rem !important; color: var(--muted); align-items: start; cursor: pointer; }
+.consent input { width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--accent); }
+.error { color: var(--bad); font-size: 0.9rem; min-height: 1.2em; }
+.bk-nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.bk-side { background: var(--surface); border-radius: 30px; padding: 22px; display: grid; gap: 12px; position: sticky; top: 90px; box-shadow: var(--card-shadow); }
+.bk-side h3 { font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
+.bk-side dl { margin: 0; display: grid; gap: 10px; }
+.bk-side dt { font-size: 0.82rem; color: var(--muted); }
+.bk-side dd { margin: 0; font-weight: 600; }
+.bk-side .tip { font-size: 0.85rem; color: var(--muted); padding: 12px 14px; border-radius: 14px; background: var(--sand); }
+.done-box { display: grid; gap: 14px; justify-items: start; }
+.done-mark { width: 64px; height: 64px; border-radius: 50%; background: var(--ok-bg); color: var(--ok); display: grid; place-items: center; }
+.done-mark svg { width: 32px; height: 32px; }
+.note { padding: 12px 14px; border-radius: 14px; background: var(--mint); font-size: 0.92rem; }
+
+/* клиника */
+.clinic { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.clinic > * { min-width: 0; }
+.card { background: var(--surface); border-radius: 28px; padding: 24px; display: grid; gap: 8px; align-content: start; box-shadow: var(--card-shadow); }
+.card p { color: var(--muted); }
+.card .num { font-family: var(--display); font-weight: 800; font-size: 2.6rem; line-height: 1; color: var(--ic-coral); margin-bottom: 6px; }
+.info { margin-top: 16px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 16px; }
+.info > * { min-width: 0; }
+.info .card dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 18px; }
+.info .card dt { color: var(--muted); }
+.info .card dd { margin: 0; font-weight: 500; }
+.phone-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.phone-row b { font-size: 1.3rem; font-variant-numeric: tabular-nums; user-select: all; }
+.phone-row .link-btn { min-height: 44px; }
+
+/* вопросы */
+.faq { max-width: 820px; background: var(--surface); border-radius: 28px; padding: 6px 26px; box-shadow: var(--card-shadow); }
+details + details { border-top: 1px solid var(--line); }
+summary { cursor: pointer; list-style: none; padding-block: 18px; min-height: 48px; display: flex; justify-content: space-between; gap: 16px; font-weight: 600; font-size: 1.05rem; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--coral); }
+details[open] summary::after { content: "−"; }
+details p { padding-bottom: 20px; color: var(--muted); max-width: 46em; }
+
+/* подвал */
+footer { background: var(--foot); --ink: var(--on-foot); --muted: var(--on-foot-m); --line: rgba(255, 255, 255, 0.16); --accent: #8fe0d2; color: var(--muted); border-radius: 36px 36px 0 0; margin-top: 40px; }
+.foot { padding-block: 40px 48px; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 24px; font-size: 0.9rem; }
+.foot > * { min-width: 0; display: grid; gap: 4px; align-content: start; }
+.foot b { color: var(--ink); }
+.foot a, .foot .link-btn { min-height: 44px; display: inline-flex; align-items: center; justify-self: start; text-decoration: none; color: var(--ink); }
+.foot .link-btn { text-decoration: underline; }
+.foot .warning { grid-column: 1 / -1; margin-top: 8px; background: transparent; }
+
+/* кабинет администратора */
+.adm { padding-block: 28px 60px; }
+.adm-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.adm-head h1 { font-size: clamp(2rem, 4cqi, 2.8rem); }
+.adm-mode { font-size: 0.88rem; color: var(--muted); margin-top: 6px; max-width: 46em; }
+.day-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.day-nav .btn { min-height: 44px; padding: 0 16px; }
+.day-label { font-weight: 600; min-width: 13em; text-align: center; }
+.tiles { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 16px; }
+.tiles > * { min-width: 0; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px; display: grid; gap: 2px; }
+.tile small { color: var(--muted); font-size: 0.85rem; }
+.tile b { font-family: var(--display); font-size: 1.7rem; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 12px; font-size: 0.85rem; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+.sched-wrap { overflow-x: auto; border-radius: 22px; background: var(--surface); border: 1px solid var(--line); }
+.sched { --rh: 46px; display: grid; grid-template-columns: 64px repeat(4, minmax(170px, 1fr)); min-width: 760px; }
+.sched .hd { position: sticky; top: 0; padding: 12px 10px; border-bottom: 1px solid var(--line); border-left: 1px solid var(--line); background: var(--surface); z-index: 2; display: grid; gap: 0; }
+.sched .hd:first-child { border-left: 0; }
+.sched .hd b { font-size: 0.95rem; }
+.sched .hd small { color: var(--muted); font-size: 0.8rem; }
+.times { position: relative; height: calc(var(--rows) * var(--rh)); }
+.times span:first-child { transform: none; }
+.times span { position: absolute; right: 8px; font-size: 0.75rem; color: var(--muted); transform: translateY(-50%); font-variant-numeric: tabular-nums; }
+.col { position: relative; height: calc(var(--rows) * var(--rh)); border-left: 1px solid var(--line); background-image: repeating-linear-gradient(to bottom, transparent 0 calc(var(--rh) * 2 - 1px), var(--line) calc(var(--rh) * 2 - 1px) calc(var(--rh) * 2)); }
+.off { position: absolute; left: 0; right: 0; background: repeating-linear-gradient(135deg, var(--off) 0 6px, transparent 6px 12px); }
+.now-line { position: absolute; left: 0; right: 0; height: 2px; background: var(--bad); z-index: 3; }
+.appt { position: absolute; left: 4px; right: 4px; border-radius: 10px; padding: 5px 8px; text-align: left; border: 0; cursor: pointer; overflow: hidden; font-size: 0.8rem; line-height: 1.25; display: grid; align-content: start; gap: 1px; background: var(--booked-bg); color: var(--booked); z-index: 1; }
+.appt b { font-weight: 600; font-size: 0.82rem; }
+.appt.short { display: flex; gap: 6px; align-items: center; white-space: nowrap; }
+.appt.short b { overflow: hidden; text-overflow: ellipsis; }
+.appt .t { font-variant-numeric: tabular-nums; opacity: 0.85; }
+.appt.came { background: var(--ok-bg); color: var(--ok); }
+.appt.noshow { background: var(--warn-bg); color: var(--warn); }
+.appt.cancelled { background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1.5px var(--line); text-decoration: line-through; }
+.appt.real { box-shadow: inset 0 0 0 2px currentColor; }
+.appt .tag { font-size: 0.7rem; opacity: 0.8; }
+.adm-note { margin-top: 14px; font-size: 0.88rem; color: var(--muted); max-width: 52em; }
+
+/* окна */
+dialog { border: 0; padding: 0; border-radius: 26px; background: var(--surface); color: var(--ink); width: min(520px, calc(100% - 24px)); max-height: 90vh; }
+dialog::backdrop { background: var(--scrim); }
+.dlg { padding: 26px; display: grid; gap: 14px; }
+.dlg-title { font-family: var(--display); font-weight: 700; font-size: 1.5rem; margin: 0; padding-right: 50px; }
+.dlg dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; }
+.dlg dt { color: var(--muted); }
+.dlg dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
+.st-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.st-btns button { min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--bg); font-weight: 600; cursor: pointer; }
+.st-btns button[aria-pressed="true"] { border-color: var(--accent); background: var(--mint); }
+.st-btns .danger { color: var(--bad); }
+.confirm { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 12px; border-radius: 14px; background: var(--bad-bg); }
+.confirm button { min-height: 40px; padding: 0 14px; border-radius: 10px; border: 0; font-weight: 600; cursor: pointer; }
+.confirm .yes { background: var(--bad); color: var(--surface); }
+.confirm .no { background: var(--surface); }
+.icon-btn { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--bg); cursor: pointer; display: grid; place-items: center; position: absolute; right: 14px; top: 14px; }
+.icon-btn svg { width: 18px; height: 18px; }
+.toast { position: fixed; z-index: 50; left: 0; right: 0; margin-inline: auto; width: max-content; max-width: calc(100% - 32px); bottom: calc(24px + env(safe-area-inset-bottom, 0px)); padding: 12px 18px; border-radius: 14px; background: var(--ink0); color: var(--bg); font-weight: 600; font-size: 0.93rem; opacity: 0; transform: translateY(16px); transition: opacity 0.2s, transform 0.2s; pointer-events: none; text-align: center; }
+.toast.show { opacity: 1; transform: none; }
+
+/* режим просмотра */
+html.phone-view body { background: var(--stage); }
+html.phone-view .frame { width: 412px; max-width: calc(100% - 32px); height: min(844px, calc(100dvh - 120px)); min-height: 480px; margin: 24px auto 96px; border: 11px solid var(--frame); border-radius: 46px; overflow: hidden; transform: translateZ(0); background: var(--bg); box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.55); }
+html.phone-view .site { height: 100%; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; overscroll-behavior: contain; }
+html.phone-view .site::-webkit-scrollbar { display: none; }
+.viewer { position: fixed; z-index: 70; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; gap: 4px; padding: 5px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line0); box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.35); }
+.viewer button { min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: transparent; font-weight: 600; font-size: 0.92rem; cursor: pointer; }
+.viewer button[aria-pressed="true"] { background: var(--ink0); color: var(--bg); }
+@media (max-width: 900px) { .viewer { display: none; } }
+
+@container site (max-width: 960px) {
+  .menu-btn { display: inline-flex; align-items: center; }
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; background: var(--bg); padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); box-shadow: 0 20px 30px -20px rgba(6, 44, 51, 0.35); }
+  .nav.open { display: flex; }
+  .nav a { padding: 14px 8px; font-size: 1.05rem; color: var(--ink); }
+  .docs { grid-template-columns: 1fr 1fr; }
+  .booking { grid-template-columns: 1fr; }
+  .bk-side { position: static; order: -1; padding: 16px 18px; }
+  .bk-side dl { grid-template-columns: 1fr 1fr; }
+  .tiles { grid-template-columns: repeat(3, 1fr); }
+  .chip { font-size: 0.8rem; max-width: 13em; }
+  .head-phone span { display: none; }
+  .head-phone { width: 44px; justify-content: center; border-radius: 50%; background: var(--surface); box-shadow: inset 0 0 0 1.5px var(--line); }
+}
+@container site (max-width: 760px) {
+  section { padding-block: 56px; }
+  .hero { grid-template-columns: 1fr; gap: 8px; padding-top: 8px; }
+  .stage { order: -1; max-width: 340px; }
+  .svc-groups { grid-template-columns: 1fr; }
+  .proc { grid-template-columns: 1fr; padding: 18px; }
+  .sed-more { display: inline-flex; justify-self: start; }
+  .sedation:not(.open) .sed-steps { display: none; }
+  .sedation.open .sed-more { display: none; }
+  .blobs i { animation: none !important; }
+  .m-bar { display: grid; grid-template-columns: 1.4fr 1fr; gap: 8px; position: fixed; z-index: 40; left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); padding: 6px; border-radius: 999px; background: color-mix(in srgb, var(--surface) 92%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 14px 30px -12px rgba(6, 44, 51, 0.45); transition: transform 0.3s, opacity 0.3s; }
+  .m-bar .btn { min-height: 48px; padding: 0 12px; }
+  .m-bar.off { transform: translateY(140%); opacity: 0; pointer-events: none; }
+  .nearest .n-label, .doc .sched-txt, .form-hint { font-size: 0.9rem; }
+  .proc-stage { max-width: 300px; }
+  .grp { padding: 20px 18px 8px; }
+  .sedation { grid-template-columns: 1fr; gap: 24px; padding: 22px 18px; }
+  .clinic, .info { grid-template-columns: 1fr; }
+  .opts { grid-template-columns: 1fr; }
+  .row2 { grid-template-columns: 1fr; }
+  .foot { grid-template-columns: 1fr; }
+  .faq { padding: 4px 18px; }
+  .bar .btn { padding: 0 14px; }
+  .logo small { display: none; }
+  .tiles { grid-template-columns: 1fr 1fr; }
+  .bk-side .tip { display: none; }
+}
+@container site (max-width: 520px) {
+  .docs { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin-inline: -16px; padding: 4px 16px 24px; scroll-padding-inline: 16px; scrollbar-width: none; }
+  .docs::-webkit-scrollbar { display: none; }
+  .docs > .doc { flex: 0 0 82%; scroll-snap-align: start; }
+  .docs-hint { display: block !important; }
+  .nearest { grid-template-columns: 1fr; }
+  .nearest .btn { grid-row: auto; grid-column: auto; }
+  .cta-row .btn { flex: 1 1 auto; }
+  #headBook { display: none; }
+  .chip { padding: 6px 12px 6px 6px; gap: 8px; max-width: none; white-space: nowrap; border-radius: 14px; }
+  .chip span:not(.ci) { display: none; }
+  .chip b { font-size: 0.8rem; }
+  .chip .ci { width: 28px; height: 28px; border-radius: 9px; }
+  .chip .ci svg { width: 17px; height: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn, .toast, .doc, .tilt { transition: none; }
+  .smile path { animation: none; stroke-dashoffset: 0; }
+}
+</style>
+
+<div class="frame" id="frame">
+<div class="site" id="site">
+<div class="blobs" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="Стоматология «Штиль», на главную">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#0e7c74"/><path d="M20 11.5c-2-1.3-5-1.9-7 0-2.6 2-2 6.4-.7 9.6 1.2 2.8 1.3 8.4 3.3 8.4s2-5.2 4.4-5.2 2.4 5.2 4.4 5.2 2.1-5.6 3.3-8.4c1.3-3.2 1.9-7.6-.7-9.6-2-1.9-5-1.3-7 0z" fill="#fff"/><path d="M14.5 15.5q5.5 3.2 11 0" fill="none" stroke="#ff8a65" stroke-width="2" stroke-linecap="round"/></svg>
+      <span><b>Штиль</b><small>стоматология</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Разделы">
+      <a href="#services">Услуги и цены</a>
+      <a href="#sedation">Лечение в седации</a>
+      <a href="#doctors">Врачи</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="head-phone" href="tel:+74950000000" aria-label="Позвонить: +7 495 000-00-00"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>+7 495 000-00-00</span></a>
+    <a class="btn" id="headBook" href="#booking">Записаться</a>
+    <a class="btn ghost admin-back" href="#top">Вернуться на сайт</a>
+    <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="nav">Меню</button>
+  </div>
+</header>
+
+<main id="siteView">
+  <div class="wrap hero" id="top">
+    <div>
+      <p class="eyebrow"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="4"/></svg>Стоматология у метро «Таганская»</p>
+      <h1>Лечить зубы <span class="smile">спокойно<svg viewBox="0 0 200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M6 6 Q100 40 194 6"/></svg></span></h1>
+      <p class="lead">Объясняем каждый шаг до начала лечения и работаем с хорошей анестезией. А тем, кому очень страшно, предлагаем лечение в седации.</p>
+      <div class="cta-row">
+        <a class="btn" href="#booking">Записаться онлайн</a>
+        <a class="btn ghost" href="#services">Услуги и цены</a>
+      </div>
+      <div class="nearest" id="nearest" aria-live="polite">
+        <p class="n-label"><i aria-hidden="true"></i>Ближайшее свободное время на консультацию за 1 500 ₽</p>
+        <p class="n-time" id="nTime">Считаем расписание…</p>
+        <p class="n-doc" id="nDoc"></p>
+        <button class="btn" type="button" id="nBook" disabled>Записаться</button>
+      </div>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="halo" aria-hidden="true"></div>
+      <div class="ground" aria-hidden="true"></div>
+      <div class="tilt" id="tilt" aria-hidden="true">
+        <svg class="tooth" viewBox="0 0 400 440">
+          <defs>
+            <radialGradient id="enamel" cx="38%" cy="30%" r="80%">
+              <stop offset="0" style="stop-color:var(--enamel)"/>
+              <stop offset="0.55" style="stop-color:var(--enamel)"/>
+              <stop offset="0.85" style="stop-color:var(--enamel2)"/>
+              <stop offset="1" style="stop-color:var(--enamel3)"/>
+            </radialGradient>
+            <linearGradient id="rootShade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0.5" style="stop-color:var(--enamel3)" stop-opacity="0"/>
+              <stop offset="1" style="stop-color:var(--enamel3)" stop-opacity="0.55"/>
+            </linearGradient>
+            <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+              <stop offset="0.5" stop-color="#fff" stop-opacity="0.95"/>
+              <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+            <radialGradient id="carGrad" cx="45%" cy="45%" r="60%">
+              <stop offset="0" stop-color="#3f2a1a"/>
+              <stop offset="0.6" stop-color="#6e4a2e"/>
+              <stop offset="1" stop-color="#b08a63"/>
+            </radialGradient>
+            <path id="tp" d="M200 74C172 54 128 40 98 60 60 86 58 144 72 192c10 34 20 58 26 108 6 52 14 98 38 98s28-42 36-80c6-28 14-44 28-44s22 16 28 44c8 38 12 80 36 80s32-46 38-98c6-50 16-74 26-108 14-48 12-106-26-132-30-20-74-6-102 14z"/>
+            <g id="carG" transform="translate(252 122) scale(1.35) translate(-252 -122)">
+              <path d="M231 111c7-13 25-15 34-7 10 8 9 25-2 31-10 7-27 5-33-5-4-6-3-13 1-19z" fill="url(#carGrad)"/>
+              <circle cx="244" cy="120" r="5" fill="#2f1f13" opacity="0.7"/>
+              <circle cx="259" cy="131" r="3" fill="#2f1f13" opacity="0.55"/>
+              <circle cx="272" cy="104" r="3.5" fill="#8c6644" opacity="0.7"/>
+            </g>
+            <clipPath id="toothClip"><use href="#tp"/></clipPath>
+            <clipPath id="lensClip"><circle cx="0" cy="0" r="43"/></clipPath>
+          </defs>
+          <g class="body">
+            <use href="#tp" fill="url(#enamel)"/>
+            <use href="#tp" fill="url(#rootShade)"/>
+            <path d="M150 82c18 6 34 14 50 14s32-8 50-14" fill="none" style="stroke:var(--enamel3)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+            <ellipse cx="130" cy="130" rx="22" ry="48" fill="#fff" opacity="0.9" transform="rotate(-18 130 130)"/>
+            <ellipse cx="150" cy="84" rx="10" ry="6" fill="#fff"/>
+            <g clip-path="url(#toothClip)"><rect class="sweep" x="0" y="-40" width="90" height="520" fill="url(#shine)" opacity="0.85"/></g>
+          </g>
+        </svg>
+      </div>
+      <div class="chip c1" aria-hidden="true"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><p><b>Седация</b><span>для тех, кому страшно</span></p></div>
+      <div class="chip c3" aria-hidden="true"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><p><b>План с ценой</b><span>до начала лечения</span></p></div>
+      <button class="pause" type="button" id="pauseBtn" aria-pressed="false" aria-label="Остановить анимацию">
+        <svg class="i-pause" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+        <svg class="i-play" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11a.6.6 0 0 0 .9.5l9-5.5a.6.6 0 0 0 0-1l-9-5.5a.6.6 0 0 0-.9.5z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="wrap"><p class="warning">Имеются противопоказания. Необходима консультация специалиста.</p></div>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="eyebrow">Услуги и цены</p>
+      <h2>Что мы лечим и сколько это стоит</h2>
+      <p class="lead2">Цены указаны «от»: точную стоимость врач назовёт после осмотра и напишет в плане лечения до того, как начать.</p>
+      <div class="svc-groups" id="svcList"></div>
+      <p class="grp-hint">Нажмите на услугу, чтобы выбрать врача и время. <button type="button" class="link-btn" data-price>Полный прайс-лист</button></p>
+    </div>
+  </section>
+
+  <section id="process" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Как проходит лечение</p>
+      <h2>Лечение кариеса по шагам</h2>
+      <p class="lead2">Перед началом врач объясняет, что будет делать. Так обычно выглядит лечение кариеса.</p>
+      <div class="proc" id="proc">
+        <div class="stage proc-stage" id="procStage" data-ph="caries" aria-hidden="true">
+          <div class="halo"></div>
+          <div class="ground"></div>
+          <div class="tilt">
+            <svg class="tooth" viewBox="0 0 400 440">
+              <g class="body">
+            <use href="#tp" fill="url(#enamel)"/>
+            <use href="#tp" fill="url(#rootShade)"/>
+            <path d="M150 82c18 6 34 14 50 14s32-8 50-14" fill="none" style="stroke:var(--enamel3)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+            <ellipse cx="130" cy="130" rx="22" ry="48" fill="#fff" opacity="0.9" transform="rotate(-18 130 130)"/>
+            <ellipse cx="150" cy="84" rx="10" ry="6" fill="#fff"/>
+                <g class="car"><use href="#carG"/></g>
+                <g transform="translate(252 122) scale(1.35) translate(-252 -122)"><path class="fillp" d="M227 109c8-15 29-17 39-8 11 9 10 28-2 35-12 8-31 6-38-6-4-7-3-15 1-21z" fill="#f2fbf9" stroke="#cfe6e1" stroke-width="2"/></g>
+            <g clip-path="url(#toothClip)"><rect class="sweep" x="0" y="-40" width="90" height="520" fill="url(#shine)" opacity="0.85"/></g>
+              </g>
+          <!-- полировочная полоска -->
+          <g class="strip"><g class="rub">
+            <path d="M96 118c-14 4-22 18-18 34" fill="none" stroke="#e6c99b" stroke-width="10" stroke-linecap="round"/>
+            <path d="M318 118c14 4 22 18 18 34" fill="none" stroke="#e6c99b" stroke-width="10" stroke-linecap="round"/>
+            <rect x="92" y="108" width="230" height="30" rx="10" fill="#f6e3c3" stroke="#d9b98a" stroke-width="2"/>
+            <g fill="#d9b98a"><circle cx="112" cy="118" r="2"/><circle cx="130" cy="128" r="2"/><circle cx="150" cy="118" r="2"/><circle cx="170" cy="128" r="2"/><circle cx="190" cy="118" r="2"/><circle cx="210" cy="128" r="2"/><circle cx="230" cy="118" r="2"/><circle cx="250" cy="128" r="2"/><circle cx="270" cy="118" r="2"/><circle cx="290" cy="128" r="2"/><circle cx="306" cy="118" r="2"/></g>
+          </g></g>
+          <!-- бормашина: кончик бора в точке (0,0) -->
+          <g class="drill"><g class="vib">
+            <g class="chips" fill="#8c6644"><circle style="--dx:-22px;--dy:-10px" r="3"/><circle style="--dx:-14px;--dy:16px;--dl:.12s" r="2.5"/><circle style="--dx:10px;--dy:20px;--dl:.24s" r="2"/><circle style="--dx:-26px;--dy:6px;--dl:.36s" r="2"/></g>
+            <line x1="0" y1="0" x2="16" y2="-16" stroke="#7d8e94" stroke-width="5" stroke-linecap="round"/>
+            <line x1="26" y1="-26" x2="160" y2="-160" stroke="#0f4f57" stroke-width="34" stroke-linecap="round"/>
+            <line x1="26" y1="-26" x2="160" y2="-160" stroke="#eef5f6" stroke-width="27" stroke-linecap="round"/>
+            <line x1="78" y1="-78" x2="96" y2="-96" stroke="#5fd1bd" stroke-width="27"/>
+            <line x1="120" y1="-120" x2="160" y2="-160" stroke="#cfdfe2" stroke-width="27" stroke-linecap="round"/>
+            <circle cx="24" cy="-24" r="20" fill="#eef5f6" stroke="#0f4f57" stroke-width="3.5"/>
+            <circle cx="24" cy="-24" r="6" fill="#cfdfe2"/>
+          </g></g>
+          <!-- лупа: центр стекла в точке (0,0) -->
+          <g class="mag"><g class="scan">
+            <line x1="34" y1="34" x2="98" y2="98" stroke="#0f4f57" stroke-width="20" stroke-linecap="round"/>
+            <line x1="70" y1="70" x2="98" y2="98" stroke="#ff8a65" stroke-width="20" stroke-linecap="round"/>
+            <circle r="44" fill="#ffffff"/>
+            <g class="zoom" clip-path="url(#lensClip)"><g transform="scale(1.9) translate(-252 -122)"><use href="#tp" fill="url(#enamel)"/><use href="#carG"/></g></g>
+            <circle r="44" fill="rgba(190,235,255,.18)" stroke="#0f4f57" stroke-width="9"/>
+            <path d="M-26-14a30 30 0 0 1 22-18" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+          </g></g>
+            </svg>
+          </div>
+        </div>
+        <ol class="proc-steps">
+          <li data-s="look"><h3>Осмотр</h3><p>Врач осматривает зуб под увеличением, при необходимости делает снимок, рассказывает, что нашёл, и называет стоимость.</p></li>
+          <li data-s="drill"><h3>Анестезия и лечение</h3><p>Делаем анестезию и проверяем, что она подействовала. Затем врач убирает поражённые ткани.</p></li>
+          <li data-s="fill"><h3>Пломба</h3><p>Врач восстанавливает форму зуба материалом, подобранным под цвет эмали.</p></li>
+          <li data-s="polish"><h3>Шлифовка и полировка</h3><p>Пломбу выравнивают и полируют, проверяют прикус, чтобы при жевании ничего не мешало.</p></li>
+        </ol>
+      </div>
+      <p class="proc-note">Это схема для примера. Точный план лечения врач составляет после осмотра.</p>
+    </div>
+  </section>
+
+  <section id="sedation" style="padding-top:0">
+    <div class="wrap">
+      <div class="sedation">
+        <span class="moon" aria-hidden="true"></span>
+        <div>
+          <p class="eyebrow">Для тех, кому страшно</p>
+          <h2>Лечение в седации</h2>
+          <p class="muted">Седация — это лечение в состоянии глубокого расслабления, похожем на дрёму. Вы дышите сами и можете ответить врачу. Седация помогает расслабиться и спокойнее перенести приём. Её часто выбирают те, кто давно откладывает визит к стоматологу из-за страха.</p>
+          <ul class="sed-facts">
+            <li>Седацию проводит врач-анестезиолог, он следит за давлением и пульсом весь приём</li>
+            <li>Решение о седации принимают после осмотра и консультации анестезиолога</li>
+            <li>После приёма нельзя садиться за руль до конца дня, лучше приехать с сопровождающим</li>
+          </ul>
+          <div class="cta-row"><button class="btn" type="button" data-book-service="sedation">Записаться на лечение в седации</button></div>
+        </div>
+        <button class="btn ghost sed-more" type="button" id="sedMore" aria-expanded="false" aria-controls="sedSteps">Как проходит седация: 4 шага</button>
+        <ol class="sed-steps" id="sedSteps">
+          <li><h3>Консультация</h3><p>Анестезиолог расспрашивает о здоровье и лекарствах и решает, подходит ли вам седация.</p></li>
+          <li><h3>Подготовка</h3><p>За несколько часов до приёма не едите. Подробную памятку дадим на консультации.</p></li>
+          <li><h3>Приём</h3><p>Вы расслабляетесь в кресле, врач проводит лечение. Можно сделать несколько процедур за один визит.</p></li>
+          <li><h3>Отдых</h3><p>Ещё 20–30 минут вы отдыхаете в клинике, потом едете домой с сопровождающим.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="doctors" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Команда</p>
+      <h2>Врачи</h2>
+      <p class="lead2">Четыре врача разных специальностей. Можно записаться к конкретному врачу или выбрать «любой свободный».</p>
+      <div class="docs" id="docList"></div>
+      <p class="docs-hint" style="display:none;font-size:.9rem;color:var(--muted);margin-top:-8px">Листайте вбок, чтобы увидеть всех врачей.</p>
+    </div>
+  </section>
+
+  <section id="booking" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Онлайн-запись</p>
+      <h2>Выберите удобное время</h2>
+      <p class="lead2">Выберите услугу, врача и свободное время. Длительность приёма уже учтена, поэтому на выбранное время вас никто не опередит.</p>
+      <div class="booking">
+        <div class="bk-main">
+          <ol class="bk-steps" id="bkSteps" aria-label="Шаги записи"></ol>
+          <div id="bkPanel" aria-live="polite"></div>
+        </div>
+        <aside class="bk-side" id="bkSide" aria-label="Ваша запись"></aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Клиника</p>
+      <h2>Как у нас всё устроено</h2>
+      <p class="lead2">Работаем по лицензии на медицинскую деятельность, включая анестезиологию для лечения в седации.</p>
+      <div class="clinic">
+        <div class="card"><p class="num">×25</p><h3>Дентальный микроскоп</h3><p>Лечим каналы с увеличением до 25 раз, чтобы не пропустить ни одного.</p></div>
+        <div class="card"><p class="num">КТ</p><h3>Томография на месте</h3><p>Снимок делаем прямо в клинике, не нужно ехать в диагностический центр.</p></div>
+        <div class="card"><p class="num">B</p><h3>Стерилизация класса B</h3><p>Инструменты стерилизуем в автоклаве и вскрываем пакет при вас.</p></div>
+      </div>
+      <div class="info">
+        <div class="card">
+          <h3>Адрес и время работы</h3>
+          <dl>
+            <dt>Адрес</dt><dd>Москва, Воронцовская ул., 00, 5 минут от метро «Таганская»</dd>
+            <dt>Будни</dt><dd>9:00–21:00</dd>
+            <dt>Суббота</dt><dd>9:00–21:00</dd>
+            <dt>Воскресенье</dt><dd>выходной</dd>
+            <dt>Парковка</dt><dd>платная городская парковка у входа</dd>
+            <dt>Оплата</dt><dd>картой, наличными, по СБП; выдаём справку для налогового вычета</dd>
+          </dl>
+          <div class="doc-links"><a href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0" target="_blank" rel="noopener">Открыть на карте</a><button type="button" class="link-btn" data-info>Информация для пациентов</button></div>
+        </div>
+        <div class="card">
+          <h3>Телефон</h3>
+          <div class="phone-row"><a href="tel:+74950000000" style="text-decoration:none;display:inline-flex;align-items:center;min-height:44px"><b id="phoneNum">+7 495 000-00-00</b></a><button class="link-btn" type="button" id="copyPhone">Скопировать</button></div>
+          <p class="muted" id="phoneNote" aria-live="polite">Ответим с 9:00 до 21:00, кроме воскресенья.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Вопросы</p>
+      <h2>О чём обычно спрашивают</h2>
+      <div class="faq">
+        <details><summary>Будет больно?</summary><p>Перед лечением делаем анестезию и проверяем, что она подействовала. Если почувствуете неприятное ощущение, поднимите руку, и врач остановится.</p></details>
+        <details><summary>Сколько стоит первый приём?</summary><p>Консультация и осмотр стоят 1 500 ₽. Врач составит план лечения с ценой, вы заберёте его с собой и решите спокойно.</p></details>
+        <details><summary>Вы принимаете по ОМС?</summary><p>Нет, мы частная клиника и работаем только платно. Можно оформить налоговый вычет за лечение, справку дадим.</p></details>
+        <details><summary>Кому нельзя седацию?</summary><p>Это решает анестезиолог после осмотра и вопросов о здоровье. Противопоказания бывают, поэтому без консультации седацию не проводим.</p></details>
+        <details><summary>Как перенести или отменить запись?</summary><p>Позвоните нам не позднее чем за 3 часа до приёма. Отмена бесплатная.</p></details>
+        <details><summary>С какого возраста вы принимаете?</summary><p>С 14 лет вместе с родителем, с 18 лет самостоятельно.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<nav class="m-bar off" id="mBar" aria-label="Быстрые действия">
+  <a class="btn" href="#booking">Записаться</a>
+  <a class="btn ghost" href="tel:+74950000000">Позвонить</a>
+</nav>
+
+<main id="adminView" hidden>
+  <div class="wrap adm">
+    <div class="adm-head">
+      <div>
+        <h1>Расписание</h1>
+        <p class="adm-mode" id="admMode"></p>
+      </div>
+      <div class="day-nav">
+        <button class="btn ghost" type="button" id="dayPrev" aria-label="Предыдущий день">Назад</button>
+        <span class="day-label" id="dayLabel"></span>
+        <button class="btn ghost" type="button" id="dayNext" aria-label="Следующий день">Вперёд</button>
+        <button class="btn soft" type="button" id="dayToday">Сегодня</button>
+      </div>
+    </div>
+    <div class="tiles" id="tiles"></div>
+    <div class="legend" aria-hidden="true">
+      <span><i style="background:var(--booked-bg)"></i>Записан</span>
+      <span><i style="background:var(--ok-bg)"></i>Пришёл</span>
+      <span><i style="background:var(--warn-bg)"></i>Не пришёл</span>
+      <span><i style="box-shadow:inset 0 0 0 1.5px var(--line)"></i>Отменён</span>
+      <span><i style="box-shadow:inset 0 0 0 2px var(--booked)"></i>Настоящая запись с сайта</span>
+    </div>
+    <div class="sched-wrap" tabindex="0" role="region" aria-label="Расписание врачей на день">
+      <div class="sched" id="sched"></div>
+    </div>
+    <p class="adm-note">Записи без обводки — примеры, которые заполняют расписание для демонстрации. Настоящие записи, сделанные через сайт, обведены, их статус можно менять.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <b>Стоматология «Штиль»</b>
+      <span>ООО «Штиль», ОГРН 0000000000000, ИНН 0000000000</span>
+      <span>Лицензия на медицинскую деятельность № Л041-00000-77/00000000</span>
+    </div>
+    <div>
+      <a href="#booking">Онлайн-запись</a>
+      <button type="button" class="link-btn" data-policy>Политика конфиденциальности</button>
+      <button type="button" class="link-btn" data-info>Информация для пациентов</button>
+      <a href="#admin">Кабинет администратора (демо)</a>
+    </div>
+    <div>
+      <span>+7 495 000-00-00</span>
+      <span>© 2026 «Штиль»</span>
+      <span>Демонстрационный сайт: клиника, врачи, адрес и реквизиты вымышлены.</span>
+    </div>
+    <p class="warning">Имеются противопоказания. Необходима консультация специалиста.</p>
+  </div>
+</footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<dialog id="apptDlg" aria-labelledby="apptTitle">
+  <div class="dlg" id="apptBody"></div>
+  <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</dialog>
+
+<dialog id="consent" aria-labelledby="consentTitle">
+  <div class="dlg">
+    <p class="dlg-title" id="consentTitle">Согласие на обработку персональных данных</p>
+    <p class="note">Образец для демо-сайта. Для настоящей клиники текст согласия готовит юрист.</p>
+    <p>Я даю согласие ООО «Штиль» (ОГРН [номер], адрес [адрес]) на обработку моих персональных данных: имени, номера телефона и комментария к записи.</p>
+    <p>Цель: запись на приём, напоминание о нём и связь со мной, если время приёма изменится.</p>
+    <p>Действия с данными: сбор, запись, хранение, уточнение, использование и удаление. Срок: до достижения цели или до отзыва согласия.</p>
+    <p>Согласие можно отозвать, написав на [электронная почта].</p>
+  </div>
+  <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</dialog>
+
+<dialog id="priceDlg" aria-labelledby="priceTitle">
+  <div class="dlg">
+    <p class="dlg-title" id="priceTitle">Прайс-лист</p>
+    <p class="note">Демо: цены вымышлены. Точную стоимость врач называет после осмотра и пишет в плане лечения.</p>
+    <h3>Диагностика</h3><dl class="plist"><dt>Консультация и осмотр</dt><dd>1 500 ₽</dd><dt>Прицельный снимок</dt><dd>500 ₽</dd><dt>Компьютерная томография одной челюсти</dt><dd>3 500 ₽</dd><dt>Компьютерная томография обеих челюстей</dt><dd>5 000 ₽</dd></dl><h3>Лечение</h3><dl class="plist"><dt>Анестезия</dt><dd>800 ₽</dd><dt>Лечение кариеса</dt><dd>от 6 500 ₽</dd><dt>Лечение каналов, один канал</dt><dd>от 12 000 ₽</dd><dt>Временная пломба</dt><dd>1 000 ₽</dd></dl><h3>Гигиена и эстетика</h3><dl class="plist"><dt>Профессиональная гигиена</dt><dd>7 500 ₽</dd><dt>Фторирование</dt><dd>1 500 ₽</dd><dt>Отбеливание в кабинете</dt><dd>18 000 ₽</dd></dl><h3>Хирургия</h3><dl class="plist"><dt>Удаление зуба</dt><dd>от 5 500 ₽</dd><dt>Удаление зуба мудрости</dt><dd>от 9 000 ₽</dd><dt>Имплантация, без коронки</dt><dd>от 45 000 ₽</dd><dt>Синус-лифтинг</dt><dd>от 30 000 ₽</dd></dl><h3>Протезирование</h3><dl class="plist"><dt>Коронка металлокерамическая</dt><dd>от 18 000 ₽</dd><dt>Коронка из диоксида циркония</dt><dd>от 32 000 ₽</dd></dl><h3>Ортодонтия</h3><dl class="plist"><dt>Подбор брекетов или элайнеров</dt><dd>3 000 ₽</dd><dt>Брекет-система на одну челюсть</dt><dd>от 60 000 ₽</dd></dl><h3>Седация</h3><dl class="plist"><dt>Лечение в седации, работа анестезиолога</dt><dd>от 15 000 ₽</dd></dl>
+  </div>
+  <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</dialog>
+
+<dialog id="patInfo" aria-labelledby="patInfoTitle">
+  <div class="dlg">
+    <p class="dlg-title" id="patInfoTitle">Информация для пациентов</p>
+    <p class="note">Демо: реквизиты и контакты вымышлены. Настоящая клиника публикует здесь свои данные.</p>
+    <dl>
+      <dt>Организация</dt><dd>ООО «Штиль»</dd>
+      <dt>ОГРН</dt><dd>0000000000000, ИНН 0000000000</dd>
+      <dt>Адрес</dt><dd>Москва, Воронцовская ул., 00</dd>
+      <dt>Лицензия</dt><dd>№ Л041-00000-77/00000000, выдана [орган, дата]. Виды работ: стоматология терапевтическая, хирургическая, ортодонтия, анестезиология и реаниматология</dd>
+      <dt>Время работы</dt><dd>пн–сб 9:00–21:00, вс выходной</dd>
+      <dt>Цены</dt><dd><button type="button" class="link-btn" data-price data-close-go>Полный прайс-лист</button></dd>
+      <dt>Врачи</dt><dd><a href="#doctors" data-close-go>Образование и квалификация</a></dd>
+      <dt>Контролирующие органы</dt><dd>Управление Роспотребнадзора по г. Москве, территориальный орган Росздравнадзора по г. Москве и Московской области, Департамент здравоохранения г. Москвы: [адреса и телефоны]</dd>
+      <dt>Документы</dt><dd>Правила предоставления платных медицинских услуг, образец договора: [ссылки на документы]</dd>
+    </dl>
+  </div>
+  <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</dialog>
+
+<dialog id="policy" aria-labelledby="policyTitle">
+  <div class="dlg">
+    <p class="dlg-title" id="policyTitle">Политика конфиденциальности</p>
+    <p class="note">Это образец для демо-сайта. Перед запуском настоящего сайта текст нужно заполнить данными клиники и проверить у юриста.</p>
+    <h3>Кто обрабатывает данные</h3><p>ООО «Штиль», ИНН [номер]. Вопросы о данных: [электронная почта].</p>
+    <h3>Какие данные собираются</h3><p>Имя, телефон, выбранная услуга, врач, время приёма и комментарий, который вы написали сами.</p>
+    <h3>Зачем</h3><p>Чтобы записать вас на приём, напомнить о нём и связаться, если время изменится.</p>
+    <h3>Где и сколько хранятся</h3><p>На серверах в России, не дольше [срок] или до отзыва согласия.</p>
+    <h3>Ваши права</h3><p>Узнать, какие данные хранятся, исправить или удалить их и отозвать согласие, написав на [электронная почта].</p>
+  </div>
+  <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</dialog>
+</div>
+
+<div class="viewer" role="group" aria-label="Режим просмотра">
+  <a href="../" class="back-all" style="display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;font-weight:600;font-size:0.92rem;text-decoration:none;color:inherit">← Все работы</a>
+  <button type="button" data-view="desktop" aria-pressed="true">Компьютер</button>
+  <button type="button" data-view="phone" aria-pressed="false">Телефон</button>
+</div>
+
+<script>
+(function () {
+  var html = document.documentElement; html.lang = 'ru';
+  function rub(n) { return n.toLocaleString('ru-RU') + ' ₽'; }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  function hm(min) { return Math.floor(min / 60) + ':' + String(min % 60).padStart(2, '0'); }
+  var toastEl = document.getElementById('toast'), toastT;
+  function toast(msg) { toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function () { toastEl.classList.remove('show'); }, 2600); }
+
+  // ---------- Врачи, услуги, расписание ----------
+  // часы работы по дням недели (0 — воскресенье): [начало, конец] в минутах от полуночи
+  var DOCS = [
+    { id: 'd1', name: 'Елена Соколова', short: 'Соколова Е.', init: 'ЕС', role: 'Стоматолог-терапевт', exp: 'Стаж 12 лет', av: '#bfeadf',
+      focus: ['Лечение кариеса', 'Лечение каналов под микроскопом', 'Лечение в седации'], hours: { 1: [540, 1080], 2: [540, 1080], 3: [540, 1080], 4: [540, 1080], 5: [540, 1080], 6: [600, 900] }, txt: 'Пн–Пт 9:00–18:00, Сб 10:00–15:00' },
+    { id: 'd2', name: 'Артём Власов', short: 'Власов А.', init: 'АВ', role: 'Хирург-имплантолог', exp: 'Стаж 15 лет', av: '#cfe4f5',
+      focus: ['Удаление зубов', 'Имплантация', 'Лечение в седации'], hours: { 2: [600, 1140], 4: [600, 1140], 6: [600, 960] }, txt: 'Вт, Чт 10:00–19:00, Сб 10:00–16:00' },
+    { id: 'd3', name: 'Марина Ким', short: 'Ким М.', init: 'МК', role: 'Ортодонт', exp: 'Стаж 9 лет', av: '#f3dfbd',
+      focus: ['Брекеты', 'Элайнеры', 'Исправление прикуса у взрослых'], hours: { 1: [720, 1260], 3: [720, 1260], 5: [720, 1260] }, txt: 'Пн, Ср, Пт 12:00–21:00' },
+    { id: 'd4', name: 'Ольга Белова', short: 'Белова О.', init: 'ОБ', role: 'Гигиенист', exp: 'Стаж 7 лет', av: '#ffd2c2',
+      focus: ['Профессиональная гигиена', 'Отбеливание', 'Подбор домашнего ухода'], hours: { 1: [780, 1260], 2: [780, 1260], 3: [780, 1260], 4: [780, 1260], 5: [780, 1260], 6: [540, 900] }, txt: 'Пн–Пт 13:00–21:00, Сб 9:00–15:00' }
+  ];
+  var SERV = [
+    { id: 'consult', name: 'Консультация и осмотр', dur: 30, price: 1500, docs: ['d1', 'd2', 'd3'], note: 'План лечения с ценой на руки' },
+    { id: 'caries', name: 'Лечение кариеса', dur: 60, price: 6500, docs: ['d1'], note: 'С анестезией, пломба светового отверждения' },
+    { id: 'canal', name: 'Лечение каналов', dur: 90, price: 12000, docs: ['d1'], note: 'Под микроскопом, за одно посещение' },
+    { id: 'hygiene', name: 'Профессиональная гигиена', dur: 60, price: 7500, docs: ['d4'], note: 'Ультразвук, полировка, рекомендации' },
+    { id: 'whitening', name: 'Отбеливание', dur: 90, price: 18000, docs: ['d4'], note: 'В кабинете, после гигиены' },
+    { id: 'extraction', name: 'Удаление зуба', dur: 60, price: 5500, docs: ['d2'], note: 'Включая анестезию' },
+    { id: 'implant', name: 'Имплантация', dur: 120, price: 45000, docs: ['d2'], note: 'Установка импланта, без коронки' },
+    { id: 'ortho', name: 'Подбор брекетов или элайнеров', dur: 60, price: 3000, docs: ['d3'], note: 'Сканирование и план лечения' },
+    { id: 'sedation', name: 'Лечение в седации', dur: 120, price: 15000, docs: ['d1', 'd2'], note: 'Работа анестезиолога, лечение оплачивается отдельно' }
+  ];
+  var docById = {}; DOCS.forEach(function (d) { docById[d.id] = d; });
+  var svcById = {}; SERV.forEach(function (s) { svcById[s.id] = s; });
+  var DAY0 = 540, DAY1 = 1260; // клиника открыта 9:00–21:00
+
+  // ---------- Время по Москве ----------
+  function mskNow() {
+    var o = {};
+    new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false })
+      .formatToParts(new Date()).forEach(function (p) { o[p.type] = p.value; });
+    return { key: o.year + '-' + o.month + '-' + o.day, min: (+o.hour % 24) * 60 + +o.minute };
+  }
+  function parts(key) { var a = key.split('-'); return Date.UTC(+a[0], +a[1] - 1, +a[2]); }
+  function addDays(key, n) { return new Date(parts(key) + n * 86400000).toISOString().slice(0, 10); }
+  function dow(key) { return new Date(parts(key)).getUTCDay(); }
+  var WD = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'], WDF = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+  var MON = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+  function dayNum(key) { return +key.slice(8); }
+  function dayText(key) { return dayNum(key) + ' ' + MON[+key.slice(5, 7) - 1]; }
+  function relDay(key) { var t = mskNow().key; if (key === t) return 'сегодня'; if (key === addDays(t, 1)) return 'завтра'; return WD[dow(key)] + ', ' + dayText(key); }
+  function hoursOf(docId, key) { return docById[docId].hours[dow(key)] || null; }
+
+  // ---------- Примеры записей: заполняют расписание, одинаковые для всех зрителей ----------
+  var NAMES = ['Анна К.', 'Игорь С.', 'Мария Л.', 'Сергей П.', 'Ольга Т.', 'Дмитрий Р.', 'Екатерина В.', 'Павел Н.', 'Наталья Г.', 'Алексей М.', 'Юлия Б.', 'Михаил Ж.', 'Светлана Ф.', 'Руслан А.'];
+  function seed(str) { var h = 2166136261; for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function rng(s) { return function () { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; }; }
+  var demoCache = {};
+  function demoAppts(key) {
+    if (demoCache[key]) return demoCache[key];
+    var out = [], now = mskNow();
+    DOCS.forEach(function (d) {
+      var h = hoursOf(d.id, key); if (!h) return;
+      var r = rng(seed(key + d.id)), svcs = SERV.filter(function (s) { return s.docs.indexOf(d.id) >= 0; });
+      var t = h[0];
+      while (t < h[1]) {
+        if (r() < 0.32) {
+          var s = svcs[Math.floor(r() * svcs.length)];
+          if (t + s.dur > h[1]) { t += 30; continue; }
+          var past = key < now.key || (key === now.key && t + s.dur <= now.min);
+          var roll = r();
+          out.push({ id: 'demo-' + key + '-' + d.id + '-' + t, doctor: d.id, service: s.id, date: key, start: t, dur: s.dur,
+            status: past ? (roll < 0.86 ? 'came' : 'noshow') : (roll < 0.06 ? 'cancelled' : 'booked'), demo: true, name: NAMES[Math.floor(r() * NAMES.length)] });
+          t += s.dur + (r() < 0.5 ? 30 : 0);
+        } else t += 30;
+      }
+    });
+    demoCache[key] = out;
+    return out;
+  }
+
+  // ---------- Настоящие записи: общее хранилище или этот браузер ----------
+  var mode = 'local';            // 'db' — общее хранилище, 'local' — только этот браузер
+  var db = null, uid = null, isAdmin = false;
+  var real = [], contacts = {};  // contacts: id записи -> { name, phone, note }
+  function loadLocal() {
+    try { real = JSON.parse(store('shtil-appts') || '[]') || []; } catch (e) { real = []; }
+    try { contacts = JSON.parse(store('shtil-contacts') || '{}') || {}; } catch (e) { contacts = {}; }
+  }
+  function saveLocal() { store('shtil-appts', JSON.stringify(real)); store('shtil-contacts', JSON.stringify(contacts)); }
+  loadLocal();
+
+  function apptsOn(key) { return demoAppts(key).concat(real.filter(function (a) { return a.date === key; })); }
+  function busyFor(docId, key) { return apptsOn(key).filter(function (a) { return a.doctor === docId && a.status !== 'cancelled'; }); }
+  function freeSlots(svcId, docId, key) {
+    var s = svcById[svcId], h = hoursOf(docId, key), now = mskNow(), out = [];
+    if (!h || key < now.key) return out;
+    var busy = busyFor(docId, key);
+    for (var t = h[0]; t + s.dur <= h[1]; t += 30) {
+      if (key === now.key && t < now.min + 30) continue;
+      var clash = busy.some(function (a) { return t < a.start + a.dur && a.start < t + s.dur; });
+      if (!clash) out.push(t);
+    }
+    return out;
+  }
+  // время -> врач: для «любого свободного» берём первого подходящего врача
+  function slotsMap(svcId, docChoice, key) {
+    var map = {}, list = docChoice === 'any' ? svcById[svcId].docs : [docChoice];
+    list.forEach(function (d) { freeSlots(svcId, d, key).forEach(function (t) { if (!map[t]) map[t] = d; }); });
+    return map;
+  }
+
+  // ---------- Первый экран: ближайшее время ----------
+  var nearestPick = null;
+  function renderNearest() {
+    var now = mskNow(), found = null;
+    for (var i = 0; i < 10 && !found; i++) {
+      var key = addDays(now.key, i), m = slotsMap('consult', 'any', key), times = Object.keys(m).map(Number).sort(function (a, b) { return a - b; });
+      if (times.length) found = { key: key, time: times[0], doctor: m[times[0]] };
+    }
+    nearestPick = found;
+    var nb = document.getElementById('nBook');
+    if (!found) { document.getElementById('nTime').textContent = 'Свободного времени пока нет'; document.getElementById('nDoc').textContent = 'Позвоните нам, подберём время.'; nb.disabled = true; return; }
+    document.getElementById('nTime').textContent = relDay(found.key) + ' в ' + hm(found.time);
+    document.getElementById('nDoc').textContent = docById[found.doctor].name + ', ' + docById[found.doctor].role.toLowerCase();
+    nb.disabled = false; nb.textContent = 'Записаться на ' + hm(found.time);
+  }
+  document.getElementById('nBook').addEventListener('click', function () {
+    if (!nearestPick) return;
+    bk = { step: 4, service: 'consult', doctor: nearestPick.doctor, date: nearestPick.key, time: nearestPick.time, assigned: nearestPick.doctor };
+    renderBooking(); goBooking();
+  });
+
+  // ---------- Услуги и врачи ----------
+  var ICONS = {
+    tooth: '<path d="M7.5 3.5c-2.6 0-4.3 2-4.3 4.7 0 3 1.6 4.6 2.2 7.7.5 2.6 1 5.6 2.6 5.6 1.4 0 1.8-2.6 2.4-4.8.3-1.2.8-1.8 1.6-1.8s1.3.6 1.6 1.8c.6 2.2 1 4.8 2.4 4.8 1.6 0 2.1-3 2.6-5.6.6-3.1 2.2-4.7 2.2-7.7 0-2.7-1.7-4.7-4.3-4.7-1.9 0-2.8 1-4.5 1s-2.6-1-4.5-1z"/>',
+    spark: '<path d="M11 3l1.9 5.6L18.5 10l-5.6 1.9L11 17.5l-1.9-5.6L3.5 10l5.6-1.4z"/><path d="M18.5 15l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/>',
+    implant: '<path d="M7 3.5h10l-1 4.5H8z"/><path d="M9.5 8v10.5l2.5 2.5 2.5-2.5V8"/><path d="M9.5 11.5h5M9.5 15h5"/>',
+    brace: '<path d="M2.5 12h19"/><rect x="4" y="8.5" width="4.4" height="7" rx="1.2"/><rect x="9.8" y="8.5" width="4.4" height="7" rx="1.2"/><rect x="15.6" y="8.5" width="4.4" height="7" rx="1.2"/>'
+  };
+  var GROUPS = [
+    { t: 'Осмотр и лечение', d: 'Терапевт: от консультации до каналов', tint: 'aqua', ic: 'tooth', ids: ['consult', 'caries', 'canal', 'sedation'] },
+    { t: 'Ортодонтия', d: 'Брекеты и элайнеры для взрослых', tint: 'sky', ic: 'brace', ids: ['ortho'] },
+    { t: 'Гигиена и эстетика', d: 'Чистка и отбеливание у гигиениста', tint: 'sand', ic: 'spark', ids: ['hygiene', 'whitening'] },
+    { t: 'Хирургия', d: 'Удаление и имплантация', tint: 'coral', ic: 'implant', ids: ['extraction', 'implant'] }
+  ];
+  function grpHtml(g) {
+    return '<div class="grp ' + g.tint + '"><div class="grp-head"><span class="grp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">' + ICONS[g.ic] + '</svg></span><h3>' + g.t + '</h3><p>' + g.d + '</p></div>' +
+      g.ids.map(function (id) { var s = svcById[id];
+        return '<button type="button" class="svc" data-book-service="' + s.id + '" aria-label="Записаться: ' + s.name + ', от ' + rub(s.price) + ', ' + s.dur + ' минут"><span class="nm">' + s.name + '</span><span class="price">от ' + rub(s.price) + '</span><span class="meta">' + s.note + ' · ' + s.dur + ' мин</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>';
+      }).join('') + '</div>';
+  }
+  document.getElementById('svcList').innerHTML = '<div class="svc-col">' + grpHtml(GROUPS[0]) + grpHtml(GROUPS[1]) + '</div><div class="svc-col">' + grpHtml(GROUPS[2]) + grpHtml(GROUPS[3]) + '</div>';
+  var EDU = {
+    d1: ['Высшее медицинское, ординатура по терапевтической стоматологии', 'Эндодонтия под микроскопом, 2025'],
+    d2: ['Высшее медицинское, ординатура по хирургической стоматологии', 'Дентальная имплантация, 2024'],
+    d3: ['Высшее медицинское, ординатура по ортодонтии', 'Лечение на элайнерах, 2025'],
+    d4: ['Среднее медицинское, гигиенист стоматологический', 'Профессиональная гигиена и отбеливание, 2025']
+  };
+  var SIL = '<svg viewBox="0 0 120 100" fill="currentColor" aria-hidden="true"><circle cx="60" cy="38" r="22"/><path d="M14 100c4-26 22-40 46-40s42 14 46 40z"/></svg>';
+  document.getElementById('docList').innerHTML = DOCS.map(function (d) {
+    return '<article class="doc"><div class="photo" style="--av:' + d.av + '" role="img" aria-label="Место для фотографии врача">' + SIL + '<span>Фото врача</span></div><div><h3>' + d.name + '</h3><p class="role">' + d.role + '</p><p class="muted" style="font-size:.9rem">' + d.exp + '</p></div><div class="edu"><span><b>Образование:</b> ' + EDU[d.id][0] + '</span><span><b>Повышение квалификации:</b> ' + EDU[d.id][1] + '</span></div><ul>' + d.focus.map(function (f) { return '<li>' + f + '</li>'; }).join('') + '</ul><p class="sched-txt">' + d.txt + '</p><button class="btn ghost" type="button" data-book-doc="' + d.id + '">Записаться к врачу</button></article>';
+  }).join('');
+  document.addEventListener('click', function (e) {
+    var s = e.target.closest('[data-book-service]'), d = e.target.closest('[data-book-doc]');
+    if (s) { var sid = s.getAttribute('data-book-service'), one = svcById[sid].docs.length === 1 ? svcById[sid].docs[0] : null;
+      bk = { step: one ? 3 : 2, service: sid, doctor: one, date: null, time: null, assigned: null }; renderBooking(); goBooking(); }
+    if (d) { bk = { step: 1, service: null, doctor: d.getAttribute('data-book-doc'), date: null, time: null, assigned: null, fixedDoc: true }; renderBooking(); goBooking(); }
+  });
+  function goBooking() { if (location.hash === '#admin') location.hash = 'booking'; document.getElementById('booking').scrollIntoView(); var f = document.querySelector('#bkPanel button, #bkPanel input'); if (f) setTimeout(function () { f.focus({ preventScroll: true }); }, 350); }
+
+  // ---------- Запись ----------
+  var bk = { step: 1, service: null, doctor: null, date: null, time: null, assigned: null };
+  var form = { name: '', phone: '', note: '', agree: false };
+  var lastBooked = null, cancelAsk = false;
+  var STEPS = ['Услуга', 'Врач', 'Время', 'Контакты'];
+  function canGo(n) { if (n <= 1) return true; if (n === 2) return !!bk.service; if (n === 3) return !!bk.service && !!bk.doctor; return !!bk.service && !!bk.doctor && !!bk.date && bk.time != null; }
+  function renderSteps() {
+    document.getElementById('bkSteps').innerHTML = STEPS.map(function (t, i) {
+      var n = i + 1, cur = bk.step === n && bk.step !== 5;
+      return '<li><button type="button" data-step="' + n + '"' + (cur ? ' aria-current="step"' : '') + (canGo(n) && bk.step !== 5 ? '' : ' disabled') + ' class="' + (bk.step > n ? 'done' : '') + '"><span>' + n + '</span>' + t + '</button></li>';
+    }).join('');
+  }
+  function renderSide() {
+    var s = bk.service && svcById[bk.service], d = bk.assigned || (bk.doctor && bk.doctor !== 'any' ? bk.doctor : null);
+    document.getElementById('bkSide').innerHTML = '<h3>Ваша запись</h3><dl>' +
+      '<div><dt>Услуга</dt><dd>' + (s ? s.name : '—') + '</dd></div>' +
+      '<div><dt>Врач</dt><dd>' + (d ? docById[d].name : bk.doctor === 'any' ? 'Любой свободный' : '—') + '</dd></div>' +
+      '<div><dt>Дата и время</dt><dd>' + (bk.date && bk.time != null ? relDay(bk.date) + ', ' + hm(bk.time) : '—') + '</dd></div>' +
+      '<div><dt>Стоимость</dt><dd>' + (s ? 'от ' + rub(s.price) + ', ' + s.dur + ' мин' : '—') + '</dd></div></dl>' +
+      '<p class="tip">Оплата в клинике после приёма. Отменить запись можно бесплатно, позвонив за 3 часа.</p>';
+  }
+  function renderBooking() {
+    renderSteps(); renderSide();
+    var p = document.getElementById('bkPanel');
+    if (bk.step === 5 && lastBooked) {
+      var a = lastBooked;
+      if (a.cancelled) {
+        p.innerHTML = '<div class="done-box"><p class="bk-title" style="margin:0">Запись отменена</p><p class="muted">Время ' + relDay(a.date) + ' в ' + hm(a.start) + ' снова свободно. Будем рады видеть вас в другой день.</p><button class="btn" type="button" id="bkAgain">Записаться на другое время</button></div>';
+        document.getElementById('bkAgain').addEventListener('click', function () { bk = { step: 1, service: null, doctor: null, date: null, time: null, assigned: null }; renderBooking(); document.querySelector('#bkPanel .opt').focus(); });
+        return;
+      }
+      p.innerHTML = '<div class="done-box"><div class="done-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>' +
+        '<p class="bk-title" style="margin:0">Вы записаны</p><p>' + esc(a.name) + ', ждём вас ' + relDay(a.date) + ' в ' + hm(a.start) + '. ' + svcById[a.service].name + ', врач ' + docById[a.doctor].name + '.</p>' +
+        '<p class="muted">Москва, Воронцовская ул., 00. За день до приёма администратор позвонит и напомнит о визите. Перенести запись можно по телефону <a href="tel:+74950000000">+7 495 000-00-00</a>.</p>' +
+        '<p class="note">' + (a.mode === 'db' ? 'Запись сохранена в общем расписании клиники. Откройте <a href="#admin">кабинет администратора</a>, и вы увидите её там.' : 'Это демо: запись сохранена только в вашем браузере. Её видно в <a href="#admin">кабинете администратора</a> на этом устройстве.') + '</p>' +
+        (cancelAsk ? '<div class="confirm" role="alert"><span>Отменить запись? Время освободится для других.</span><button type="button" class="yes" id="bkYes">Да, отменить</button><button type="button" class="no" id="bkNo">Нет</button></div>'
+          : '<div class="cta-row" style="margin-top:0"><button class="btn ghost" type="button" id="bkAgain">Записаться ещё раз</button><button class="btn ghost" type="button" id="bkCancel">Отменить эту запись</button></div>') + '</div>';
+      if (cancelAsk) {
+        document.getElementById('bkYes').addEventListener('click', function () { cancelAsk = false; a.cancelled = true; setStatus(a.id, 'cancelled'); renderBooking(); var f = document.getElementById('bkAgain'); if (f) f.focus(); });
+        document.getElementById('bkNo').addEventListener('click', function () { cancelAsk = false; renderBooking(); document.getElementById('bkCancel').focus(); });
+        document.getElementById('bkYes').focus();
+        return;
+      }
+      document.getElementById('bkCancel').addEventListener('click', function () { cancelAsk = true; renderBooking(); });
+      document.getElementById('bkAgain').addEventListener('click', function () { bk = { step: 1, service: null, doctor: null, date: null, time: null, assigned: null }; renderBooking(); document.querySelector('#bkPanel .opt').focus(); });
+      return;
+    }
+    var nav = '';
+    if (bk.step === 1) {
+      var list = SERV.filter(function (s) { return !bk.fixedDoc || s.docs.indexOf(bk.doctor) >= 0; });
+      p.innerHTML = '<p class="bk-title">Что нужно сделать?</p>' + (bk.fixedDoc ? '<p class="muted" style="margin:-8px 0 12px">Услуги врача ' + docById[bk.doctor].name + '</p>' : '') +
+        '<div class="opts">' + list.map(function (s) { return '<button class="opt" type="button" data-svc="' + s.id + '" aria-pressed="' + (bk.service === s.id) + '"><b>' + s.name + '</b><span>от ' + rub(s.price) + ' · ' + s.dur + ' мин</span></button>'; }).join('') + '</div>' +
+        '<p class="muted" style="margin-top:14px;font-size:.9rem">Не знаете, что выбрать? Запишитесь на консультацию: врач осмотрит и составит план.</p>';
+    } else if (bk.step === 2) {
+      var s = svcById[bk.service];
+      p.innerHTML = '<p class="bk-title">К какому врачу?</p><div class="opts">' +
+        (s.docs.length > 1 ? '<button class="opt" type="button" data-doc="any" aria-pressed="' + (bk.doctor === 'any') + '"><b>Любой свободный врач</b><span>Покажем больше свободного времени</span></button>' : '') +
+        s.docs.map(function (id) { var d = docById[id]; return '<button class="opt doc-opt" type="button" data-doc="' + id + '" aria-pressed="' + (bk.doctor === id) + '"><span class="avatar" style="--av:' + d.av + '" aria-hidden="true">' + d.init + '</span><b>' + d.name + '</b><span>' + d.role + ', ' + d.exp.toLowerCase() + '</span></button>'; }).join('') + '</div>';
+      nav = '<button class="btn ghost" type="button" data-step="1">Назад</button>';
+    } else if (bk.step === 3) {
+      var today = mskNow().key, days = [];
+      for (var i = 0; i < 14; i++) days.push(addDays(today, i));
+      if (!bk.date) { bk.date = days.filter(function (k) { return Object.keys(slotsMap(bk.service, bk.doctor, k)).length; })[0] || null; }
+      var m = bk.date ? slotsMap(bk.service, bk.doctor, bk.date) : {}, times = Object.keys(m).map(Number).sort(function (a, b) { return a - b; });
+      var groups = [['Утро', function (t) { return t < 720; }], ['День', function (t) { return t >= 720 && t < 1020; }], ['Вечер', function (t) { return t >= 1020; }]];
+      p.innerHTML = '<p class="bk-title">Когда удобно?</p><div class="dates" role="group" aria-label="Дата">' + days.map(function (k) {
+        var n = Object.keys(slotsMap(bk.service, bk.doctor, k)).length;
+        return '<button class="date" type="button" data-date="' + k + '" aria-pressed="' + (bk.date === k) + '"' + (n ? '' : ' disabled') + ' aria-label="' + relDay(k) + (n ? ', свободных окон: ' + n : ', нет свободного времени') + '"><small>' + (k === today ? 'сегодня' : WD[dow(k)]) + '</small><b>' + dayNum(k) + '</b><small>' + (n ? n + ' окон' : 'нет') + '</small></button>';
+      }).join('') + '</div>' +
+        (times.length ? groups.map(function (g) {
+          var ts = times.filter(g[1]); if (!ts.length) return '';
+          return '<div class="slot-group"><p>' + g[0] + '</p><div class="slots" role="group" aria-label="' + g[0] + '">' + ts.map(function (t) { return '<button class="slot" type="button" data-time="' + t + '" aria-pressed="' + (bk.time === t) + '">' + hm(t) + '</button>'; }).join('') + '</div></div>';
+        }).join('') : '<p class="empty-slots">На ближайшие две недели свободного времени нет. Попробуйте другого врача или позвоните нам.</p>');
+      nav = '<button class="btn ghost" type="button" data-step="2">Назад</button>';
+    } else if (bk.step === 4) {
+      p.innerHTML = '<p class="bk-title">Как с вами связаться?</p><form class="bk-form" id="bkForm" novalidate>' +
+        '<div class="row2"><label for="fName">Имя<input type="text" id="fName" autocomplete="name" value="' + esc(form.name) + '"></label>' +
+        '<label for="fPhone">Телефон<input type="tel" id="fPhone" autocomplete="tel" inputmode="tel" placeholder="+7 900 123-45-67" value="' + esc(form.phone) + '"></label></div>' +
+        '<label for="fNote">Комментарий для администратора, по желанию<textarea id="fNote" aria-describedby="fNoteHint" placeholder="Например: удобнее звонить после 18:00">' + esc(form.note) + '</textarea><span class="form-hint" id="fNoteHint">Не пишите здесь о здоровье и диагнозах — это вы обсудите с врачом на приёме.</span></label>' +
+        '<label class="consent" for="fAgree"><input type="checkbox" id="fAgree"' + (form.agree ? ' checked' : '') + '><span>Даю <button type="button" class="link-btn" data-consent>согласие на обработку персональных данных</button>. Как мы храним данные — в <button type="button" class="link-btn" data-policy>политике конфиденциальности</button>.</span></label>' +
+        '<p class="error" id="fError" role="alert"></p>' +
+        '<button class="btn wide" type="submit" id="fSubmit">Записаться: ' + relDay(bk.date) + ', ' + hm(bk.time) + '</button></form>';
+      nav = '<button class="btn ghost" type="button" data-step="3">Изменить время</button>';
+      document.getElementById('bkForm').addEventListener('submit', submitBooking);
+    }
+    if (nav) p.insertAdjacentHTML('beforeend', '<div class="bk-nav">' + nav + '</div>');
+  }
+  function saveForm() {
+    var n = document.getElementById('fName'); if (!n) return;
+    form.name = n.value; form.phone = document.getElementById('fPhone').value; form.note = document.getElementById('fNote').value; form.agree = document.getElementById('fAgree').checked;
+  }
+  document.getElementById('bkPanel').addEventListener('click', function (e) {
+    var t = e.target.closest('[data-svc],[data-doc],[data-date],[data-time],[data-step]'); if (!t) return;
+    if (t.dataset.svc) {
+      bk.service = t.dataset.svc; bk.date = null; bk.time = null; bk.assigned = null;
+      if (bk.fixedDoc) bk.step = 3; else { bk.doctor = svcById[bk.service].docs.length === 1 ? svcById[bk.service].docs[0] : null; bk.step = bk.doctor ? 3 : 2; }
+    } else if (t.dataset.doc) { bk.doctor = t.dataset.doc; bk.date = null; bk.time = null; bk.assigned = null; bk.step = 3; }
+    else if (t.dataset.date) { bk.date = t.dataset.date; bk.time = null; bk.assigned = null; }
+    else if (t.dataset.time) { bk.time = +t.dataset.time; bk.assigned = slotsMap(bk.service, bk.doctor, bk.date)[bk.time]; bk.step = 4; }
+    else if (t.dataset.step) { saveForm(); bk.step = +t.dataset.step; if (bk.step === 2 && bk.fixedDoc) bk.step = 1; }
+    renderBooking();
+    var focusSel = t.dataset.date ? '[data-date="' + bk.date + '"]' : '#bkPanel button, #bkPanel input';
+    var f = document.querySelector(focusSel); if (f) f.focus({ preventScroll: true });
+  });
+  document.getElementById('bkSteps').addEventListener('click', function (e) {
+    var t = e.target.closest('[data-step]'); if (!t || t.disabled) return;
+    saveForm(); bk.step = +t.dataset.step; renderBooking();
+  });
+
+  async function submitBooking(e) {
+    e.preventDefault(); saveForm();
+    var err = document.getElementById('fError');
+    function fail(id, msg) { err.textContent = msg; document.querySelectorAll('#bkForm [aria-invalid]').forEach(function (x) { x.removeAttribute('aria-invalid'); }); var el = document.getElementById(id); if (el.type !== 'checkbox') el.setAttribute('aria-invalid', 'true'); el.focus(); }
+    var d = form.phone.replace(/\D/g, '');
+    if (form.name.trim().length < 2) return fail('fName', 'Напишите, как к вам обращаться.');
+    if (!/^\+?[\d\s()\-]+$/.test(form.phone) || d.length < 10 || d.length > 12) return fail('fPhone', 'Укажите телефон из 10–11 цифр, например +7 900 123-45-67.');
+    if (!form.agree) return fail('fAgree', 'Поставьте галочку согласия, без неё мы не сможем вас записать.');
+    // время могли занять, пока человек заполнял форму
+    var docId = bk.doctor === 'any' ? slotsMap(bk.service, 'any', bk.date)[bk.time] : (freeSlots(bk.service, bk.doctor, bk.date).indexOf(bk.time) >= 0 ? bk.doctor : null);
+    if (!docId) { err.textContent = 'Это время только что заняли. Выберите другое, пожалуйста.'; bk.time = null; bk.step = 3; setTimeout(renderBooking, 1200); return; }
+    var btn = document.getElementById('fSubmit'); btn.disabled = true; btn.textContent = 'Записываем…';
+    var appt = { doctor: docId, service: bk.service, date: bk.date, start: bk.time, dur: svcById[bk.service].dur, status: 'booked', createdAt: Date.now() };
+    var contact = { name: form.name.trim(), phone: form.phone.trim(), note: form.note.trim() };
+    var savedMode = 'local';
+    if (mode === 'db' && db && uid) {
+      try {
+        var ref = db.collection('appts').doc();
+        await ref.set(Object.assign({ by: uid }, appt));
+        var cref = db.doc('contacts/' + uid), snap = await cref.get();
+        var items = snap.exists ? JSON.parse(JSON.stringify((snap.data() || {}).items || {})) : {};
+        items[ref.id] = contact;
+        await cref.set({ items: items });
+        appt.id = ref.id; contacts[ref.id] = contact; savedMode = 'db';
+      } catch (er) { savedMode = 'local'; }
+    }
+    if (savedMode === 'local') {
+      appt.id = 'local-' + Date.now(); appt.local = true;
+      real.push(appt); contacts[appt.id] = contact; saveLocal();
+    }
+    lastBooked = Object.assign({ name: contact.name, mode: savedMode }, appt);
+    cancelAsk = false;
+    form = { name: '', phone: '', note: '', agree: false };
+    bk.step = 5; renderAll(); document.querySelector('#bkPanel .bk-title').focus && document.querySelector('#bkAgain').focus();
+  }
+
+  // ---------- Кабинет администратора ----------
+  var admDate = mskNow().key, RH = 46;
+  function statusText(s) { return { booked: 'Записан', came: 'Пришёл', noshow: 'Не пришёл', cancelled: 'Отменён' }[s]; }
+  function patientOf(a) {
+    if (a.demo) return { name: a.name + ' (пример)', phone: '+7 900 000-00-00', note: '' };
+    var c = contacts[a.id];
+    return c ? c : { name: 'Пациент', phone: 'видит только администратор', note: '' };
+  }
+  function renderAdmin() {
+    var now = mskNow(), list = apptsOn(admDate), active = list.filter(function (a) { return a.status !== 'cancelled'; });
+    document.getElementById('dayLabel').textContent = (admDate === now.key ? 'Сегодня, ' : '') + WDF[dow(admDate)] + ', ' + dayText(admDate);
+    var free = 0, working = DOCS.filter(function (d) { return hoursOf(d.id, admDate); });
+    working.forEach(function (d) {
+      var h = hoursOf(d.id, admDate), busy = busyFor(d.id, admDate);
+      for (var t = h[0]; t < h[1]; t += 30) {
+        if (admDate === now.key && t < now.min) continue;
+        if (admDate < now.key) continue;
+        if (!busy.some(function (a) { return t < a.start + a.dur && a.start < t + 30; })) free++;
+      }
+    });
+    var came = list.filter(function (a) { return a.status === 'came'; }).length, noshow = list.filter(function (a) { return a.status === 'noshow'; }).length;
+    var revenue = active.filter(function (a) { return a.status !== 'noshow'; }).reduce(function (s, a) { return s + svcById[a.service].price; }, 0);
+    document.getElementById('tiles').innerHTML = [['Записей', active.length], ['Пришли', came], ['Не пришли', noshow], ['Свободных окон по 30 мин', admDate < now.key ? '—' : free], ['Выручка, от', rub(revenue)]]
+      .map(function (t) { return '<div class="tile"><small>' + t[0] + '</small><b>' + t[1] + '</b></div>'; }).join('');
+    var rows = (DAY1 - DAY0) / 30;
+    var times = ''; for (var t = DAY0; t <= DAY1; t += 60) times += '<span style="top:' + ((t - DAY0) / 30 * RH) + 'px">' + hm(t) + '</span>';
+    var head = '<div class="hd"></div>' + DOCS.map(function (d) { var h = hoursOf(d.id, admDate); return '<div class="hd"><b>' + d.short + '</b><small>' + d.role + (h ? ', ' + hm(h[0]) + '–' + hm(h[1]) : ', выходной') + '</small></div>'; }).join('');
+    var cols = DOCS.map(function (d) {
+      var h = hoursOf(d.id, admDate), off = '';
+      if (!h) off = '<div class="off" style="top:0;height:100%"></div>';
+      else {
+        if (h[0] > DAY0) off += '<div class="off" style="top:0;height:' + ((h[0] - DAY0) / 30 * RH) + 'px"></div>';
+        if (h[1] < DAY1) off += '<div class="off" style="top:' + ((h[1] - DAY0) / 30 * RH) + 'px;bottom:0"></div>';
+      }
+      var blocks = list.filter(function (a) { return a.doctor === d.id; }).sort(function (a, b) { return (a.status === 'cancelled') - (b.status === 'cancelled'); }).map(function (a) {
+        var pt = patientOf(a), nm = a.demo ? a.name : pt.name, top = (a.start - DAY0) / 30 * RH + 2, ht = a.dur / 30 * RH - 4, short = a.dur <= 30;
+        return '<button type="button" class="appt ' + a.status + (a.demo ? '' : ' real') + (short ? ' short' : '') + '" data-appt="' + esc(a.id) + '" style="top:' + top + 'px;height:' + ht + 'px" aria-label="' + hm(a.start) + ', ' + esc(pt.name) + ', ' + svcById[a.service].name + ', ' + statusText(a.status) + '">' +
+          '<span class="t">' + hm(a.start) + (short ? '' : '–' + hm(a.start + a.dur)) + '</span><b>' + esc(nm) + '</b>' + (ht > 70 ? '<span>' + svcById[a.service].name + '</span>' : '') + '</button>';
+      }).join('');
+      var nowLine = admDate === now.key && now.min > DAY0 && now.min < DAY1 ? '<div class="now-line" style="top:' + ((now.min - DAY0) / 30 * RH) + 'px" aria-hidden="true"></div>' : '';
+      return '<div class="col">' + off + blocks + nowLine + '</div>';
+    }).join('');
+    var sched = document.getElementById('sched');
+    sched.style.setProperty('--rows', rows); sched.style.setProperty('--rh', RH + 'px');
+    sched.innerHTML = head + '<div class="times">' + times + '</div>' + cols;
+    var mt = document.getElementById('admMode');
+    mt.textContent = mode === 'db'
+      ? 'Записи хранятся в общем расписании и обновляются сами. ' + (isAdmin ? 'Вы администратор: видите имена и телефоны пациентов.' : 'Имена и телефоны настоящих пациентов видит только администратор.')
+      : 'Демо-режим: настоящие записи хранятся только в этом браузере.';
+  }
+  document.getElementById('dayPrev').addEventListener('click', function () { admDate = addDays(admDate, -1); renderAdmin(); });
+  document.getElementById('dayNext').addEventListener('click', function () { admDate = addDays(admDate, 1); renderAdmin(); });
+  document.getElementById('dayToday').addEventListener('click', function () { admDate = mskNow().key; renderAdmin(); });
+
+  var apptDlg = document.getElementById('apptDlg'), openId = null, confirmOpen = false, apptOpener = null;
+  function findAppt(id) { return apptsOn(admDate).filter(function (a) { return a.id === id; })[0] || real.filter(function (a) { return a.id === id; })[0]; }
+  function renderApptDlg() {
+    var a = findAppt(openId); if (!a) { apptDlg.close(); return; }
+    var pt = patientOf(a), editable = !a.demo && (a.local || mode === 'db');
+    document.getElementById('apptBody').innerHTML = '<p class="dlg-title" id="apptTitle">' + svcById[a.service].name + '</p>' +
+      '<dl><dt>Время</dt><dd>' + relDay(a.date) + ', ' + hm(a.start) + '–' + hm(a.start + a.dur) + '</dd><dt>Врач</dt><dd>' + docById[a.doctor].name + '</dd>' +
+      '<dt>Пациент</dt><dd>' + esc(pt.name) + '</dd><dt>Телефон</dt><dd>' + esc(pt.phone) + '</dd>' + (pt.note ? '<dt>Комментарий</dt><dd>' + esc(pt.note) + '</dd>' : '') +
+      '<dt>Статус</dt><dd>' + statusText(a.status) + '</dd><dt>Стоимость</dt><dd>от ' + rub(svcById[a.service].price) + '</dd></dl>' +
+      (editable ? '<div class="st-btns" role="group" aria-label="Статус">' +
+        '<button type="button" data-st="came" aria-pressed="' + (a.status === 'came') + '">Пришёл</button>' +
+        '<button type="button" data-st="noshow" aria-pressed="' + (a.status === 'noshow') + '">Не пришёл</button>' +
+        '<button type="button" data-st="booked" aria-pressed="' + (a.status === 'booked') + '">Записан</button>' +
+        (a.status !== 'cancelled' ? '<button type="button" class="danger" data-cancel>Отменить запись</button>' : '') + '</div>' +
+        (confirmOpen ? '<div class="confirm" role="alert"><span>Отменить запись? Время освободится для других.</span><button type="button" class="yes" data-yes>Да, отменить</button><button type="button" class="no" data-no>Нет</button></div>' : '')
+        : '<p class="note">' + (a.demo ? 'Это пример, его статус не меняется. Запишитесь через сайт, и вашей записью можно будет управлять здесь.' : 'Изменить статус может только администратор клиники.') + '</p>');
+  }
+  document.getElementById('sched').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-appt]'); if (!b) return;
+    openId = b.getAttribute('data-appt'); confirmOpen = false; apptOpener = b; renderApptDlg();
+    if (apptDlg.showModal) apptDlg.showModal(); else apptDlg.setAttribute('open', '');
+  });
+  async function setStatus(id, st) {
+    var a = real.filter(function (x) { return x.id === id; })[0]; if (!a) return;
+    var prev = a.status; a.status = st;
+    if (a.local) { saveLocal(); }
+    else if (mode === 'db' && db) {
+      try { await db.doc('appts/' + id).update({ status: st }); }
+      catch (er) { a.status = prev; toast('Не удалось изменить статус: у вас нет прав на изменение записей.'); }
+    }
+    renderAll();
+  }
+  apptDlg.addEventListener('click', function (e) {
+    if (e.target === apptDlg || e.target.closest('[data-close]')) { apptDlg.close(); return; }
+    var st = e.target.closest('[data-st]');
+    if (st) { setStatus(openId, st.getAttribute('data-st')); toast('Статус: ' + statusText(st.getAttribute('data-st')).toLowerCase()); renderApptDlg(); var f = apptDlg.querySelector('[data-st="' + st.getAttribute('data-st') + '"]'); if (f) f.focus(); return; }
+    if (e.target.closest('[data-cancel]')) { confirmOpen = true; renderApptDlg(); apptDlg.querySelector('[data-yes]').focus(); return; }
+    if (e.target.closest('[data-no]')) { confirmOpen = false; renderApptDlg(); apptDlg.querySelector('[data-cancel]').focus(); return; }
+    if (e.target.closest('[data-yes]')) { confirmOpen = false; setStatus(openId, 'cancelled'); toast('Запись отменена'); renderApptDlg(); return; }
+  });
+  apptDlg.addEventListener('close', function () { openId = null; if (apptOpener && document.contains(apptOpener)) apptOpener.focus(); });
+
+  // ---------- Общее хранилище ----------
+  function renderAll() {
+    renderNearest();
+    if (bk.step === 3) renderBooking(); else { renderSteps(); renderSide(); if (bk.step === 5) renderBooking(); }
+    if (!document.getElementById('adminView').hidden) renderAdmin();
+    if (openId && apptDlg.open) renderApptDlg();
+  }
+  (async function () {
+    if (!window.claude || !window.claude.use) return;
+    try {
+      var d = await window.claude.use('db'), u = await window.claude.use('user');
+      if (!d) return;
+      db = d;
+      uid = u ? await u.id() : null;
+      isAdmin = u ? await u.canEdit() : false;
+      var canWrite = u ? await u.can('data.write') : null;
+      mode = (canWrite === false || !uid) ? 'local' : 'db';
+      db.collection('appts').onSnapshot(function (snap) {
+        var shared = snap.docs.map(function (doc) { var x = Object.assign({}, doc.data()); x.id = doc.id; return x; });
+        real = shared.concat(real.filter(function (a) { return a.local; }));
+        renderAll();
+      }, function () {});
+      var cl = function (snap) {
+        snap.docs.forEach(function (doc) { var items = (doc.data() || {}).items || {}; Object.keys(items).forEach(function (k) { contacts[k] = items[k]; }); });
+        renderAll();
+      };
+      if (isAdmin) db.collection('contacts').onSnapshot(cl, function () {});
+      else if (uid) db.doc('contacts/' + uid).onSnapshot(function (s) { if (s.exists) cl({ docs: [s] }); }, function () {});
+      renderAll();
+    } catch (e) { /* остаёмся в демо-режиме */ }
+  })();
+
+  // ---------- Переходы между сайтом и кабинетом ----------
+  function route() {
+    var adm = location.hash === '#admin';
+    html.classList.toggle('admin-view', adm);
+    document.getElementById('siteView').hidden = adm;
+    document.getElementById('adminView').hidden = !adm;
+    if (adm) { renderAdmin(); window.scrollTo(0, 0); document.getElementById('site').scrollTop = 0; }
+  }
+  window.addEventListener('hashchange', route);
+
+  // ---------- Мелочи: меню, телефон, политика, режим просмотра ----------
+  var nav = document.getElementById('nav'), menuBtn = document.getElementById('menuBtn');
+  function setMenu(o) { nav.classList.toggle('open', o); menuBtn.setAttribute('aria-expanded', String(o)); menuBtn.textContent = o ? 'Закрыть' : 'Меню'; }
+  menuBtn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.getElementById('copyPhone').addEventListener('click', function () {
+    var num = document.getElementById('phoneNum'), note = document.getElementById('phoneNote');
+    function fallback() { var r = document.createRange(); r.selectNodeContents(num); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); note.textContent = 'Номер выделен, скопируйте его.'; }
+    try { navigator.clipboard.writeText(num.textContent).then(function () { note.textContent = 'Номер скопирован.'; }, fallback); } catch (e) { fallback(); }
+  });
+  var pol = document.getElementById('policy');
+  document.addEventListener('click', function (e) { if (e.target.closest('[data-policy]')) { e.preventDefault(); pol.showModal ? pol.showModal() : pol.setAttribute('open', ''); } });
+  pol.addEventListener('click', function (e) { if (e.target === pol || e.target.closest('[data-close]')) pol.close(); });
+  [['consent', '[data-consent]'], ['patInfo', '[data-info]'], ['priceDlg', '[data-price]']].forEach(function (x) {
+    var d = document.getElementById(x[0]);
+    document.addEventListener('click', function (e) { if (e.target.closest(x[1])) { e.preventDefault(); d.showModal ? d.showModal() : d.setAttribute('open', ''); } });
+    d.addEventListener('click', function (e) { if (e.target === d || e.target.closest('[data-close]') || e.target.closest('[data-close-go]')) d.close(); });
+  });
+  var viewBtns = document.querySelectorAll('[data-view]'), site = document.getElementById('site');
+  function setView(v) {
+    if (window.innerWidth <= 900) v = 'desktop';
+    html.classList.toggle('phone-view', v === 'phone');
+    viewBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-view') === v)); });
+    site.scrollTop = 0; window.scrollTo(0, 0); store('view-shtil', v);
+  }
+  viewBtns.forEach(function (b) { b.addEventListener('click', function () { setView(b.getAttribute('data-view')); }); });
+
+  // ---------- Анимация первого экрана ----------
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stillPref = store('shtil-still');
+  var still = stillPref ? stillPref === '1' : reduce;
+  var pauseBtn = document.getElementById('pauseBtn');
+  function applyStill() {
+    html.classList.toggle('still', still);
+    pauseBtn.setAttribute('aria-pressed', String(still));
+    pauseBtn.setAttribute('aria-label', still ? 'Включить анимацию' : 'Остановить анимацию');
+  }
+  pauseBtn.addEventListener('click', function () { still = !still; store('shtil-still', still ? '1' : '0'); applyStill(); });
+  applyStill();
+  // зуб чуть поворачивается вслед за курсором
+  var stage = document.getElementById('stage'), tilt = document.getElementById('tilt');
+  if (window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    stage.addEventListener('pointermove', function (e) {
+      if (still) return;
+      var r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      tilt.style.setProperty('--ry', (x * 18).toFixed(2) + 'deg'); tilt.style.setProperty('--rx', (-y * 14).toFixed(2) + 'deg');
+    });
+    stage.addEventListener('pointerleave', function () { tilt.style.setProperty('--ry', '0deg'); tilt.style.setProperty('--rx', '0deg'); });
+  }
+
+  // ---------- Телефон: шаги седации, закреплённая панель, маска номера ----------
+  document.getElementById('sedMore').addEventListener('click', function () { document.querySelector('.sedation').classList.add('open'); this.setAttribute('aria-expanded', 'true'); });
+  (function () {
+    var bar = document.getElementById('mBar'), seen = {};
+    if (!('IntersectionObserver' in window)) { bar.classList.remove('off'); return; }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) { seen[en.target.id] = en.isIntersecting; }); bar.classList.toggle('off', !!(seen.heroCta || seen.booking)); });
+    var hc = document.querySelector('.hero .cta-row'); hc.id = 'heroCta'; io.observe(hc); io.observe(document.getElementById('booking'));
+  })();
+  function maskPhone(v) {
+    var d = v.replace(/\D/g, ''); if (!d) return '';
+    if (d[0] === '8') d = '7' + d.slice(1); if (d[0] !== '7') d = '7' + d; d = d.slice(0, 11);
+    var r = '+7'; if (d.length > 1) r += ' ' + d.slice(1, 4); if (d.length > 4) r += ' ' + d.slice(4, 7); if (d.length > 7) r += '-' + d.slice(7, 9); if (d.length > 9) r += '-' + d.slice(9, 11);
+    return r;
+  }
+  document.getElementById('bkPanel').addEventListener('input', function (e) { if (e.target.id === 'fPhone') { e.target.value = maskPhone(e.target.value); } });
+
+  // ---------- Как проходит лечение: анимация идёт, пока блок на экране ----------
+  (function () {
+    var ps = document.getElementById('procStage'), proc = document.getElementById('proc');
+    var PH = [['caries', 1400], ['look', 3200], ['drill', 3800], ['fill', 2000], ['polish', 3000], ['shine', 2400]];
+    var i = 0, timer = 0, visible = false;
+    function set(ph) { ps.dataset.ph = ph; proc.dataset.st = { look: 'look', drill: 'drill', fill: 'fill', polish: 'polish' }[ph] || ''; }
+    function next() { if (still || !visible) return; set(PH[i][0]); timer = setTimeout(function () { i = (i + 1) % PH.length; next(); }, PH[i][1]); }
+    function sync() { clearTimeout(timer); if (still) { set('rest'); return; } if (visible) { i = 0; next(); } }
+    pauseBtn.addEventListener('click', sync);
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { var v = es[0].isIntersecting; if (v !== visible) { visible = v; sync(); } }, { threshold: 0.35 }).observe(ps);
+    else { visible = true; }
+    sync();
+  })();
+
+  // шапка: прозрачная наверху, с фоном после прокрутки
+  function headState() {
+    var sc = html.classList.contains('phone-view') ? site.scrollTop : window.scrollY;
+    html.classList.toggle('head-solid', html.classList.contains('admin-view') || sc > 20);
+  }
+  window.addEventListener('scroll', headState, { passive: true });
+  site.addEventListener('scroll', headState, { passive: true });
+  window.addEventListener('hashchange', headState);
+  viewBtns.forEach(function (b) { b.addEventListener('click', headState); });
+
+  // ---------- Старт ----------
+  renderNearest(); renderBooking(); route();
+  if (store('view-shtil') === 'phone') setView('phone');
+  headState();
+  setInterval(function () { demoCache = {}; renderNearest(); if (!document.getElementById('adminView').hidden) renderAdmin(); }, 60000);
+})();
+</script>
+
+<script>
+// Ссылки из портфолио: ?view=phone открывает версию для телефона, ?view=desktop — для компьютера
+(function () {
+  var v = new URLSearchParams(location.search).get('view');
+  if (v === 'phone' || v === 'desktop') { var b = document.querySelector('[data-view="' + v + '"]'); if (b) b.click(); }
+})();
+</script>
+</html>

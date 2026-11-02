@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Мария Лазарева, психолог</title>
+<meta name="description" content="Психолог онлайн: тревога, выгорание, отношения, самооценка. Первая встреча 60 минут. Запись через форму или мессенджер.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Мария Лазарева, психолог онлайн">
+<meta property="og:description" content="Помогаю справляться с тревогой, выгоранием и тяжёлыми периодами в отношениях. Онлайн из любого города.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.35' cy='.3'%3E%3Cstop offset='0' stop-color='%23ffe3cc'/%3E%3Cstop offset='1' stop-color='%232c6b66'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpath d='M32 4c15 0 28 10 28 27S48 60 31 60 4 49 4 32 17 4 32 4z' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Одна колонка до 1080px. Липкая шапка с записью. Первый экран: заголовок слева, живой шарик чувств справа.
+   Фон страницы общий: размытые цветные пятна, которые перетекают друг в друга без границ. */
+:root {
+  --bg: #eef3f1;
+  --surface: #ffffff;
+  --soft: #d8e6e2;
+  --ink: #17302e;
+  --muted: #496061;
+  --accent: #2c6b66;
+  --on-accent: #ffffff;
+  --line: #c6d7d3;
+  --warm: #f2c7a3;
+  --on-warm: #17302e;
+  --error: #b3261e;
+  --blob-o: 0.5;
+  --paint-o: 0.08;
+  --paint-w: 0.45;
+  --paint-a: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Cfilter id='f' x='0' y='0' width='100%' height='100%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0025' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1.9 0 0 0 -0.72'/%3E%3C/filter%3E%3Crect width='800' height='800' filter='url(%23f)'/%3E%3C/svg%3E");
+  --paint-b: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Cfilter id='f' x='0' y='0' width='100%' height='100%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0032' numOctaves='2' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1.8 0 0 0 -0.7'/%3E%3C/filter%3E%3Crect width='800' height='800' filter='url(%23f)'/%3E%3C/svg%3E");
+  --mark2: color-mix(in srgb, var(--accent) 55%, var(--soft));
+  --mark3: color-mix(in srgb, var(--accent) 30%, var(--surface));
+  --header-bg: color-mix(in srgb, var(--bg) 84%, transparent);
+  --stage: #d5dcda;
+  --frame: #1c2423;
+  --display: "Philosopher", "Georgia", serif;
+  --text: "Nunito", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1a19; --surface: #162423; --soft: #1d3331; --ink: #e3eeec;
+    --muted: #9bb2af; --accent: #7cc4bc; --on-accent: #0f1a19; --line: #2a403d;
+    --warm: #c98f68; --error: #ffb4ab; --blob-o: 0.3; --paint-o: 0.07; --paint-w: 0.14;
+    --mark3: color-mix(in srgb, var(--accent) 40%, var(--surface));
+    --stage: #070d0c; --frame: #2c3836;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1a19; --surface: #162423; --soft: #1d3331; --ink: #e3eeec;
+  --muted: #9bb2af; --accent: #7cc4bc; --on-accent: #0f1a19; --line: #2a403d;
+  --warm: #c98f68; --error: #ffb4ab; --blob-o: 0.3; --paint-o: 0.07; --paint-w: 0.14;
+  --mark3: color-mix(in srgb, var(--accent) 40%, var(--surface));
+  --stage: #070d0c; --frame: #2c3836;
+  color-scheme: dark;
+}
+
+/* гамма сайта по выбранному чувству: меняются только оттенки, плавно */
+@property --accent { syntax: "<color>"; inherits: true; initial-value: #2c6b66; }
+@property --warm { syntax: "<color>"; inherits: true; initial-value: #f2c7a3; }
+@property --bg { syntax: "<color>"; inherits: true; initial-value: #eef3f1; }
+:root { transition: --accent 1.4s ease, --warm 1.4s ease, --bg 1.4s ease; }
+:root[data-mood="anxious"] { --accent: #3d5f99; --warm: #c9d6f2; --bg: #eef1f6; }
+:root[data-mood="angry"] { --accent: #a0524a; --warm: #f2cdbf; --bg: #f6f0ee; }
+:root[data-mood="tired"] { --accent: #5b5878; --warm: #d6d2e6; --bg: #f0f0f4; }
+:root[data-mood="sad"] { --accent: #2f5390; --warm: #bcd0ef; --bg: #edf1f7; }
+:root[data-mood="lonely"] { --accent: #5e4a94; --warm: #d9cdf2; --bg: #f2f0f7; }
+:root[data-mood="confused"] { --accent: #7a4385; --warm: #f0c6e2; --bg: #f6eff4; }
+:root[data-mood="calm"] { --accent: #2c6b66; --warm: #bfe3d6; --bg: #edf4f1; }
+:root[data-mood="happy"] { --accent: #8a5a00; --warm: #f7d98f; --bg: #f8f3e7; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"])[data-mood="anxious"] { --accent: #9db8ea; --warm: #6f83b5; --bg: #0f1520; }
+  :root:not([data-theme="light"])[data-mood="angry"] { --accent: #e8ab9e; --warm: #a8786b; --bg: #181312; }
+  :root:not([data-theme="light"])[data-mood="tired"] { --accent: #b3afd6; --warm: #847fa6; --bg: #14141a; }
+  :root:not([data-theme="light"])[data-mood="sad"] { --accent: #8fb0ea; --warm: #5f7fb8; --bg: #0e1420; }
+  :root:not([data-theme="light"])[data-mood="lonely"] { --accent: #bba8ec; --warm: #8a76c0; --bg: #15121d; }
+  :root:not([data-theme="light"])[data-mood="confused"] { --accent: #e0a6e6; --warm: #b06ea6; --bg: #19121a; }
+  :root:not([data-theme="light"])[data-mood="calm"] { --accent: #7cc4bc; --warm: #5f9e8c; --bg: #0f1a19; }
+  :root:not([data-theme="light"])[data-mood="happy"] { --accent: #f2c46b; --warm: #c49a45; --bg: #1a170f; }
+}
+:root[data-theme="dark"][data-mood="anxious"] { --accent: #9db8ea; --warm: #6f83b5; --bg: #0f1520; }
+:root[data-theme="dark"][data-mood="angry"] { --accent: #e8ab9e; --warm: #a8786b; --bg: #181312; }
+:root[data-theme="dark"][data-mood="tired"] { --accent: #b3afd6; --warm: #847fa6; --bg: #14141a; }
+:root[data-theme="dark"][data-mood="sad"] { --accent: #8fb0ea; --warm: #5f7fb8; --bg: #0e1420; }
+:root[data-theme="dark"][data-mood="lonely"] { --accent: #bba8ec; --warm: #8a76c0; --bg: #15121d; }
+:root[data-theme="dark"][data-mood="confused"] { --accent: #e0a6e6; --warm: #b06ea6; --bg: #19121a; }
+:root[data-theme="dark"][data-mood="calm"] { --accent: #7cc4bc; --warm: #5f9e8c; --bg: #0f1a19; }
+:root[data-theme="dark"][data-mood="happy"] { --accent: #f2c46b; --warm: #c49a45; --bg: #1a170f; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: clip; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--text); overflow-x: clip; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+[id] { scroll-margin-top: 84px; }
+
+.wrap {
+  max-width: 1112px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+section { padding-block: 72px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 5.4cqi, 3.8rem); }
+h2 { font-size: clamp(1.8rem, 3.6cqi, 2.5rem); margin-bottom: 28px; }
+h3 { font-size: 1.25rem; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+main { position: relative; }
+.hero, section { position: relative; z-index: 1; }
+
+/* кнопки */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px;
+  border: 0; cursor: pointer; text-decoration: none; text-align: center;
+  background: var(--accent); color: var(--on-accent);
+  font: 600 1rem/1.2 var(--text); padding: 14px 26px; border-radius: 999px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.btn:hover { filter: brightness(1.08); transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn.ghost:hover { box-shadow: inset 0 0 0 1.5px var(--accent); filter: none; }
+.btn.small { min-height: 44px; padding: 10px 20px; font-size: 0.95rem; }
+.link-btn { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.cta-row { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+/* шапка */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--header-bg); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+.bar { display: flex; align-items: center; gap: 24px; min-height: 68px; }
+.brand { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--display); font-size: 1.2rem; font-weight: 700; text-decoration: none; margin-right: auto; white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.nav { display: flex; gap: 6px; }
+.nav a { text-decoration: none; color: var(--muted); padding: 10px 12px; border-radius: 10px; }
+.nav a:hover { color: var(--ink); background: color-mix(in srgb, var(--soft) 60%, transparent); }
+.menu-btn { display: none; min-width: 44px; min-height: 44px; padding: 0 14px; border: 1.5px solid var(--line); border-radius: 999px; background: transparent; color: var(--ink); font: 600 0.95rem var(--text); cursor: pointer; }
+
+/* первый экран */
+.hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; padding-block: 48px 72px; }
+.hero > * { min-width: 0; }
+.hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 34em; margin-top: 20px; }
+.scroll-hint { display: none; }
+.hero .facts { margin-top: 24px; font-size: 0.95rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 20px; padding: 0; list-style: none; }
+
+.mood { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+.orb-box { width: min(100%, 330px); aspect-ratio: 1; max-width: 100%; }
+.orb-box canvas { width: 100%; height: 100%; display: block; }
+.mood-q { font-family: var(--display); font-weight: 700; font-size: 1.45rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 30em; }
+.chip { min-height: 44px; font: 600 0.95rem var(--text); color: var(--ink); background: color-mix(in srgb, var(--surface) 85%, transparent); border: 1.5px solid var(--line); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: background 0.25s, border-color 0.25s, box-shadow 0.4s; }
+.chip:hover { border-color: var(--accent); }
+.chip.auto { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent); }
+.chip[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.mood-text { color: var(--muted); max-width: 27em; min-height: 6.8em; }
+.mood-link { color: var(--accent); font-weight: 600; text-underline-offset: 4px; padding: 8px; }
+.mood-tools { display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: center; }
+.mood-tools .link-btn { color: var(--muted); font-size: 0.9rem; min-height: 44px; padding-inline: 6px; }
+.nav a[aria-current="true"] { color: var(--ink); background: color-mix(in srgb, var(--soft) 75%, transparent); }
+.swipe-note { display: none; margin-top: 4px; font-size: 0.88rem; color: var(--muted); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.field { display: grid; gap: 8px; }
+.field-title { font-weight: 600; font-size: 0.95rem; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 999px; background: var(--bg); border: 1.5px solid var(--line); justify-self: start; }
+.seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.seg label { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 0.92rem; color: var(--muted); }
+.seg input:checked + label { background: var(--accent); color: var(--on-accent); }
+.seg input:focus-visible + label { outline: 3px solid var(--accent); outline-offset: 2px; }
+.dlg-title { margin: 0; font-family: var(--display); font-weight: 700; font-size: 1.4rem; line-height: 1.2; }
+
+/* общий размытый фон */
+.glow { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.glow i { position: absolute; left: var(--x); top: var(--y); width: var(--s); max-width: 130cqi; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(closest-side, var(--c), transparent); opacity: var(--blob-o); transform: translate(-50%, -50%); }
+/* живописный фон: камера медленно плывёт по бесконечному полотну из пятен краски */
+.paint { position: absolute; top: -800px; bottom: 0; left: calc(50% - 50cqi - 800px); width: calc(100cqi + 1600px); -webkit-mask-image: var(--m); mask-image: var(--m); -webkit-mask-size: 800px 800px; mask-size: 800px 800px; will-change: transform; }
+.paint.a { --m: var(--paint-a); background: var(--accent); opacity: var(--paint-o); animation: pan-a 60s linear infinite; }
+.paint.b { --m: var(--paint-b); background: var(--warm); opacity: var(--paint-w); animation: pan-b 80s linear infinite; }
+@keyframes breathe-a { from { opacity: calc(var(--paint-o) * 0.4); } to { opacity: calc(var(--paint-o) * 1.7); } }
+@keyframes breathe-b { from { opacity: calc(var(--paint-w) * 0.45); } to { opacity: calc(var(--paint-w) * 1.5); } }
+@keyframes pan-a { to { transform: translate3d(800px, 800px, 0); } }
+@keyframes pan-b { to { transform: translate3d(-800px, 800px, 0); } }
+@keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+html.still .paint, html.still .glow i, html.still .scroll-hint svg { animation-play-state: paused; }
+@keyframes wander { 0% { translate: -12% -9%; scale: 0.92; } 50% { translate: 4% 8%; scale: 1.08; } 100% { translate: 12% -6%; scale: 1; } }
+
+/* темы */
+.topics { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 48px; padding: 0; margin: 0; }
+.topics > * { min-width: 0; }
+.topics li { position: relative; padding-left: 64px; list-style: none; }
+.topics li strong { display: block; font-family: var(--display); font-weight: 700; font-size: 1.25rem; margin-bottom: 2px; }
+.topics li::before { content: ""; position: absolute; left: 0; top: 2px; width: 44px; height: 44px; background: var(--warm); border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; }
+.topics li:nth-child(3n+2)::before { background: var(--mark2); border-radius: 45% 55% 40% 60% / 60% 45% 55% 40%; }
+.topics li:nth-child(3n)::before { background: var(--mark3); border-radius: 55% 45% 60% 40% / 40% 55% 45% 60%; }
+
+/* обо мне */
+.about { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 56px; }
+.about > * { min-width: 0; }
+.about .text { display: grid; gap: 16px; max-width: 38em; align-content: start; }
+.about aside { display: grid; gap: 20px; align-content: start; }
+.portrait { margin: 0; display: grid; gap: 8px; width: 100%; max-width: 280px; justify-self: center; }
+.portrait-frame { aspect-ratio: 4 / 5; max-width: 100%; border-radius: 46% 54% 42% 58% / 38% 40% 60% 62%; overflow: hidden; background: linear-gradient(160deg, var(--warm), var(--mark3) 70%); }
+.portrait-frame svg { width: 100%; height: 100%; display: block; }
+.pt-hair { fill: #3b2b28; } .pt-skin { fill: #f0c8a6; } .pt-sweater { fill: var(--accent); transition: fill 1.4s; }
+.pt-line { fill: none; stroke: #3b2b28; stroke-width: 2.2; stroke-linecap: round; }
+.pt-cheek { fill: #e59b80; opacity: 0.45; } .pt-leaf { fill: var(--mark2); } .pt-stem { fill: none; stroke: var(--mark2); stroke-width: 3; stroke-linecap: round; }
+.portrait figcaption { font-size: 0.85rem; color: var(--muted); text-align: center; }
+.docs-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 6px; }
+.doc-th { display: inline-grid; place-items: center; min-height: 52px; padding: 6px 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; background: var(--bg); border: 1.5px dashed var(--line); color: var(--muted); }
+.not-for { margin-top: 28px; padding: 18px 22px; border-radius: 22px; background: var(--surface); max-width: 46em; }
+.not-for h3 { font-size: 1.05rem; margin-bottom: 4px; }
+.not-for p { color: var(--muted); }
+.m-cta { display: none; }
+@container site (max-width: 700px) { .m-cta { display: flex; position: fixed; z-index: 40; left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); justify-content: center; box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.45); transition: transform 0.3s, opacity 0.3s; } .m-cta.off { transform: translateY(140%); opacity: 0; pointer-events: none; } }
+.about dl { margin: 0; display: grid; gap: 16px; background: var(--surface); padding: 28px; border-radius: 30px 10px 30px 10px; }
+.about dt { font-size: 0.9rem; color: var(--muted); }
+.about dd { margin: 2px 0 0; font-weight: 600; }
+
+/* шаги */
+.steps { padding: 0; margin: 0; list-style: none; display: grid; counter-reset: s; max-width: 720px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 48px 1fr; gap: 12px; padding-block: 20px; border-top: 1px solid var(--line); }
+.steps li::before { content: counter(s); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--warm); color: var(--on-warm); font-family: var(--display); font-weight: 700; font-size: 1.2rem; }
+.steps li p { color: var(--muted); margin-top: 4px; }
+
+/* цены */
+.price { max-width: 720px; display: grid; }
+.price .row { display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; padding-block: 20px; border-top: 1px solid var(--line); align-items: baseline; }
+.price .row:last-child { border-bottom: 1px solid var(--line); }
+.price .sum { font-family: var(--display); font-size: 1.4rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.price p { color: var(--muted); font-size: 0.95rem; }
+.terms { margin: 20px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; color: var(--muted); font-size: 0.95rem; max-width: 44em; }
+.terms li { padding-left: 22px; position: relative; }
+.terms li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 9px; height: 9px; border-radius: 50%; background: var(--mark2); }
+
+/* отзывы */
+.reviews { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 900px; }
+.reviews > * { min-width: 0; }
+.review { margin: 0; background: color-mix(in srgb, var(--surface) 80%, transparent); padding: 26px; border-radius: 10px 32px 10px 32px; display: grid; gap: 14px; align-content: space-between; }
+.review blockquote { margin: 0; font-size: 1.05rem; }
+.review figcaption { font-size: 0.9rem; color: var(--muted); }
+.note { margin-top: 16px; font-size: 0.9rem; color: var(--muted); max-width: 44em; }
+
+/* вопросы */
+.faq { max-width: 760px; }
+details { border-top: 1px solid var(--line); }
+details:last-child { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; padding-block: 18px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; min-height: 48px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--accent); }
+details[open] summary::after { content: "−"; }
+details p { padding-bottom: 20px; color: var(--muted); max-width: 42em; }
+
+/* запись */
+.signup { background: var(--surface); border-radius: 48px 16px 48px 16px; box-shadow: 0 24px 60px -30px color-mix(in srgb, var(--accent) 45%, transparent); padding: clamp(24px, 5vw, 56px); display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; }
+.signup > * { min-width: 0; }
+.signup-side { display: grid; gap: 16px; align-content: start; }
+.contacts { display: grid; gap: 10px; margin-top: 8px; }
+.contacts h3 { font-size: 1.1rem; }
+.messengers { display: flex; flex-wrap: wrap; gap: 8px; }
+.phone { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
+.phone strong { font-size: 1.1rem; user-select: all; }
+.phone .link-btn { min-height: 44px; padding-inline: 6px; }
+.contact-note { font-size: 0.9rem; color: var(--muted); min-height: 1.4em; }
+form { display: grid; gap: 18px; }
+label { display: grid; gap: 6px; font-weight: 600; font-size: 0.95rem; }
+.hint { font-weight: 400; color: var(--muted); font-size: 0.88rem; }
+input[type="text"], input[type="tel"], select, textarea {
+  font: 400 1rem var(--text); color: var(--ink); background: var(--bg);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 13px 14px; width: 100%; min-height: 48px;
+}
+input[aria-invalid="true"] { border-color: var(--error); }
+textarea { min-height: 96px; resize: vertical; }
+.consent { display: grid; grid-template-columns: 26px 1fr; gap: 10px; font-weight: 400; font-size: 0.92rem; color: var(--muted); align-items: start; cursor: pointer; padding-block: 4px; }
+.consent input { width: 24px; height: 24px; margin: 1px 0 0; accent-color: var(--accent); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.error { color: var(--error); font-size: 0.92rem; min-height: 1.2em; }
+.done { background: var(--soft); border-radius: 14px; padding: 18px 20px; }
+
+/* подвал */
+footer { border-top: 1px solid var(--line); position: relative; z-index: 1; }
+.foot { padding-block: 36px 52px; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 24px; font-size: 0.92rem; color: var(--muted); }
+.foot > * { min-width: 0; display: grid; gap: 6px; align-content: start; }
+.foot strong { color: var(--ink); font-family: var(--display); font-size: 1.05rem; }
+.foot { gap: 24px; }
+.foot > * { gap: 2px; }
+.foot a, .foot .link-btn { text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; justify-self: start; color: var(--muted); }
+.foot .link-btn { text-decoration: underline; }
+.foot a:hover { color: var(--ink); text-decoration: underline; }
+
+/* режим просмотра: компьютер или телефон */
+.site { container-type: inline-size; container-name: site; }
+html.phone-view body { background: var(--stage); }
+html.phone-view .site {
+  width: 412px; max-width: calc(100% - 32px);
+  height: min(844px, calc(100dvh - 120px)); min-height: 480px;
+  margin: 24px auto 96px; overflow-y: auto; overflow-x: hidden;
+  border: 11px solid var(--frame); border-radius: 46px; background: var(--bg);
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.5);
+  scrollbar-width: none; overscroll-behavior: contain;
+}
+html.phone-view .site::-webkit-scrollbar { display: none; }
+.viewer {
+  position: fixed; z-index: 50;
+  right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  display: flex; gap: 4px; padding: 5px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line);
+  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.35);
+}
+.viewer button { min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font: 600 0.92rem var(--text); cursor: pointer; }
+.viewer button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+@media (max-width: 900px) { .viewer { display: none; } }
+
+/* политика */
+dialog { width: min(720px, calc(100% - 32px)); max-height: 86vh; border: 0; border-radius: 24px; padding: 0; background: var(--surface); color: var(--ink); }
+dialog::backdrop { background: rgba(10, 20, 20, 0.45); }
+.dlg-head { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 24px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.dlg-body { padding: 20px 24px 28px; display: grid; gap: 14px; font-size: 0.97rem; }
+.dlg-body h3 { font-size: 1.1rem; margin-top: 8px; }
+.dlg-warn { background: var(--soft); padding: 14px 16px; border-radius: 12px; font-size: 0.92rem; }
+
+@container site (max-width: 900px) {
+  .bar { gap: 10px; min-height: 60px; }
+  .menu-btn { display: inline-flex; align-items: center; }
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); }
+  .nav.open { display: flex; }
+  .nav a { padding: 14px 8px; font-size: 1.05rem; color: var(--ink); }
+}
+@container site (max-width: 700px) {
+  section { padding-block: 52px; }
+  .hero, .about, .signup { grid-template-columns: 1fr; gap: 32px; }
+  .hero { gap: 8px; }
+  .orb-box { width: min(52cqi, 200px) !important; }
+  .topics { grid-template-columns: 1fr; gap: 14px; }
+  .topics li { padding-left: 44px; }
+  .topics li::before { width: 30px; height: 30px; top: 0; }
+  .topics li strong { font-size: 1.1rem; margin: 0; }
+  .topics li span { display: none; }
+  .reviews { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 10px; }
+  .review { flex: 0 0 86%; scroll-snap-align: start; }
+  .swipe-note { display: block; }
+  .foot { grid-template-columns: 1fr; }
+  .hero { padding-block: 24px 40px; }
+  .hero-main { display: flex; flex-direction: column; }
+  .scroll-hint { display: none !important; margin-top: auto; padding-top: 24px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; color: var(--muted); font-size: 0.95rem; text-decoration: none; min-height: 44px; }
+  .scroll-hint svg { color: var(--accent); animation: nudge 2.4s ease-in-out infinite; }
+  .orb-box { width: min(68cqi, 250px); }
+  .mood-text { min-height: 0; }
+  .about aside { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: start; }
+}
+@container site (max-width: 480px) {
+  .about aside { grid-template-columns: 1fr; }
+  .portrait-frame { max-width: 260px; margin-inline: auto; width: 100%; }
+  .hero .cta-row .btn { width: 100%; }
+}
+@container site (max-width: 480px) {
+  .brand { font-size: 1.05rem; }
+  .bar .btn.small { padding-inline: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .glow i, .paint, .scroll-hint svg { animation: none; }
+  :root { transition: none; }
+  .btn:hover { transform: none; }
+}
+</style>
+
+<div class="site" id="site">
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#top">Мария Лазарева</a>
+    <nav class="nav" id="nav" aria-label="Разделы">
+      <a href="#about">Обо мне</a>
+      <a href="#work">Как работаю</a>
+      <a href="#price">Стоимость</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#signup">Контакты</a>
+    </nav>
+    <a class="btn small" href="#signup">Записаться</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Меню</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <main id="top">
+    <div class="glow" aria-hidden="true">
+      <div class="paint a"></div>
+      <div class="paint b"></div>
+      <i style="--x:85%;--y:5%;--s:640px;--c:var(--warm);--d:34s"></i>
+      <i style="--x:8%;--y:13%;--s:580px;--c:#bfe3d6;--d:28s"></i>
+      <i style="--x:72%;--y:23%;--s:660px;--c:#d3c4f1;--d:36s"></i>
+      <i style="--x:14%;--y:34%;--s:620px;--c:#f6c9c4;--d:31s"></i>
+      <i style="--x:82%;--y:45%;--s:640px;--c:#bcd8f0;--d:38s"></i>
+      <i style="--x:18%;--y:56%;--s:660px;--c:var(--warm);--d:30s"></i>
+      <i style="--x:76%;--y:67%;--s:620px;--c:#cfe6c4;--d:35s"></i>
+      <i style="--x:16%;--y:78%;--s:640px;--c:#d3c4f1;--d:29s"></i>
+      <i style="--x:72%;--y:89%;--s:620px;--c:#f6d9b8;--d:33s"></i>
+    </div>
+
+    <div class="hero">
+      <div class="hero-main">
+        <h1>Разобраться, что с вами происходит, и что с этим делать</h1>
+        <p class="lead">Я психолог. Помогаю справляться с тревогой, выгоранием и тяжёлыми периодами в отношениях. Работаю онлайн, спокойно и без давления.</p>
+        <div class="cta-row">
+          <a class="btn" href="#signup">Записаться на первую встречу</a>
+          <a class="btn ghost" href="#price">Узнать стоимость</a>
+        </div>
+        <ul class="facts">
+          <li>Онлайн по видеосвязи</li>
+          <li>7 лет практики</li>
+          <li>Из любого города</li>
+        </ul>
+        <a class="scroll-hint" href="#mood">Как вы сегодня? Выберите своё чувство
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="mood" id="mood">
+        <div class="orb-box"><canvas id="orb" aria-hidden="true"></canvas></div>
+        <p class="mood-q" id="moodQ">Как вы сегодня?</p>
+        <div class="chips" role="group" aria-labelledby="moodQ">
+          <button type="button" class="chip" data-mood="anxious" aria-pressed="false">Тревожно</button>
+          <button type="button" class="chip" data-mood="angry" aria-pressed="false">Злюсь</button>
+          <button type="button" class="chip" data-mood="tired" aria-pressed="false">Нет сил</button>
+          <button type="button" class="chip" data-mood="sad" aria-pressed="false">Грустно</button>
+          <button type="button" class="chip" data-mood="lonely" aria-pressed="false">Одиноко</button>
+          <button type="button" class="chip" data-mood="confused" aria-pressed="false">Всё спутано</button>
+          <button type="button" class="chip" data-mood="calm" aria-pressed="false">Спокойно</button>
+          <button type="button" class="chip" data-mood="happy" aria-pressed="false">Радостно</button>
+        </div>
+        <p class="mood-text" id="moodText" aria-live="polite">Шарик сам перебирает чувства. Выберите то, что ближе вам: сайт подстроит свои цвета, а я подскажу, с чего можно начать.</p>
+        <a class="mood-link" id="moodLink" href="#signup" hidden>Записаться и рассказать об этом</a>
+        <div class="mood-tools">
+          <button type="button" class="link-btn" id="resetMood" hidden>Вернуть обычные цвета</button>
+          <button type="button" class="link-btn" id="motionBtn" aria-pressed="false">Остановить движение</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="topics" style="padding-top:0">
+      <h2>С чем ко мне приходят</h2>
+      <ul class="topics">
+        <li><strong>Тревога и постоянное напряжение</strong><span class="muted">Мысли не отпускают, сложно расслабиться и уснуть.</span></li>
+        <li><strong>Выгорание и усталость от работы</strong><span class="muted">Ничего не радует, сил нет даже на отдых.</span></li>
+        <li><strong>Отношения с партнёром и близкими</strong><span class="muted">Повторяющиеся конфликты, ощущение одиночества вдвоём.</span></li>
+        <li><strong>Самооценка и неуверенность</strong><span class="muted">Привычка сравнивать себя с другими и сомневаться в решениях.</span></li>
+        <li><strong>Потери и переезды</strong><span class="muted">Когда жизнь резко изменилась и нужна опора.</span></li>
+        <li><strong>Выбор пути</strong><span class="muted">Профессия, учёба, решения, которые страшно принимать.</span></li>
+      </ul>
+      <div class="not-for">
+        <h3>С чем я не работаю</h3>
+        <p>Острые психиатрические состояния, зависимости в активной фазе, судебные и медицинские экспертизы. В этих случаях подскажу, к какому специалисту обратиться.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>Обо мне</h2>
+      <div class="about">
+        <div class="text">
+          <p>Меня зовут Мария. Я работаю психологом семь лет, из них пять веду частную практику. В работе опираюсь на когнитивно-поведенческий подход: он помогает увидеть, какие мысли и привычки поддерживают вашу проблему, и менять их по шагам.</p>
+          <p>Я не даю готовых советов и не оцениваю. Моя задача, чтобы вы лучше понимали себя и могли сами принимать решения. Каждая встреча конфиденциальна.</p>
+          <p>Регулярно прохожу супервизию: разбираю сложные случаи с более опытным коллегой. Так я слежу за качеством своей работы.</p>
+          <p class="muted">Я психолог, а не врач: не ставлю диагнозы и не назначаю лекарства. Если нужна медицинская помощь, подскажу, к кому обратиться.</p>
+        </div>
+        <aside>
+          <figure class="portrait">
+            <div class="portrait-frame">
+              <svg viewBox="0 0 200 250" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+                <path class="pt-hair" d="M56 128C48 76 72 36 102 36c32 0 54 32 48 82-3 28 2 54 10 78H44c8-22 16-44 12-68z"/>
+                <rect class="pt-skin" x="89" y="136" width="22" height="46" rx="9"/>
+                <path class="pt-sweater" d="M24 250c2-46 34-74 76-74s74 28 76 74z"/>
+                <ellipse class="pt-skin" cx="100" cy="104" rx="31" ry="39"/>
+                <path class="pt-hair" d="M68 104c-2-40 20-58 40-56 22 2 32 22 26 50-10-18-30-26-48-18-10 5-16 14-18 24z"/>
+                <path class="pt-line" d="M84 108q6 5 12 0M104 108q6 5 12 0M93 126q7 5 14 0"/>
+                <circle class="pt-cheek" cx="82" cy="120" r="6"/><circle class="pt-cheek" cx="118" cy="120" r="6"/>
+                <path class="pt-stem" d="M178 250c-2-28 2-54 12-74"/>
+                <ellipse class="pt-leaf" cx="184" cy="206" rx="6" ry="15" transform="rotate(35 184 206)"/>
+                <ellipse class="pt-leaf" cx="172" cy="226" rx="6" ry="14" transform="rotate(-35 172 226)"/>
+                <ellipse class="pt-leaf" cx="191" cy="184" rx="5" ry="12" transform="rotate(25 191 184)"/>
+              </svg>
+            </div>
+            <figcaption>Иллюстрация. На рабочем сайте здесь будет фото специалиста</figcaption>
+          </figure>
+          <dl>
+            <div><dt>Образование</dt><dd>Магистратура по психологии, [вуз], 2017</dd></div>
+            <div><dt>Повышение квалификации</dt><dd>Когнитивно-поведенческая терапия тревожных расстройств, [организация], 2023, 144 часа</dd></div>
+            <div><dt>Практика</dt><dd>7 лет, более 600 консультаций, регулярная супервизия</dd></div>
+            <div><dt>Документы</dt><dd><span class="docs-row"><span class="doc-th">Диплом</span><span class="doc-th">Удостоверение КПТ</span><span class="doc-th">Супервизия</span></span><span class="hint">На рабочем сайте здесь сканы документов</span></dd></div>
+            <div><dt>Языки</dt><dd>Русский, английский</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section id="work">
+      <h2>Как проходит работа</h2>
+      <ol class="steps">
+        <li><div><h3>Первая встреча</h3><p>Расскажете, что вас беспокоит. Я задам вопросы и скажу, смогу ли помочь. Если нет, подскажу другого специалиста.</p></div></li>
+        <li><div><h3>Цель работы</h3><p>Вместе формулируем, что должно измениться и как вы это поймёте. Договариваемся о частоте встреч.</p></div></li>
+        <li><div><h3>Регулярные встречи</h3><p>Обычно раз в неделю. Между встречами небольшие задания, чтобы изменения закреплялись в жизни.</p></div></li>
+        <li><div><h3>Итоги</h3><p>Подводим результаты, определяем, что делать дальше, и заканчиваем работу, когда вы готовы.</p></div></li>
+      </ol>
+    </section>
+
+    <section id="price">
+      <h2>Стоимость</h2>
+      <div class="price">
+        <div class="row"><div><h3>Первая встреча</h3><p>60 минут: знакомство, разбор запроса и план работы</p></div><div class="sum">2 500 ₽</div></div>
+        <div class="row"><div><h3>Консультация</h3><p>50 минут по видеосвязи</p></div><div class="sum">4 000 ₽</div></div>
+        <div class="row"><div><h3>Пакет из 5 встреч</h3><p>5 консультаций по 50 минут, выгоднее на 2 000 ₽, действует 2 месяца</p></div><div class="sum">18 000 ₽</div></div>
+      </div>
+      <ul class="terms">
+        <li>Оплата картой или по СБП после того, как договоримся о времени. Чек приходит автоматически.</li>
+        <li>Перенести встречу можно бесплатно, если предупредить не позднее чем за сутки.</li>
+        <li>Если встреча не состоялась по моей вине, верну деньги полностью.</li>
+      </ul>
+      <div class="cta-row"><a class="btn" href="#signup">Записаться на первую встречу</a></div>
+    </section>
+
+    <section id="reviews">
+      <h2>Отзывы</h2>
+      <div class="reviews" tabindex="0" role="region" aria-label="Примеры отзывов">
+        <figure class="review">
+          <blockquote>Пришла с тревогой, из-за которой плохо спала. Через пару месяцев заметила, что стало спокойнее, и теперь понимаю, что делать, когда тревога возвращается.</blockquote>
+          <figcaption>Пример отзыва · клиентка, 10 встреч</figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote>Боялся, что будет неловко говорить о себе. Оказалось просто: никто не торопил и не оценивал. Разобрался, почему постоянно откладываю важные решения.</blockquote>
+          <figcaption>Пример отзыва · клиент, 6 встреч</figcaption>
+        </figure>
+      </div>
+      <p class="swipe-note">Листайте отзывы вбок</p>
+      <p class="note">Это примеры того, как будут выглядеть отзывы. На рабочем сайте здесь только настоящие отзывы клиентов, опубликованные с их согласия и без данных, по которым можно узнать человека.</p>
+    </section>
+
+    <section id="faq">
+      <h2>Частые вопросы</h2>
+      <div class="faq">
+        <details><summary>Всё, что я скажу, останется между нами?</summary><p>Да. Содержание встреч конфиденциально. Исключение только ситуации, где есть прямая угроза жизни вам или другим людям.</p></details>
+        <details><summary>Сколько встреч понадобится?</summary><p>Зависит от запроса. При тревоге и выгорании чаще всего нужно от 8 до 15 встреч. Общий план обсудим после первой встречи.</p></details>
+        <details><summary>Как подготовиться к первой встрече?</summary><p>Специально готовиться не нужно. Можно заранее записать, что беспокоит и чего хочется добиться, но если не получится, начнём с того, что есть.</p></details>
+        <details><summary>Как проходят онлайн-встречи?</summary><p>По видеосвязи, ссылку пришлю заранее. Нужны телефон или компьютер, интернет и место, где вам комфортно говорить без посторонних.</p></details>
+        <details><summary>Что будет, если пропадёт связь?</summary><p>Я перезвоню в мессенджере. Если встречу не удастся продолжить, перенесём оставшееся время без доплаты.</p></details>
+        <details><summary>Вы работаете с парами и подростками?</summary><p>Работаю со взрослыми от 18 лет, индивидуально. Если нужна семейная терапия или помощь подростку, подскажу проверенных коллег.</p></details>
+        <details><summary>А если мне очень плохо прямо сейчас?</summary><p>Я не заменяю экстренную помощь. Если вы в опасности или думаете о том, чтобы причинить себе вред, позвоните по номеру 112 или обратитесь в ближайшую больницу. Поговорить анонимно и бесплатно можно по телефону доверия: [номер для вашего региона].</p></details>
+      </div>
+      <div class="cta-row"><span class="muted">Не нашли ответа?</span><a class="btn ghost" href="#signup">Задать вопрос</a></div>
+    </section>
+
+    <section id="signup" style="padding-bottom:56px">
+      <div class="signup">
+        <div class="signup-side">
+          <h2 style="margin-bottom:0">Записаться на первую встречу</h2>
+          <p class="muted">Оставьте контакты, и я отвечу в течение дня, чтобы согласовать время. Рассказывать подробности сейчас не нужно.</p>
+          <div class="contacts">
+            <h3>Или напишите напрямую</h3>
+            <div class="messengers">
+              <button class="btn ghost small" type="button" data-msg="Telegram">Telegram</button>
+              <a class="btn ghost small" href="tel:+79000000000">Позвонить</a>
+              <button class="btn ghost small" type="button" data-msg="ВКонтакте">ВКонтакте</button>
+            </div>
+            <div class="phone"><strong id="phoneNum">+7 900 000-00-00</strong><button class="link-btn" type="button" id="copyPhone">Скопировать</button></div>
+            <p class="contact-note" id="contactNote" aria-live="polite"></p>
+          </div>
+        </div>
+        <form id="form" novalidate>
+          <label for="name">Как к вам обращаться
+            <input type="text" id="name" name="name" autocomplete="given-name" aria-describedby="error">
+          </label>
+          <div class="field">
+            <span class="field-title" id="ctypeTitle">Как с вами связаться</span>
+            <div class="seg" role="radiogroup" aria-labelledby="ctypeTitle">
+              <input type="radio" name="ctype" id="ctPhone" value="phone" checked><label for="ctPhone">Телефон</label>
+              <input type="radio" name="ctype" id="ctMsg" value="msg"><label for="ctMsg">Ник в Telegram</label>
+            </div>
+            <label for="contact" class="sr" id="contactLabel">Номер телефона</label>
+            <input type="tel" id="contact" name="contact" autocomplete="tel" inputmode="tel" placeholder="+7 900 123-45-67" aria-describedby="error">
+          </div>
+          <label for="time">Когда удобно
+            <select id="time" name="time">
+              <option>Утром, до 12:00</option>
+              <option>Днём, 12:00–17:00</option>
+              <option selected>Вечером, после 17:00</option>
+              <option>В выходные</option>
+            </select>
+            <span class="hint">Время московское. Если вы в другом часовом поясе, напишите, подстроюсь.</span>
+          </label>
+          <label for="about-me">Что хотите обсудить <span class="hint">по желанию</span>
+            <textarea id="about-me" name="about" aria-describedby="aboutHint" placeholder="Например: тревога, выгорание"></textarea>
+            <span class="hint" id="aboutHint">Достаточно пары слов, подробно поговорим на встрече. Не указывайте здесь диагнозы и сведения о здоровье.</span>
+          </label>
+          <div class="hp" aria-hidden="true"><label for="website">Сайт<input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <label class="consent" for="agree">
+            <input type="checkbox" id="agree" name="agree">
+            <span>Даю <button type="button" class="link-btn" data-consent>согласие на обработку персональных данных</button>. Как я храню данные — в <button type="button" class="link-btn" data-policy>политике конфиденциальности</button>.</span>
+          </label>
+          <div class="error" id="error" role="alert"></div>
+          <button class="btn" type="submit">Отправить заявку</button>
+          <div class="done" id="done" hidden></div>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+<a class="btn m-cta off" id="mCta" href="#signup">Записаться на первую встречу</a>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <strong>Мария Лазарева</strong>
+      <span>Психолог, онлайн-консультации</span>
+      <span>Самозанятая, ИНН 000000000000</span>
+    </div>
+    <div>
+      <a href="#signup">Записаться</a>
+      <span>+7 900 000-00-00</span>
+      <button type="button" class="link-btn" data-policy style="justify-self:start">Политика конфиденциальности</button>
+    </div>
+    <div>
+      <span>© 2026 Мария Лазарева</span>
+      <span>Демонстрационный сайт: специалист, контакты и реквизиты вымышлены.</span>
+    </div>
+  </div>
+</footer>
+</div>
+
+<div class="viewer" role="group" aria-label="Режим просмотра">
+  <a href="../" class="back-all" style="display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;font-weight:600;font-size:0.92rem;text-decoration:none;color:inherit">← Все работы</a>
+  <button type="button" data-view="desktop" aria-pressed="true">Компьютер</button>
+  <button type="button" data-view="phone" aria-pressed="false">Телефон</button>
+</div>
+
+<dialog id="consentDlg" aria-labelledby="consentTitle">
+  <div class="dlg-head">
+    <p class="dlg-title" id="consentTitle">Согласие на обработку персональных данных</p>
+    <button class="btn ghost small" type="button" data-close-dlg>Закрыть</button>
+  </div>
+  <div class="dlg-body">
+    <p class="dlg-warn">Образец для демо-сайта. Для настоящего сайта текст согласия готовит юрист.</p>
+    <p>Я даю согласие самозанятой [ФИО] (ИНН [номер]) на обработку моих персональных данных: имени, номера телефона или ника в мессенджере, удобного времени и текста, который я написал(а) в форме.</p>
+    <p>Цель: связаться со мной и договориться о встрече.</p>
+    <p>Действия с данными: сбор, запись, хранение, использование и удаление. Срок: до достижения цели или до отзыва согласия.</p>
+    <p>Согласие можно отозвать, написав на [электронная почта].</p>
+  </div>
+</dialog>
+
+<dialog id="policy" aria-labelledby="policyTitle">
+  <div class="dlg-head">
+    <p class="dlg-title" id="policyTitle">Политика конфиденциальности</p>
+    <button class="btn ghost small" type="button" id="closePolicy">Закрыть</button>
+  </div>
+  <div class="dlg-body">
+    <p class="dlg-warn">Это образец для демо-сайта. Перед запуском настоящего сайта текст нужно заполнить данными владельца и проверить у юриста.</p>
+    <h3>Кто обрабатывает данные</h3>
+    <p>Самозанятая [ФИО], ИНН [номер]. Вопросы о данных можно задать по адресу [электронная почта].</p>
+    <h3>Какие данные собираются</h3>
+    <p>Имя, телефон или ник в мессенджере, удобное время и текст, который вы сами написали в форме.</p>
+    <h3>Зачем</h3>
+    <p>Только чтобы связаться с вами и договориться о встрече. Данные не передаются третьим лицам и не используются для рассылок.</p>
+    <h3>Где и сколько хранятся</h3>
+    <p>На серверах, расположенных в России. Хранятся до окончания работы или до отзыва согласия, но не дольше [срок].</p>
+    <h3>Ваши права</h3>
+    <p>Вы можете узнать, какие данные о вас хранятся, попросить исправить или удалить их и отозвать согласие, написав на [электронная почта].</p>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  document.documentElement.lang = 'ru';
+
+  // Режим просмотра: компьютер или телефон в рамке
+  var site = document.getElementById('site');
+  var viewBtns = document.querySelectorAll('[data-view]');
+  function setView(v) {
+    if (window.innerWidth <= 900) v = 'desktop';
+    document.documentElement.classList.toggle('phone-view', v === 'phone');
+    if (v === 'phone') site.style.setProperty('--screen-h', site.clientHeight + 'px');
+    else site.style.removeProperty('--screen-h');
+    viewBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-view') === v)); });
+    site.scrollTop = 0; window.scrollTo(0, 0);
+    try { localStorage.setItem('view', v); } catch (e) {}
+  }
+  viewBtns.forEach(function (b) { b.addEventListener('click', function () { setView(b.getAttribute('data-view')); }); });
+  window.addEventListener('resize', function () {
+    if (document.documentElement.classList.contains('phone-view')) site.style.setProperty('--screen-h', site.clientHeight + 'px');
+  });
+  try { if (localStorage.getItem('view') === 'phone') setView('phone'); } catch (e) {}
+
+  // Закреплённая кнопка на телефоне: прячется, когда видны кнопки первого экрана или форма
+  var mCta = document.getElementById('mCta'), seen = {};
+  if ('IntersectionObserver' in window) {
+    var ctaIO = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { seen[en.target.id] = en.isIntersecting; });
+      mCta.classList.toggle('off', !!(seen.heroCta || seen.signup));
+    });
+    var heroCta = document.querySelector('.hero .cta-row'); heroCta.id = 'heroCta';
+    ctaIO.observe(heroCta); ctaIO.observe(document.getElementById('signup'));
+  }
+
+  // Меню на телефоне
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  function setMenu(open) {
+    nav.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.textContent = open ? 'Закрыть' : 'Меню';
+  }
+  menuBtn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // Подсветка текущего раздела в меню
+  var navLinks = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  if ('IntersectionObserver' in window) {
+    var sectionIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        navLinks.forEach(function (a) {
+          if (a.getAttribute('href') === '#' + en.target.id) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['topics', 'about', 'work', 'price', 'reviews', 'faq', 'signup'].forEach(function (id) {
+      var el = document.getElementById(id); if (el) sectionIO.observe(el);
+    });
+  }
+
+  // Политика конфиденциальности
+  var dlg = document.getElementById('policy');
+  document.querySelectorAll('[data-policy]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    });
+  });
+  document.getElementById('closePolicy').addEventListener('click', function () { dlg.close ? dlg.close() : dlg.removeAttribute('open'); });
+  var cdlg = document.getElementById('consentDlg');
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-consent]')) { e.preventDefault(); if (cdlg.showModal) cdlg.showModal(); else cdlg.setAttribute('open', ''); }
+    if (e.target.closest('[data-close-dlg]') || e.target === cdlg) { cdlg.close ? cdlg.close() : cdlg.removeAttribute('open'); }
+  });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+
+  // Контакты: на демо-сайте кнопки мессенджеров никуда не ведут
+  var contactNote = document.getElementById('contactNote');
+  document.querySelectorAll('[data-msg]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      contactNote.textContent = 'На рабочем сайте эта кнопка откроет чат с психологом в ' + b.getAttribute('data-msg') + '.';
+    });
+  });
+  document.getElementById('copyPhone').addEventListener('click', function () {
+    var num = document.getElementById('phoneNum');
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(num);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      contactNote.textContent = 'Номер выделен, скопируйте его.';
+    }
+    try {
+      navigator.clipboard.writeText(num.textContent).then(function () { contactNote.textContent = 'Номер скопирован.'; }, fallback);
+    } catch (err) { fallback(); }
+  });
+
+  // ---------- Живой шарик: у каждого чувства своё движение, цвет, форма и частицы ----------
+  var cv = document.getElementById('orb');
+  var ctx = cv.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lite = window.matchMedia('(max-width: 700px), (pointer: coarse)').matches;
+  var still = false;
+  try { still = localStorage.getItem('still') === '1'; } catch (e) {}
+  document.documentElement.classList.toggle('still', still);
+  var W = 330, dpr = 1;
+  function resize() {
+    var w = Math.max(160, Math.round(cv.getBoundingClientRect().width));
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = w * dpr; cv.height = w * dpr; W = w;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+
+  var base = { c1: [255, 214, 170], c2: [240, 160, 120], R: 0.3, w2: 0.03, w3: 0.03, w5: 0, w7: 0, spike: 0, speed: 0.7, jit: 0, jf: 28, sag: 0, tear: 0, oy: 0, dx: 0, bA: 0, bF: 1, shake: 0, shf: 37, glow: 0.5, pA: 0.03, pF: 0.4, rainbow: 0 };
+  function M(o) { var r = {}; for (var k in base) r[k] = base[k]; for (var j in o) r[j] = o[j]; return r; }
+  var moods = {
+    idle:     { p: 'fireflies', v: M({}) },
+    anxious:  { p: 'sparks',    v: M({ c1: [200, 214, 242], c2: [122, 146, 206], R: 0.29, w2: 0.025, w3: 0.045, w5: 0.04, w7: 0.025, speed: 1.3, jit: 0.01, jf: 8, shake: 0.0025, shf: 9, glow: 0.45, pA: 0.03, pF: 0.8 }) },
+    angry:    { p: 'embers',    v: M({ c1: [255, 120, 100], c2: [190, 30, 55], R: 0.3, w2: 0.05, w3: 0.04, w5: 0.03, spike: 0.16, speed: 2.2, jit: 0.012, shake: 0.004, glow: 0.95, pA: 0.07, pF: 1.5 }) },
+    tired:    { p: 'dust',      v: M({ c1: [150, 146, 184], c2: [88, 86, 128], R: 0.31, w2: 0.03, w3: 0.02, speed: 0.35, sag: 0.3, glow: 0.12, pA: 0.02, pF: 0.2 }) },
+    sad:      { p: 'drops',     v: M({ c1: [100, 145, 225], c2: [32, 58, 140], R: 0.26, w2: 0.03, w3: 0.03, speed: 0.6, tear: 0.6, oy: -0.06, glow: 0.4, pA: 0.02, pF: 0.3 }) },
+    lonely:   { p: 'orbit',     v: M({ c1: [185, 165, 235], c2: [100, 80, 170], R: 0.16, w2: 0.04, speed: 0.5, dx: 0.5, oy: 0.12, glow: 0.3, pA: 0.03, pF: 0.3 }) },
+    confused: { p: 'swirl',     v: M({ c1: [90, 220, 200], c2: [230, 100, 190], R: 0.3, w2: 0.05, w3: 0.06, w5: 0.05, w7: 0.06, speed: 1.6, jit: 0.008, glow: 0.6, pA: 0.03, pF: 0.8, rainbow: 1 }) },
+    calm:     { p: 'fireflies', v: M({ c1: [150, 225, 200], c2: [60, 150, 140], R: 0.3, w2: 0.02, w3: 0.015, speed: 0.4, glow: 0.5, pA: 0.06, pF: 0.22 }) },
+    happy:    { p: 'sparkles',  v: M({ c1: [255, 225, 110], c2: [255, 140, 90], R: 0.29, w2: 0.06, w3: 0.05, speed: 2.2, bA: 0.09, bF: 1.2, glow: 0.85, pA: 0.03, pF: 1.2 }) }
+  };
+
+  var cur = M(base); cur.c1 = base.c1.slice(); cur.c2 = base.c2.slice();
+  var tgt = moods.idle.v, ptype = 'fireflies';
+  var orbiters = [], free = [];
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function buildOrbiters(type) {
+    orbiters = [];
+    var n = Math.round(({ sparks: 8, orbit: 4, swirl: 22, fireflies: 9 }[type] || 0) * (lite ? 0.6 : 1));
+    for (var i = 0; i < n; i++) {
+      var o = { a: rnd(0, 6.283), ph: rnd(0, 6.283), col: '255,240,200' };
+      if (type === 'sparks') { o.rad = rnd(1.05, 1.6); o.sp = rnd(-1, 1); o.size = rnd(1.5, 3); o.col = '220,230,255'; o.jit = 0.04; }
+      if (type === 'orbit') { o.rad = rnd(2.4, 3.4); o.sp = rnd(-0.35, 0.35); o.size = 2.5; o.col = '200,180,240'; o.alpha = 0.5; }
+      if (type === 'swirl') { o.rad = rnd(1.15, 2.1); o.sp = rnd(-2.4, 2.4); o.size = rnd(2, 4); o.col = ['120,230,210', '240,130,200', '255,220,130', '150,170,255'][i % 4]; }
+      if (type === 'fireflies') { o.rad = rnd(1.15, 1.9); o.sp = rnd(-0.5, 0.5); o.size = rnd(2, 3.5); o.col = '235,255,215'; o.tw = true; }
+      orbiters.push(o);
+    }
+  }
+  function spawn(type, dt, cx, cy, R) {
+    var rate = { embers: 18, drops: 2.4, dust: 5, sparkles: 14 }[type];
+    if (!rate || free.length > (lite ? 60 : 140)) return;
+    if (lite) rate *= 0.5;
+    var exp = rate * dt, n = Math.floor(exp) + (Math.random() < exp % 1 ? 1 : 0);
+    for (var i = 0; i < n; i++) {
+      var q = { x: cx, y: cy, vx: 0, vy: 0, g: 0, life: 0, max: 1, size: 3, col: '255,255,255', kind: type };
+      if (type === 'embers') { q.x = cx + rnd(-0.7, 0.7) * R; q.y = cy - R * 0.8; q.vx = rnd(-0.06, 0.06) * W; q.vy = -rnd(0.15, 0.35) * W; q.max = rnd(0.9, 1.6); q.size = rnd(2, 4); q.col = '255,' + Math.round(rnd(120, 190)) + ',70'; }
+      if (type === 'drops') { q.x = cx + rnd(-0.2, 0.2) * R; q.y = cy + R * 1.1; q.vy = 0.02 * W; q.g = 0.9 * W; q.max = 1.4; q.size = rnd(3, 5); q.col = '140,180,250'; }
+      if (type === 'dust') { q.x = cx + rnd(-1, 1) * R; q.y = cy + rnd(-0.2, 0.8) * R; q.vy = 0.05 * W; q.vx = rnd(-0.01, 0.01) * W; q.max = 3; q.size = rnd(2, 3.5); q.col = '175,172,205'; }
+      if (type === 'sparkles') { q.x = cx + rnd(-0.8, 0.8) * R; q.y = cy - R * 0.5; q.vx = rnd(-0.2, 0.2) * W; q.vy = -rnd(0.2, 0.5) * W; q.g = 0.5 * W; q.max = rnd(0.8, 1.4); q.size = rnd(2, 4.5); q.col = '255,240,150'; }
+      free.push(q);
+    }
+  }
+  function copyTarget() {
+    for (var k in base) { if (k !== 'c1' && k !== 'c2') cur[k] = tgt[k]; }
+    cur.c1 = tgt.c1.slice(); cur.c2 = tgt.c2.slice();
+  }
+  function setOrb(key) {
+    var m = moods[key];
+    tgt = m.v;
+    if (m.p !== ptype) { ptype = m.p; buildOrbiters(ptype); }
+    if (reduce) { copyTarget(); draw(0, 0); }
+  }
+  function ease(dt) {
+    var k = 1 - Math.exp(-dt * 2.6);
+    for (var key in base) {
+      if (key === 'c1' || key === 'c2') { for (var i = 0; i < 3; i++) cur[key][i] += (tgt[key][i] - cur[key][i]) * k; }
+      else cur[key] += (tgt[key] - cur[key]) * k;
+    }
+  }
+  function rgb(c, a) { return 'rgba(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ',' + (a == null ? 1 : a) + ')'; }
+  function mix(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+
+  function draw(t, dt) {
+    ctx.clearRect(0, 0, W, W);
+    var R = cur.R * W * (1 + cur.pA * Math.sin(t * cur.pF * 6.283));
+    var cx = W / 2 + cur.dx * R + Math.sin(t * cur.shf) * cur.shake * W + Math.sin(t * 0.5) * W * 0.012;
+    var cy = W / 2 + (cur.oy + cur.sag * 0.3) * W - Math.abs(Math.sin(t * cur.bF * Math.PI)) * cur.bA * W;
+    var sy = 1 - cur.sag * 0.8, sp = cur.speed;
+    var N = 64, pts = [];
+    for (var i = 0; i < N; i++) {
+      var th = i / N * 6.2832;
+      var k = 1 + cur.w2 * Math.sin(2 * th + t * sp) + cur.w3 * Math.sin(3 * th - t * sp * 1.3) +
+        cur.w5 * Math.sin(5 * th + t * sp * 1.7) + cur.w7 * Math.sin(7 * th - t * sp * 2.1) +
+        cur.jit * Math.sin(13 * th + t * cur.jf) +
+        cur.spike * Math.pow(Math.abs(Math.sin(4 * th + t * sp * 1.2)), 2.5) +
+        cur.tear * Math.pow(Math.max(0, Math.sin(th)), 4);
+      pts.push([cx + Math.cos(th) * R * k, cy + Math.sin(th) * R * k * sy]);
+    }
+    var c1 = cur.c1, c2 = cur.c2;
+    if (cur.rainbow > 0.01) {
+      var m = (Math.sin(t * 0.9) + 1) / 2 * cur.rainbow;
+      c1 = mix(cur.c1, cur.c2, m); c2 = mix(cur.c2, cur.c1, m);
+    }
+    ctx.beginPath();
+    ctx.moveTo((pts[N - 1][0] + pts[0][0]) / 2, (pts[N - 1][1] + pts[0][1]) / 2);
+    for (var j = 0; j < N; j++) {
+      var n2 = pts[(j + 1) % N];
+      ctx.quadraticCurveTo(pts[j][0], pts[j][1], (pts[j][0] + n2[0]) / 2, (pts[j][1] + n2[1]) / 2);
+    }
+    ctx.closePath();
+    var g = ctx.createRadialGradient(cx - R * 0.3, cy - R * 0.35, R * 0.1, cx, cy, R * 1.4);
+    g.addColorStop(0, rgb(mix(c1, [255, 255, 255], 0.35)));
+    g.addColorStop(0.5, rgb(c1));
+    g.addColorStop(1, rgb(c2));
+    ctx.save();
+    ctx.shadowColor = rgb(c2, 0.85);
+    ctx.shadowBlur = cur.glow * 60 * dpr;
+    ctx.fillStyle = g;
+    ctx.fill();
+    ctx.restore();
+    ctx.save();
+    ctx.clip();
+    var h = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, 0, cx - R * 0.35, cy - R * 0.4, R * 0.7);
+    h.addColorStop(0, 'rgba(255,255,255,0.55)');
+    h.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = h;
+    ctx.fillRect(0, 0, W, W);
+    ctx.restore();
+
+    var i2;
+    for (i2 = 0; i2 < orbiters.length; i2++) {
+      var o = orbiters[i2];
+      o.a += o.sp * dt;
+      var rr = R * o.rad * (1 + 0.08 * Math.sin(t * 1.7 + o.ph));
+      var px = cx + Math.cos(o.a) * rr + (o.jit ? Math.sin(t * 2.3 + o.ph) * o.jit * R : 0);
+      var py = cy + Math.sin(o.a) * rr * 0.9 + (o.jit ? Math.cos(t * 1.9 + o.ph) * o.jit * R : 0);
+      var al = (o.alpha || 0.9) * (o.tw ? 0.35 + 0.65 * Math.abs(Math.sin(t * 1.3 + o.ph)) : 1);
+      ctx.beginPath(); ctx.arc(px, py, o.size, 0, 6.2832);
+      ctx.fillStyle = 'rgba(' + o.col + ',' + al + ')';
+      ctx.shadowColor = 'rgba(' + o.col + ',0.9)'; ctx.shadowBlur = lite ? 0 : 8 * dpr;
+      ctx.fill(); ctx.shadowBlur = 0;
+    }
+    if (dt > 0) spawn(ptype, dt, cx, cy, R);
+    for (i2 = free.length - 1; i2 >= 0; i2--) {
+      var q = free[i2];
+      q.life += dt; q.vy += q.g * dt; q.x += q.vx * dt; q.y += q.vy * dt;
+      if (q.life > q.max) { free.splice(i2, 1); continue; }
+      var f = 1 - q.life / q.max;
+      ctx.beginPath();
+      if (q.kind === 'drops') ctx.ellipse(q.x, q.y, q.size * 0.7, q.size * 1.3, 0, 0, 6.2832);
+      else ctx.arc(q.x, q.y, q.size * (q.kind === 'embers' ? f : 1), 0, 6.2832);
+      ctx.fillStyle = 'rgba(' + q.col + ',' + (f * 0.9) + ')';
+      ctx.shadowColor = 'rgba(' + q.col + ',0.8)'; ctx.shadowBlur = lite ? 0 : 6 * dpr;
+      ctx.fill(); ctx.shadowBlur = 0;
+    }
+  }
+
+  copyTarget(); buildOrbiters(ptype);
+  var t = 0, last = 0, raf = 0, visible = true;
+  function frame(ts) {
+    var dt = Math.min(0.05, (ts - last) / 1000 || 0.016); last = ts; t += dt;
+    ease(dt); draw(t, dt);
+    raf = requestAnimationFrame(frame);
+  }
+  function start() { if (!raf && !reduce && !still) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+  function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+  if ('ResizeObserver' in window) new ResizeObserver(function () { resize(); if (reduce) draw(0, 0); }).observe(cv);
+  else window.addEventListener('resize', function () { resize(); if (reduce) draw(0, 0); });
+  if (reduce || still) { draw(0, 0); }
+  if (!reduce && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) { visible = e[0].isIntersecting; visible ? start() : stop(); }).observe(cv);
+  } else { start(); }
+
+  // ---------- Выбор чувства и автоматическая смена ----------
+  var texts = {
+    anxious: 'Тревога ощущается как внутренняя дрожь, и это очень выматывает. Её можно понять и ослабить: на первой встрече разберём, что её запускает.',
+    angry: 'Злость это сила, которой нужен выход. За ней часто стоит важное: обида, усталость, несправедливость. Вместе найдём, что именно.',
+    tired: 'Когда сил нет и сон не помогает, это сигнал, что вы долго несли слишком много. Начнём с малого: что можно снять с плеч.',
+    sad: 'Грусть бывает после потерь и перемен, а иногда без причины. Здесь можно просто прийти и поговорить, ничего не объясняя заранее.',
+    lonely: 'Одиночество бывает и среди людей. О нём трудно говорить, но с психологом это можно сделать без осуждения и спешки.',
+    confused: 'Когда всё спутано, трудно понять, за что браться. На встрече разложим по полочкам, что важно, а что можно отпустить.',
+    calm: 'Это хорошее состояние, и им можно пользоваться. К психологу приходят не только в трудные времена, но и чтобы лучше понять себя.',
+    happy: 'Рада за вас. Радость тоже можно исследовать: что её даёт и как её сохранить. Ко мне приходят и с этим.'
+  };
+  var names = { anxious: 'тревожно', angry: 'злюсь', tired: 'нет сил', sad: 'грустно', lonely: 'одиноко', confused: 'всё спутано', calm: 'спокойно', happy: 'радостно' };
+  var order = ['calm', 'anxious', 'happy', 'tired', 'confused', 'sad', 'angry', 'lonely'];
+  var moodText = document.getElementById('moodText');
+  var initialText = moodText.textContent;
+  var resetBtn = document.getElementById('resetMood');
+  var motionBtn = document.getElementById('motionBtn');
+  function applyStill(v) {
+    still = v;
+    document.documentElement.classList.toggle('still', v);
+    motionBtn.textContent = v ? 'Включить движение' : 'Остановить движение';
+    motionBtn.setAttribute('aria-pressed', String(v));
+    try { localStorage.setItem('still', v ? '1' : '0'); } catch (e) {}
+    if (v) { stop(); draw(t, 0); } else if (visible) { start(); }
+  }
+  if (reduce) motionBtn.hidden = true; else applyStill(still);
+  motionBtn.addEventListener('click', function () { applyStill(!still); });
+  var moodLink = document.getElementById('moodLink');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var chosen = null, autoIdx = -1, pauseUntil = 0;
+
+  function markAuto(key) {
+    chips.forEach(function (c) { c.classList.toggle('auto', c.getAttribute('data-mood') === key && c.getAttribute('aria-pressed') !== 'true'); });
+  }
+  function autoStep() {
+    if (reduce || still || !visible || document.hidden || Date.now() < pauseUntil) return;
+    autoIdx = (autoIdx + 1) % order.length;
+    var key = order[autoIdx];
+    setOrb(key);
+    markAuto(key);
+  }
+  setTimeout(function () { autoStep(); setInterval(autoStep, 6000); }, 3500);
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var key = chip.getAttribute('data-mood');
+      chosen = key;
+      document.documentElement.setAttribute('data-mood', key);
+      resetBtn.hidden = false;
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
+      markAuto(null);
+      setOrb(key);
+      autoIdx = order.indexOf(key);
+      pauseUntil = Date.now() + 20000;
+      moodText.textContent = texts[key];
+      moodLink.hidden = false;
+    });
+  });
+
+  resetBtn.addEventListener('click', function () {
+    document.documentElement.removeAttribute('data-mood');
+    chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+    chosen = null; pauseUntil = 0;
+    resetBtn.hidden = true; moodLink.hidden = true;
+    moodText.textContent = initialText;
+  });
+
+  // ---------- Форма ----------
+  var form = document.getElementById('form');
+  var err = document.getElementById('error');
+  var done = document.getElementById('done');
+  var about = document.getElementById('about-me');
+  moodLink.addEventListener('click', function () {
+    if (chosen && !about.value.trim()) about.value = 'Сейчас чувствую: ' + names[chosen] + '. ';
+  });
+  var contactInput = document.getElementById('contact');
+  var contactLabel = document.getElementById('contactLabel');
+  function mode() { return document.getElementById('ctMsg').checked ? 'msg' : 'phone'; }
+  function applyMode() {
+    var m = mode();
+    contactInput.type = m === 'phone' ? 'tel' : 'text';
+    contactInput.inputMode = m === 'phone' ? 'tel' : 'text';
+    contactInput.autocomplete = m === 'phone' ? 'tel' : 'username';
+    contactInput.placeholder = m === 'phone' ? '+7 900 123-45-67' : '@username';
+    contactLabel.textContent = m === 'phone' ? 'Номер телефона' : 'Ник в Telegram';
+    contactInput.removeAttribute('aria-invalid');
+  }
+  form.querySelectorAll('input[name="ctype"]').forEach(function (r) { r.addEventListener('change', applyMode); });
+  function contactOk(v) {
+    if (mode() === 'phone') {
+      var digits = v.replace(/\D/g, '');
+      return /^\+?[\d\s()\-]+$/.test(v) && digits.length >= 10 && digits.length <= 12;
+    }
+    return /^@?[A-Za-z0-9_]{5,32}$/.test(v) || /t\.me\/[A-Za-z0-9_]{5,32}/.test(v);
+  }
+  function fail(field, msg) {
+    err.textContent = msg;
+    [form.name, form.contact].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+    if (field.type !== 'checkbox') field.setAttribute('aria-invalid', 'true');
+    field.focus();
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    done.hidden = true;
+    if (form.website.value) return; // ловушка для спам-ботов
+    var name = form.name.value.trim();
+    var contact = form.contact.value.trim();
+    if (!name) return fail(form.name, 'Напишите, как к вам обращаться.');
+    if (!contactOk(contact)) return fail(form.contact, mode() === 'phone' ? 'Укажите номер из 10–11 цифр, например +7 900 123-45-67.' : 'Укажите ник в Telegram, например @username (от 5 символов).');
+    if (!form.agree.checked) return fail(form.agree, 'Поставьте галочку согласия на обработку данных, иначе я не смогу вам ответить.');
+    err.textContent = '';
+    [form.name, form.contact].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+    done.textContent = 'Спасибо, ' + name + '. Обычно я отвечаю в течение дня в удобное вам время. Это демо-сайт, поэтому заявка никуда не отправилась: на рабочем сайте она придёт психологу в Telegram.';
+    done.hidden = false;
+  });
+})();
+</script>
+
+<script>
+// Ссылки из портфолио: ?view=phone открывает версию для телефона, ?view=desktop — для компьютера
+(function () {
+  var v = new URLSearchParams(location.search).get('view');
+  if (v === 'phone' || v === 'desktop') { var b = document.querySelector('[data-view="' + v + '"]'); if (b) b.click(); }
+})();
+</script>
+</html>

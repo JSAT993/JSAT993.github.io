@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Гасан — сайты и Telegram-боты</title>
+<meta name="description" content="Лендинги с онлайн-записью и Telegram-боты для малого бизнеса. Работы: стоматология, интернет-магазин, психолог.">
+<meta property="og:title" content="Гасан — сайты и Telegram-боты">
+<meta property="og:description" content="Лендинги с онлайн-записью, интернет-магазины и Telegram-боты. Смотрите работы на компьютере и телефоне.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/stomatology-desk.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23314bff'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='900' font-size='34' text-anchor='middle' fill='%23fff'%3EГ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f4f0; --surface: #ffffff; --ink: #14161b; --muted: #555b66; --line: #e2e0d8;
+  --accent: #314bff; --on-accent: #ffffff; --soft: #e9ecff;
+  --t1: #dff3ee; --t2: #ffe7d2; --t3: #ece6f6;
+  --shadow: 0 30px 60px -36px rgba(20, 22, 27, 0.45);
+  --display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --text: "Golos Text", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0f1013; --surface: #181a20; --ink: #eef0f4; --muted: #a3a9b5; --line: #2a2d35; --accent: #8a9bff; --on-accent: #0f1013; --soft: #1e2236;
+    --t1: #17312c; --t2: #352516; --t3: #261f33; --shadow: 0 30px 60px -36px rgba(0, 0, 0, 0.8); color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--text); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1, h2 { font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+p { margin: 0; }
+.wrap { max-width: 1180px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+section { padding-block: 72px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 22px; border-radius: 999px; background: var(--accent); color: var(--on-accent); font-weight: 600; text-decoration: none; border: 0; cursor: pointer; transition: transform 0.15s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn.ghost:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
+.btn svg { width: 18px; height: 18px; }
+
+/* шапка */
+.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.bar { display: flex; align-items: center; gap: 16px; min-height: 66px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-family: var(--display); font-weight: 800; font-size: 1.2rem; text-decoration: none; margin-right: auto; }
+.logo i { width: 34px; height: 34px; border-radius: 11px; background: var(--accent); color: var(--on-accent); display: grid; place-items: center; font-style: normal; font-size: 1rem; }
+.nav { display: flex; gap: 2px; }
+.nav a { text-decoration: none; color: var(--muted); padding: 10px 12px; border-radius: 999px; font-weight: 500; }
+.nav a:hover { color: var(--ink); background: var(--surface); }
+
+/* первый экран */
+.hero { padding-block: 56px 24px; }
+.hero h1 { font-size: clamp(2.3rem, 6vw, 4.6rem); max-width: 14em; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { font-size: 1.15rem; color: var(--muted); max-width: 40em; margin-top: 22px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; padding: 0; list-style: none; }
+.chips li { padding: 8px 14px; border-radius: 999px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); font-size: 0.95rem; font-weight: 500; }
+.hero .row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+/* работы */
+.works { display: grid; gap: 28px; }
+.work { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px; align-items: center; background: var(--surface); border-radius: 36px; padding: clamp(18px, 3vw, 36px); box-shadow: var(--shadow); }
+.work > * { min-width: 0; }
+.work:nth-child(even) .shots { order: 2; }
+.shots { position: relative; border-radius: 26px; padding: 24px 24px 40px; background: var(--tint); }
+.browser { border-radius: 14px; overflow: hidden; background: var(--surface); box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.5); }
+.browser .dots { display: flex; gap: 6px; padding: 10px 12px; background: color-mix(in srgb, var(--ink) 6%, var(--surface)); }
+.browser .dots span { width: 10px; height: 10px; border-radius: 50%; background: color-mix(in srgb, var(--ink) 20%, transparent); }
+.browser img { display: block; width: 100%; height: auto; aspect-ratio: 1440 / 900; object-fit: cover; object-position: top; }
+.phone { position: absolute; right: 18px; bottom: 14px; width: 26%; min-width: 96px; border-radius: 24px; border: 6px solid #15171b; overflow: hidden; background: #15171b; box-shadow: 0 24px 40px -18px rgba(0, 0, 0, 0.6); }
+.phone img { display: block; width: 100%; height: auto; aspect-ratio: 390 / 760; object-fit: cover; object-position: top; }
+.tag { display: inline-block; font-size: 0.85rem; font-weight: 600; color: var(--accent); background: var(--soft); padding: 4px 12px; border-radius: 999px; margin-bottom: 12px; }
+.work h3 { font-family: var(--display); font-weight: 800; font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.1; }
+.work dl { margin: 18px 0 0; display: grid; gap: 12px; }
+.work dt { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.work dd { margin: 2px 0 0; }
+.work ul { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 3px; }
+.work .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+/* скоро */
+.soon { border-radius: 30px; padding: clamp(22px, 4vw, 40px); border: 2px dashed var(--line); display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center; }
+.soon .ic { width: 64px; height: 64px; border-radius: 20px; background: var(--soft); color: var(--accent); display: grid; place-items: center; }
+.soon .ic svg { width: 32px; height: 32px; }
+.soon h3 { font-family: var(--display); font-weight: 800; font-size: 1.3rem; margin-bottom: 6px; }
+.soon p { color: var(--muted); }
+
+/* что делаю и как */
+.h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 28px; }
+.offer { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.offer > * { min-width: 0; }
+.card { background: var(--surface); border-radius: 26px; padding: 24px; display: grid; gap: 8px; align-content: start; }
+.card h3 { font-size: 1.15rem; }
+.card p { color: var(--muted); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: s; }
+.steps li { counter-increment: s; background: var(--surface); border-radius: 26px; padding: 24px; display: grid; gap: 6px; align-content: start; }
+.steps li::before { content: counter(s); font-family: var(--display); font-weight: 800; font-size: 1.8rem; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+.steps p { color: var(--muted); font-size: 0.95rem; }
+
+/* контакты */
+.contact { background: var(--accent); color: var(--on-accent); border-radius: 36px; padding: clamp(24px, 5vw, 56px); display: grid; gap: 16px; }
+.contact h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+.contact p { opacity: 0.88; max-width: 36em; }
+.contact .row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.contact .btn { background: var(--on-accent); color: var(--accent); }
+
+footer { padding-block: 32px 48px; color: var(--muted); font-size: 0.92rem; }
+footer .wrap { display: grid; gap: 4px; }
+
+@media (max-width: 900px) {
+  .work { grid-template-columns: 1fr; gap: 20px; }
+  .work:nth-child(even) .shots { order: 0; }
+  .offer { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .nav { display: none; }
+  .only-wide { display: none !important; }
+}
+@media (max-width: 520px) {
+  section { padding-block: 52px; }
+  .steps { grid-template-columns: 1fr; }
+  .shots { padding: 14px 14px 30px; }
+  .soon { grid-template-columns: 1fr; }
+  .work .row .btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top"><i aria-hidden="true">Г</i>Гасан</a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#works">Работы</a>
+      <a href="#offer">Что делаю</a>
+      <a href="#how">Как работаю</a>
+    </nav>
+    <a class="btn" href="#contact" data-contact-link hidden>Обсудить проект</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <h1>Сайты и Telegram-боты, которые <em>приводят заявки</em></h1>
+    <p class="lead">Делаю лендинги с онлайн-записью, небольшие интернет-магазины и ботов для записи и продаж в Telegram. Каждую работу можно открыть ниже: на компьютере и в версии для телефона.</p>
+    <ul class="chips">
+      <li>Мобильная версия</li>
+      <li>Онлайн-запись и формы</li>
+      <li>Согласие на данные по 152-ФЗ</li>
+      <li>Тёмная тема</li>
+    </ul>
+    <div class="row">
+      <a class="btn" href="#works">Смотреть работы</a>
+      <a class="btn ghost" href="#contact" data-contact-link hidden>Обсудить проект</a>
+    </div>
+  </div>
+
+  <section id="works">
+    <div class="wrap">
+      <h2 class="h2">Работы</h2>
+      <div class="works">
+
+        <article class="work">
+          <div class="shots" style="--tint: var(--t1)">
+            <div class="browser"><div class="dots" aria-hidden="true"><span></span><span></span><span></span></div><img src="img/stomatology-desk.webp" width="1200" height="750" alt="Первый экран сайта стоматологии на компьютере" loading="lazy"></div>
+            <div class="phone"><img src="img/stomatology-mob.webp" width="520" height="1013" alt="Сайт стоматологии на телефоне" loading="lazy"></div>
+          </div>
+          <div>
+            <span class="tag">Частная клиника</span>
+            <h3>Стоматология «Штиль»</h3>
+            <dl>
+              <div><dt>Задача</dt><dd>Записать пациента без звонка и снять страх перед лечением.</dd></div>
+              <div><dt>Решение</dt><dd>Онлайн-запись с расчётом свободного времени врачей, блок про лечение в седации и понятные шаги лечения.</dd></div>
+              <div><dt>Что внутри</dt><dd><ul>
+                <li>Запись в 4 шага с отменой и маской телефона</li>
+                <li>Кабинет администратора: расписание, статусы, сводка дня</li>
+                <li>Прайс-лист и «Информация для пациентов»</li>
+                <li>Тексты по правилам рекламы медуслуг</li>
+              </ul></dd></div>
+            </dl>
+            <div class="row">
+              <a class="btn" href="stomatology/?view=desktop">Открыть сайт</a>
+              <a class="btn ghost only-wide" href="stomatology/?view=phone">Как на телефоне</a>
+              <a class="btn ghost only-wide" href="stomatology/?view=desktop#admin">Кабинет администратора</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work">
+          <div class="shots" style="--tint: var(--t2)">
+            <div class="browser"><div class="dots" aria-hidden="true"><span></span><span></span><span></span></div><img src="img/urbech-desk.webp" width="1200" height="750" alt="Первый экран интернет-магазина урбеча на компьютере" loading="lazy"></div>
+            <div class="phone"><img src="img/urbech-mob.webp" width="520" height="1013" alt="Интернет-магазин урбеча на телефоне" loading="lazy"></div>
+          </div>
+          <div>
+            <span class="tag">Интернет-магазин</span>
+            <h3>«Горная ложка» — урбеч из Дагестана</h3>
+            <dl>
+              <div><dt>Задача</dt><dd>Продать необычный продукт тем, кто его ещё не пробовал.</dd></div>
+              <div><dt>Решение</dt><dd>Подбор вкуса за 2 вопроса в начале страницы, яркий каталог и анимация производства.</dd></div>
+              <div><dt>Что внутри</dt><dd><ul>
+                <li>Каталог с фильтрами и карточками товаров</li>
+                <li>Корзина: доставка по городам, промокод, подарочная упаковка</li>
+                <li>Состав, аллергены, срок годности</li>
+                <li>Форма для оптовых покупателей</li>
+              </ul></dd></div>
+            </dl>
+            <div class="row">
+              <a class="btn" href="urbech/?view=desktop">Открыть сайт</a>
+              <a class="btn ghost only-wide" href="urbech/?view=phone">Как на телефоне</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work">
+          <div class="shots" style="--tint: var(--t3)">
+            <div class="browser"><div class="dots" aria-hidden="true"><span></span><span></span><span></span></div><img src="img/psycholog-desk.webp" width="1200" height="750" alt="Первый экран сайта психолога на компьютере" loading="lazy"></div>
+            <div class="phone"><img src="img/psycholog-mob.webp" width="520" height="1013" alt="Сайт психолога на телефоне" loading="lazy"></div>
+          </div>
+          <div>
+            <span class="tag">Частный специалист</span>
+            <h3>Психолог Мария Лазарева</h3>
+            <dl>
+              <div><dt>Задача</dt><dd>Помочь тревожному человеку сделать первый шаг и записаться.</dd></div>
+              <div><dt>Решение</dt><dd>Спокойный тон, интерактивный «шарик чувств», цены и условия переноса видны заранее.</dd></div>
+              <div><dt>Что внутри</dt><dd><ul>
+                <li>Выбор чувства меняет цвета сайта и даёт подсказку</li>
+                <li>Короткая форма с выбором способа связи</li>
+                <li>Отдельное согласие на обработку данных</li>
+                <li>Вопросы и ответы, включая экстренную помощь</li>
+              </ul></dd></div>
+            </dl>
+            <div class="row">
+              <a class="btn" href="psycholog/?view=desktop">Открыть сайт</a>
+              <a class="btn ghost only-wide" href="psycholog/?view=phone">Как на телефоне</a>
+            </div>
+          </div>
+        </article>
+
+        <div class="soon">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4L3 11l6 2.5L11 20l3.5-4.5L19 19z"/><path d="M9 13.5L21 4"/></svg></span>
+          <div>
+            <h3>Telegram-боты и мини-приложения</h3>
+            <p>Скоро здесь будет видео демо-магазина цифровых товаров: каталог, корзина, оплата и автоматическая выдача кода прямо в чате.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="offer" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="h2">Что делаю</h2>
+      <div class="offer">
+        <div class="card"><h3>Лендинг для специалиста или бизнеса</h3><p>Одностраничный сайт с формой заявки или онлайн-записью, мобильной версией и политикой конфиденциальности.</p></div>
+        <div class="card"><h3>Telegram-бот</h3><p>Запись клиентов, приём заявок, магазин с автоматической выдачей товара, уведомления владельцу.</p></div>
+        <div class="card"><h3>Доработка сайта</h3><p>Новый блок, исправление формы, мобильная версия, ускорение, подключение Яндекс Метрики.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="h2">Как работаю</h2>
+      <ol class="steps">
+        <li><h3>Обсуждаем задачу</h3><p>Кто ваши клиенты, что они должны сделать на сайте, какие есть тексты и фото.</p></li>
+        <li><h3>Первый вариант</h3><p>Показываю живую страницу, а не картинку: её можно открыть на телефоне.</p></li>
+        <li><h3>Правки</h3><p>Заранее договариваемся, сколько кругов правок входит в цену.</p></li>
+        <li><h3>Запуск</h3><p>Домен, хостинг и доступы оформляем на вас, сайт полностью ваш.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0" hidden>
+    <div class="wrap">
+      <div class="contact">
+        <h2>Обсудим ваш проект?</h2>
+        <p>Напишите, чем занимаетесь и что нужно сделать. Отвечу, сколько это займёт и сколько будет стоить.</p>
+        <div class="row" id="contactRow"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Гасан</span>
+    <span>Все работы на этой странице — концепты для портфолио: компании, люди, цены и реквизиты вымышлены.</span>
+  </div>
+</footer>
+
+<script>
+// Контакты: впишите ссылки, и на странице появятся кнопки связи
+var CONTACTS = {
+  telegram: '',  // например 'https://t.me/ваш_ник'
+  kwork: ''      // например 'https://kwork.ru/user/ваш_ник'
+};
+(function () {
+  var row = document.getElementById('contactRow'), html = '';
+  if (CONTACTS.telegram) html += '<a class="btn" href="' + CONTACTS.telegram + '" target="_blank" rel="noopener">Написать в Telegram</a>';
+  if (CONTACTS.kwork) html += '<a class="btn" href="' + CONTACTS.kwork + '" target="_blank" rel="noopener">Профиль на Kwork</a>';
+  if (!html) return;
+  row.innerHTML = html;
+  document.getElementById('contact').hidden = false;
+  document.querySelectorAll('[data-contact-link]').forEach(function (a) { a.hidden = false; });
+})();
+</script>
+</body>
+</html>
