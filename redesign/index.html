@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Редизайн Тёплый склон</title>
+<meta name="description" content="Кейс редизайна сайта гостевого дома: что было, что мешало гостям бронировать и что стало. Цифры до и после.">
+<meta property="og:title" content="Редизайн сайта гостевого дома: было → стало">
+<meta property="og:image" content="img/after-desk.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23314bff'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='900' font-size='34' text-anchor='middle' fill='%23fff'%3EГ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* В стиле главной страницы портфолио: синий акцент, Unbounded + Golos. «Было» — тёплый красный, «стало» — зелёный. */
+:root {
+  --bg: #f5f4f0; --surface: #ffffff; --ink: #14161b; --muted: #555b66; --line: #e2e0d8;
+  --accent: #314bff; --on-accent: #ffffff; --soft: #e9ecff;
+  --was: #b3361f; --was-soft: #fbe6e1; --now: #13795b; --now-soft: #dcf2e9;
+  --shadow: 0 30px 60px -36px rgba(20, 22, 27, .45);
+  --display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --text: "Golos Text", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1013; --surface: #181a20; --ink: #eef0f4; --muted: #a3a9b5; --line: #2a2d35; --accent: #8a9bff; --on-accent: #0f1013; --soft: #1e2236;
+  --was: #ff8f7a; --was-soft: #3a1f1a; --now: #5fd3a6; --now-soft: #14302a; --shadow: 0 30px 60px -36px rgba(0, 0, 0, .8); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0f1013; --surface: #181a20; --ink: #eef0f4; --muted: #a3a9b5; --line: #2a2d35; --accent: #8a9bff; --on-accent: #0f1013; --soft: #1e2236;
+  --was: #ff8f7a; --was-soft: #3a1f1a; --now: #5fd3a6; --now-soft: #14302a; --shadow: 0 30px 60px -36px rgba(0, 0, 0, .8); color-scheme: dark; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--text); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1, h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.02em; line-height: 1.08; }
+p { margin: 0; }
+.wrap { max-width: 1180px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+section { padding-block: 64px; }
+.h2 { font-size: clamp(1.6rem, 3.6vw, 2.5rem); }
+.sub { color: var(--muted); max-width: 44em; margin-top: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 22px; border-radius: 999px; background: var(--accent); color: var(--on-accent); font-weight: 600; text-decoration: none; border: 0; cursor: pointer; font-family: inherit; font-size: 1rem; }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn.ghost:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
+
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 11; }
+.bar { display: flex; align-items: center; gap: 12px; min-height: 64px; }
+.bar a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-weight: 600; }
+.bar .home { margin-right: auto; color: var(--muted); }
+.bar .home:hover { color: var(--ink); }
+
+.hero { padding-block: 40px 24px; }
+.tag { display: inline-block; font-size: .85rem; font-weight: 600; color: var(--accent); background: var(--soft); padding: 4px 12px; border-radius: 999px; }
+.hero h1 { font-size: clamp(2rem, 5.4vw, 4rem); margin-top: 16px; max-width: 16em; }
+.hero h1 .arr { color: var(--accent); }
+.hero .lead { font-size: 1.15rem; color: var(--muted); max-width: 40em; margin-top: 18px; }
+.hero .honest { margin-top: 14px; font-size: .95rem; color: var(--muted); padding-left: 14px; border-left: 3px solid var(--line); max-width: 46em; }
+
+/* переключатели */
+.seg { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); gap: 2px; }
+.seg button { min-height: 44px; padding: 0 18px; border-radius: 999px; border: 0; background: none; color: var(--muted); font: 600 .95rem var(--text); cursor: pointer; }
+.seg button[aria-pressed=true] { background: var(--ink); color: var(--bg); }
+.tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 22px 0 16px; }
+
+/* ползунок до/после */
+.cmp { position: relative; margin-inline: auto; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); background: var(--surface); user-select: none; touch-action: pan-y; }
+.cmp.desk { aspect-ratio: 1360 / 850; max-width: 100%; }
+.cmp.mob { aspect-ratio: 390 / 780; width: min(390px, 100%); border-radius: 30px; border: 8px solid #15171b; }
+.cmp img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+.cmp .was { clip-path: inset(0 calc(100% - var(--x, 50%)) 0 0); }
+.cmp .line { position: absolute; top: 0; bottom: 0; left: var(--x, 50%); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, .25); pointer-events: none; }
+.cmp .knob { position: absolute; top: 50%; left: var(--x, 50%); width: 48px; height: 48px; margin: -24px 0 0 -24px; border-radius: 50%; background: #fff; color: #14161b; display: grid; place-items: center; box-shadow: 0 6px 18px rgba(0, 0, 0, .35); pointer-events: none; font-weight: 700; }
+.cmp input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.cmp:has(input:focus-visible) .knob { outline: 3px solid var(--accent); outline-offset: 3px; }
+.cmp .lb { position: absolute; top: 12px; padding: 4px 12px; border-radius: 999px; font-weight: 700; font-size: .85rem; pointer-events: none; }
+/* подписи лежат на скриншотах, поэтому цвета одинаковые в обеих темах */
+.cmp .lb.l { left: 12px; background: #b3361f; color: #fff; }
+.cmp .lb.r { right: 12px; background: #13795b; color: #fff; }
+.hint { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 10px; }
+
+/* цифры */
+.tbl-wrap { overflow-x: auto; margin-top: 26px; border-radius: 20px; background: var(--surface); box-shadow: var(--shadow); }
+table { width: 100%; border-collapse: collapse; min-width: 560px; }
+th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
+tbody th { font-weight: 600; }
+td.w { color: var(--was); font-weight: 600; }
+td.n { color: var(--now); font-weight: 700; }
+.src { font-size: .88rem; color: var(--muted); margin-top: 12px; max-width: 52em; }
+
+/* изменения */
+.changes { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; counter-reset: c; }
+.changes > li { min-width: 0; counter-increment: c; background: var(--surface); border-radius: 24px; padding: 24px; display: grid; gap: 12px; align-content: start; }
+.changes h3 { font-family: var(--display); font-weight: 800; font-size: 1.15rem; line-height: 1.2; display: flex; gap: 12px; align-items: baseline; }
+.changes h3::before { content: counter(c); color: var(--accent); }
+.changes dl { margin: 0; display: grid; gap: 10px; }
+.changes dl div { display: grid; grid-template-columns: 88px 1fr; gap: 10px; }
+.changes dt { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding-top: 3px; }
+.changes dd { margin: 0; }
+.changes .a dt { color: var(--was); }
+.changes .b dt { color: var(--muted); }
+.changes .b dd { color: var(--muted); }
+.changes .c dt { color: var(--now); }
+
+/* живой просмотр */
+.live { background: var(--surface); border-radius: 30px; padding: clamp(16px, 3vw, 28px); box-shadow: var(--shadow); }
+.stage { position: relative; margin-inline: auto; overflow: hidden; border-radius: 14px; background: var(--bg); }
+.stage iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: 0 0; background: #fff; }
+.stage.phone { border-radius: 34px; border: 10px solid #15171b; box-sizing: content-box; }
+.live .open { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+.cta { background: var(--accent); color: var(--on-accent); border-radius: 30px; padding: clamp(24px, 5vw, 48px); display: grid; gap: 14px; }
+.cta h2 { font-size: clamp(1.5rem, 3.4vw, 2.3rem); }
+.cta p { opacity: .9; max-width: 40em; }
+.cta .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.cta .btn { background: var(--on-accent); color: var(--accent); }
+footer { padding-block: 28px 48px; color: var(--muted); font-size: .92rem; }
+
+@media (max-width: 860px) { .changes { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .changes dl div { grid-template-columns: 1fr; gap: 2px; } section { padding-block: 48px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap bar">
+  <a class="home" href="../">← Все работы</a>
+  <a href="after/">Новый сайт</a>
+</div></header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <span class="tag">Редизайн сайта · концепт</span>
+    <h1>Гостевой дом «Тёплый склон»: было <span class="arr">→</span> стало</h1>
+    <p class="lead">Типичный сайт гостевого дома: красивые горы, но цену не узнать без звонка, форма на 10 полей, а на телефоне страница уезжает вбок. Переделал так, чтобы гость за минуту видел цену за свои даты и бронировал без предоплаты и звонков.</p>
+    <p class="honest">Бизнес вымышленный. Старую версию я собрал сам из ошибок, которые часто встречаются на сайтах малого бизнеса, чтобы показать разбор на понятном примере. Все цифры ниже измерены на этих двух страницах.</p>
+
+    <div class="tools">
+      <div class="seg" role="group" aria-label="Устройство для сравнения">
+        <button type="button" data-cmp="desk" aria-pressed="true">Компьютер</button>
+        <button type="button" data-cmp="mob" aria-pressed="false">Телефон</button>
+      </div>
+    </div>
+    <div class="cmp desk" id="cmp" style="--x: 50%">
+      <img class="now" id="cNow" src="img/after-desk.webp" alt="Новая версия: заголовок, факты и форма выбора дат на первом экране" width="1360" height="850">
+      <img class="was" id="cWas" src="img/before-desk.webp" alt="Старая версия: карусель, мелкий серый текст, телефон картинкой" width="1360" height="850">
+      <span class="line" aria-hidden="true"></span>
+      <span class="knob" aria-hidden="true">⇆</span>
+      <span class="lb l" aria-hidden="true">Было</span><span class="lb r" aria-hidden="true">Стало</span>
+      <input type="range" min="0" max="100" value="50" id="cmpR" aria-label="Сравнение: слева старая версия, справа новая">
+    </div>
+    <p class="hint">Потяните ползунок: слева старый сайт, справа новый</p>
+  </div>
+</section>
+
+<section aria-labelledby="numH">
+  <div class="wrap">
+    <h2 class="h2" id="numH">Цифры до и после</h2>
+    <p class="sub">Замерено автоматической проверкой в браузере на экране компьютера (1360 px) и телефона (390 px).</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th scope="col">Что проверял</th><th scope="col">Было</th><th scope="col">Стало</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Вес страницы (без шрифтов)</th><td class="w">3,2 МБ</td><td class="n">≈ 55 КБ</td></tr>
+          <tr><th scope="row">Страница шире экрана телефона</th><td class="w">на 616 px</td><td class="n">нет</td></tr>
+          <tr><th scope="row">Кнопки и ссылки мельче 44 px (по ним промахиваются пальцем)</th><td class="w">32 из 33</td><td class="n">0</td></tr>
+          <tr><th scope="row">Текст с плохим контрастом</th><td class="w">12 блоков</td><td class="n">0</td></tr>
+          <tr><th scope="row">Размер основного текста</th><td class="w">13 px</td><td class="n">17–18 px</td></tr>
+          <tr><th scope="row">Поля в форме заявки</th><td class="w">10, e-mail обязателен</td><td class="n">2: имя и телефон</td></tr>
+          <tr><th scope="row">Цены на сайте</th><td class="w">«уточняйте по телефону»</td><td class="n">видны, итог за даты считается сам</td></tr>
+          <tr><th scope="row">Телефон</th><td class="w">картинка, нельзя нажать</td><td class="n">нажал и звонишь</td></tr>
+          <tr><th scope="row">Кнопка бронирования на первом экране</th><td class="w">нет</td><td class="n">есть</td></tr>
+          <tr><th scope="row">Галочка согласия по умолчанию</th><td class="w">стоит, вместе с рассылкой</td><td class="n">нет, согласие отдельно</td></tr>
+          <tr><th scope="row">Шрифтов на странице</th><td class="w">3</td><td class="n">2</td></tr>
+          <tr><th scope="row">Мигающий и бегущий текст</th><td class="w">2</td><td class="n">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src">Для сравнения: в реальном проекте вместо иллюстраций будут настоящие фото номеров. Сжатые в WebP, они добавят примерно 100–200 КБ каждое, и страница всё равно останется в разы легче старой.</p>
+  </div>
+</section>
+
+<section aria-labelledby="chH" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="h2" id="chH">Что изменил и почему</h2>
+    <ol class="changes">
+      <li><h3>Первый экран</h3><dl>
+        <div class="a"><dt>Было</dt><dd>Карусель из трёх фото, подпись «Добро пожаловать» и ни одной кнопки.</dd></div>
+        <div class="b"><dt>Мешало</dt><dd>За первые секунды непонятно, чем это место лучше других и сколько стоит. Карусель листается сама, человек не успевает прочитать.</dd></div>
+        <div class="c"><dt>Стало</dt><dd>Заголовок с главным преимуществом (вид на каньон), три факта и форма дат сразу рядом.</dd></div></dl></li>
+      <li><h3>Цены</h3><dl>
+        <div class="a"><dt>Было</dt><dd>У всех номеров «Цена: уточняйте по телефону».</dd></div>
+        <div class="b"><dt>Мешало</dt><dd>Не все хотят звонить ради цены, особенно вечером. Проще открыть соседний сайт, где цена видна.</dd></div>
+        <div class="c"><dt>Стало</dt><dd>Цена за ночь в каждой карточке, отдельно выходные. После выбора дат итог считается сам, с трансфером или без.</dd></div></dl></li>
+      <li><h3>Бронирование</h3><dl>
+        <div class="a"><dt>Было</dt><dd>Одна форма на 10 полей, обязательный e-mail, кнопка «Отправить».</dd></div>
+        <div class="b"><dt>Мешало</dt><dd>Длинная форма пугает, а «Отправить» не говорит, что будет дальше.</dd></div>
+        <div class="c"><dt>Стало</dt><dd>Три коротких шага: даты и гости → номер и цена → имя и телефон. Неподходящие номера отключаются сами. В конце понятно, кто и когда перезвонит.</dd></div></dl></li>
+      <li><h3>Согласие на данные</h3><dl>
+        <div class="a"><dt>Было</dt><dd>Галочка уже стоит, а в одном пункте и обработка данных, и рекламная рассылка.</dd></div>
+        <div class="b"><dt>Мешало</dt><dd>С 1 сентября 2025 года согласие на обработку данных должно быть отдельным, а галочки по умолчанию запрещены. Это риск штрафа для владельца.</dd></div>
+        <div class="c"><dt>Стало</dt><dd>Пустая галочка со ссылкой на отдельный текст согласия, политика в подвале, рассылку убрал.</dd></div></dl></li>
+      <li><h3>Телефон и мобильная версия</h3><dl>
+        <div class="a"><dt>Было</dt><dd>Сайт шириной 1000 px, телефон вставлен картинкой, ссылки по 15 px в высоту.</dd></div>
+        <div class="b"><dt>Мешало</dt><dd>Большинство ищет жильё с телефона. Там страницу приходится двигать пальцем, а номер переписывать вручную.</dd></div>
+        <div class="c"><dt>Стало</dt><dd>Вёрстка под любой экран, кнопки от 44 px, номер нажимается, внизу всегда есть «Выбрать даты» и звонок.</dd></div></dl></li>
+      <li><h3>Скорость</h3><dl>
+        <div class="a"><dt>Было</dt><dd>3,2 МБ несжатых фото, слайдер грузит всё сразу.</dd></div>
+        <div class="b"><dt>Мешало</dt><dd>В горах и в дороге интернет слабый. Тяжёлая страница грузится долго, человек закрывает вкладку.</dd></div>
+        <div class="c"><dt>Стало</dt><dd>Иллюстрации нарисованы кодом и почти ничего не весят. Страница с текстами и формой ≈ 55 КБ.</dd></div></dl></li>
+      <li><h3>Доверие</h3><dl>
+        <div class="a"><dt>Было</dt><dd>Счётчик посетителей, «новости» 2017 года, стена текста «мы рады Вас приветствовать».</dd></div>
+        <div class="b"><dt>Мешало</dt><dd>Старые даты выглядят как заброшенный сайт: работает ли вообще гостевой дом?</dd></div>
+        <div class="c"><dt>Стало</dt><dd>Схема «что рядом», как добраться, как проходит заезд, ответы на частые вопросы, отзывы и реквизиты в подвале.</dd></div></dl></li>
+      <li><h3>Внешний вид</h3><dl>
+        <div class="a"><dt>Было</dt><dd>3 шрифта, 6 несвязанных цветов, мигающее «Бронируйте заранее!» и бегущая строка.</dd></div>
+        <div class="b"><dt>Мешало</dt><dd>Мигание отвлекает и выглядит дёшево, глазу не за что зацепиться.</dd></div>
+        <div class="c"><dt>Стало</dt><dd>Палитра из цветов самого каньона: тёплый камень и бирюза реки. Два шрифта, одна главная кнопка, спокойная анимация реки, которая выключается, если в телефоне включено «уменьшить движение». Есть тёмная тема.</dd></div></dl></li>
+    </ol>
+  </div>
+</section>
+
+<section id="live" aria-labelledby="liveH" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="h2" id="liveH">Посмотреть вживую</h2>
+    <p class="sub">Обе версии работают прямо здесь: можно прокрутить и пройти бронирование.</p>
+    <div class="live">
+      <div class="tools" style="margin-top:0">
+        <div class="seg" role="group" aria-label="Версия сайта">
+          <button type="button" data-v="before" aria-pressed="false">Было</button>
+          <button type="button" data-v="after" aria-pressed="true">Стало</button>
+        </div>
+        <div class="seg" role="group" aria-label="Экран">
+          <button type="button" data-d="desk" aria-pressed="true">Компьютер</button>
+          <button type="button" data-d="phone" aria-pressed="false">Телефон</button>
+        </div>
+      </div>
+      <div class="stage" id="stage"><iframe id="fr" title="Живой просмотр сайта" loading="lazy"></iframe></div>
+      <div class="open">
+        <a class="btn" href="after/">Открыть новый сайт</a>
+        <a class="btn ghost" href="before/">Открыть старый сайт</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="ctaH" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta">
+      <h2 id="ctaH">Ваш сайт не приносит заявок?</h2>
+      <p>Проверю его так же: измерю, что мешает людям с телефона, найду, где теряются заявки, и предложу, что исправить или переделать.</p>
+      <div class="row"><a class="btn" href="../">Все работы и как со мной связаться</a></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">Концепт для портфолио. Гостевой дом, цены, адрес и телефон вымышленные.</div></footer>
+
+<script>
+(function () {
+  /* ползунок */
+  var cmp = document.getElementById('cmp'), r = document.getElementById('cmpR');
+  r.addEventListener('input', function () { cmp.style.setProperty('--x', r.value + '%'); });
+  var SH = { desk: ['img/before-desk.webp', 'img/after-desk.webp', 1360, 850], mob: ['img/before-mob.webp', 'img/after-mob.webp', 780, 1560] };
+  document.querySelectorAll('[data-cmp]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = b.dataset.cmp, s = SH[k];
+      document.querySelectorAll('[data-cmp]').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+      cmp.className = 'cmp ' + k;
+      var w = document.getElementById('cWas'), n = document.getElementById('cNow');
+      w.src = s[0]; n.src = s[1]; w.width = n.width = s[2]; w.height = n.height = s[3];
+    });
+  });
+
+  /* живой просмотр */
+  var st = { v: 'after', d: 'desk' }, stage = document.getElementById('stage'), fr = document.getElementById('fr'), loaded = '';
+  var params = new URLSearchParams(location.search);
+  if (params.get('view') === 'phone' || matchMedia('(max-width: 760px)').matches) st.d = 'phone';
+  if (params.get('v') === 'before') st.v = 'before';
+  function layout() {
+    var par = stage.parentElement, cs = getComputedStyle(par), avail = par.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    if (st.d === 'desk') {
+      var W = 1360, H = 850, k = Math.min(1, avail / W);
+      stage.className = 'stage'; stage.style.width = W * k + 'px'; stage.style.height = H * k + 'px';
+      fr.style.width = W + 'px'; fr.style.height = H + 'px'; fr.style.transform = 'scale(' + k + ')';
+    } else {
+      var w = 390, h = 760, k2 = Math.min(1, (avail - 20) / w);
+      stage.className = 'stage phone'; stage.style.width = w * k2 + 'px'; stage.style.height = h * k2 + 'px';
+      fr.style.width = w + 'px'; fr.style.height = h + 'px'; fr.style.transform = 'scale(' + k2 + ')';
+    }
+  }
+  function render() {
+    document.querySelectorAll('[data-v]').forEach(function (x) { x.setAttribute('aria-pressed', x.dataset.v === st.v); });
+    document.querySelectorAll('[data-d]').forEach(function (x) { x.setAttribute('aria-pressed', x.dataset.d === st.d); });
+    layout();
+    var src = st.v + '/';
+    if (loaded !== src) { fr.src = src; loaded = src; }
+    fr.title = (st.v === 'after' ? 'Новая' : 'Старая') + ' версия сайта, ' + (st.d === 'desk' ? 'экран компьютера' : 'экран телефона');
+  }
+  document.querySelectorAll('[data-v]').forEach(function (b) { b.addEventListener('click', function () { st.v = b.dataset.v; render(); }); });
+  document.querySelectorAll('[data-d]').forEach(function (b) { b.addEventListener('click', function () { st.d = b.dataset.d; render(); }); });
+  addEventListener('resize', layout);
+  render();
+  if (params.get('view') === 'phone' && !location.hash) document.getElementById('live').scrollIntoView();
+})();
+</script>
+</body>
+</html>
