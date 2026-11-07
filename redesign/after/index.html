@@ -157,7 +157,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .room .price b { font-family: var(--f-head); font-size: 1.5rem; color: var(--clay); }
 .room .price span { color: var(--muted); font-size: .9rem; }
 .room .btn { width: 100%; }
-.incl { margin-top: 24px; padding-left: 16px; border-left: 3px solid var(--accent); font-weight: 500; max-width: 46em; }
+.incl { margin-top: 24px; color: var(--muted); max-width: 46em; }
+.incl b { color: var(--ink); }
 
 /* что рядом */
 .near { display: grid; grid-template-columns: 1.1fr .9fr; gap: 36px; align-items: center; margin-top: 32px; }
@@ -182,7 +183,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 /* отзывы */
 .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 32px; }
 .reviews > * { min-width: 0; }
-.rev { border-left: 1px solid var(--line); padding-left: 20px; display: grid; gap: 10px; align-content: start; }
+.rev { border-top: 2px solid var(--ink); padding-top: 16px; display: grid; gap: 10px; align-content: start; }
 .rev p { font-size: 1.05rem; }
 .rev .stars { color: var(--clay); letter-spacing: 2px; }
 .rev footer { color: var(--muted); font-size: .92rem; }
@@ -372,7 +373,7 @@ dialog ul { margin: 0; padding-left: 20px; }
     <h2 class="h2" id="roomsH">Три типа номеров, цены открыто</h2>
     <p class="sub">Цена за номер за ночь, а не за человека. В пятницу и субботу ночь дороже, это видно сразу при выборе дат.</p>
     <div class="rooms" id="roomCards"></div>
-    <p class="incl">В любой номер входят: завтрак, постельное бельё и полотенца, Wi‑Fi, парковка во дворе, мангал и беседка.</p>
+    <p class="incl"><b>В любой номер входят:</b> завтрак, постельное бельё и полотенца, Wi‑Fi, парковка во дворе, мангал и беседка.</p>
   </div>
 </section>
 
