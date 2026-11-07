@@ -753,9 +753,9 @@ html.locked .viewer { display: none; }
     <div class="wrap">
       <h2>Отзывы</h2>
       <div class="reviews" tabindex="0" role="region" aria-label="Примеры отзывов">
-        <figure class="review" style="--rb:#ffe3c2"><div class="stars" aria-label="5 из 5">★★★★★</div><blockquote>Беру абрикосовый уже третий раз. Вкус как у марципана, только без сахара. Банки пришли целыми.</blockquote><figcaption>Пример отзыва · заказ из Казани</figcaption></figure>
-        <figure class="review" style="--rb:#ffd3a1"><div class="stars" aria-label="5 из 5">★★★★★</div><blockquote>Взяла набор, чтобы попробовать всё. Больше всего понравились тыквенный и кешью, теперь знаю, что брать в большой банке.</blockquote><figcaption>Пример отзыва · заказ из Москвы</figcaption></figure>
-        <figure class="review" style="--rb:#ffe3c2"><div class="stars" aria-label="4 из 5">★★★★☆</div><blockquote>Льняной сначала непривычно горчит, но с мёдом идеально. Доставка СДЭК до Перми заняла 4 дня.</blockquote><figcaption>Пример отзыва · заказ из Перми</figcaption></figure>
+        <figure class="review" style="--rb:#ffe3c2"><div class="stars" aria-label="5 из 5">★★★★★</div><blockquote>Беру абрикосовый уже третий раз. Вкус как у марципана, только без сахара. Банки пришли целыми.</blockquote><figcaption>Пример отзыва, заказ из Казани</figcaption></figure>
+        <figure class="review" style="--rb:#ffd3a1"><div class="stars" aria-label="5 из 5">★★★★★</div><blockquote>Взяла набор, чтобы попробовать всё. Больше всего понравились тыквенный и кешью, теперь знаю, что брать в большой банке.</blockquote><figcaption>Пример отзыва, заказ из Москвы</figcaption></figure>
+        <figure class="review" style="--rb:#ffe3c2"><div class="stars" aria-label="4 из 5">★★★★☆</div><blockquote>Льняной сначала непривычно горчит, но с мёдом идеально. Доставка СДЭК до Перми заняла 4 дня.</blockquote><figcaption>Пример отзыва, заказ из Перми</figcaption></figure>
       </div>
       <p class="swipe-note">Листайте отзывы вбок</p>
       <p class="small-note">Это примеры того, как будут выглядеть отзывы. На рабочем сайте здесь только настоящие отзывы покупателей, например с маркетплейсов или Яндекс Карт.</p>
@@ -1116,7 +1116,7 @@ html.locked .viewer { display: none; }
     document.getElementById('cartSum').textContent = n ? rub(s) : 'Корзина';
     document.getElementById('cartBtn').setAttribute('aria-label', n ? 'Открыть корзину: ' + n + ' шт. на ' + rub(s) : 'Открыть корзину, она пуста');
     document.getElementById('cartBar').classList.toggle('show', n > 0);
-    document.getElementById('barText').textContent = 'Корзина · ' + n + ' шт.';
+    document.getElementById('barText').textContent = 'Корзина: ' + n + ' шт.';
     document.getElementById('barSum').textContent = rub(s);
     chatEl.classList.toggle('up', n > 0);
   }
@@ -1124,7 +1124,7 @@ html.locked .viewer { display: none; }
   function lineHTML(k) {
     var a = k.split('|'), p = byId[a[0]], v = p.v[+a[1]];
     return '<div class="line" style="' + cardVars(p) + '"><div class="thumb">' + thumbJar(p, 42) + '</div>' +
-      '<div class="info"><b>' + p.name + '</b><span>' + v[0] + ' · ' + rub(v[1]) + '</span><button type="button" class="link-btn remove" data-del="' + k + '">Удалить</button></div>' +
+      '<div class="info"><b>' + p.name + '</b><span>' + v[0] + ', ' + rub(v[1]) + '</span><button type="button" class="link-btn remove" data-del="' + k + '">Удалить</button></div>' +
       '<div class="right"><b>' + rub(v[1] * cart[k]) + '</b><span class="stepper"><button type="button" data-dec="' + k + '" aria-label="Убрать одну">−</button><output>' + cart[k] + '</output><button type="button" data-inc="' + k + '" aria-label="Добавить одну">+</button></span></div></div>';
   }
   function shipPrice(m) {
@@ -1150,7 +1150,7 @@ html.locked .viewer { display: none; }
     if (!pick.length) pick = ['honeyflax', 'apricot', 'cashew', 'set', 'flax', 'almond'].filter(function (id) { return !inCart[id]; }).slice(0, 2).map(function (id) { return byId[id]; });
     if (!pick.length) return '';
     return '<div class="upsell"><p class="up-title">' + title + '</p>' + pick.map(function (p) {
-      return '<div class="up-row"><div class="thumb" style="' + cardVars(p) + '">' + thumbJar(p, 30) + '</div><span><b>' + p.name + '</b><small>' + p.v[0][0] + ' · ' + rub(p.v[0][1]) + '</small></span><button class="add up-add" type="button" data-add="' + p.id + '|0" aria-label="Добавить: ' + p.name + ', ' + p.v[0][0] + '">+</button></div>';
+      return '<div class="up-row"><div class="thumb" style="' + cardVars(p) + '">' + thumbJar(p, 30) + '</div><span><b>' + p.name + '</b><small>' + p.v[0][0] + ', ' + rub(p.v[0][1]) + '</small></span><button class="add up-add" type="button" data-add="' + p.id + '|0" aria-label="Добавить: ' + p.name + ', ' + p.v[0][0] + '">+</button></div>';
     }).join('') + '</div>';
   }
   function msgText() {

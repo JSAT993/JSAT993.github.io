@@ -55,7 +55,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hero { padding-block: 40px 24px; }
 .tag { display: inline-block; font-size: .85rem; font-weight: 600; color: var(--accent); background: var(--soft); padding: 4px 12px; border-radius: 999px; }
 .hero h1 { font-size: clamp(2rem, 5.4vw, 4rem); margin-top: 16px; max-width: 16em; }
-.hero h1 .arr { color: var(--accent); }
 .hero .lead { font-size: 1.15rem; color: var(--muted); max-width: 40em; margin-top: 18px; }
 .hero .honest { margin-top: 14px; font-size: .95rem; color: var(--muted); padding-left: 14px; border-left: 3px solid var(--line); max-width: 46em; }
 
@@ -85,7 +84,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .tbl-wrap { overflow-x: auto; margin-top: 26px; border-radius: 20px; background: var(--surface); box-shadow: var(--shadow); }
 table { width: 100%; border-collapse: collapse; min-width: 560px; }
 th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
-thead th { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+thead th { font-size: .95rem; color: var(--muted); font-weight: 600; }
 tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
 tbody th { font-weight: 600; }
 td.w { color: var(--was); font-weight: 600; }
@@ -93,13 +92,12 @@ td.n { color: var(--now); font-weight: 700; }
 .src { font-size: .88rem; color: var(--muted); margin-top: 12px; max-width: 52em; }
 
 /* изменения */
-.changes { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; counter-reset: c; }
-.changes > li { min-width: 0; counter-increment: c; background: var(--surface); border-radius: 24px; padding: 24px; display: grid; gap: 12px; align-content: start; }
-.changes h3 { font-family: var(--display); font-weight: 800; font-size: 1.15rem; line-height: 1.2; display: flex; gap: 12px; align-items: baseline; }
-.changes h3::before { content: counter(c); color: var(--accent); }
+.changes { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.changes > li { min-width: 0; background: var(--surface); border-radius: 24px; padding: 24px; display: grid; gap: 12px; align-content: start; }
+.changes h3 { font-family: var(--display); font-weight: 800; font-size: 1.15rem; line-height: 1.2; }
 .changes dl { margin: 0; display: grid; gap: 10px; }
 .changes dl div { display: grid; grid-template-columns: 88px 1fr; gap: 10px; }
-.changes dt { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding-top: 3px; }
+.changes dt { font-size: .95rem; font-weight: 700; }
 .changes dd { margin: 0; }
 .changes .a dt { color: var(--was); }
 .changes .b dt { color: var(--muted); }
@@ -134,8 +132,8 @@ footer { padding-block: 28px 48px; color: var(--muted); font-size: .92rem; }
 <main>
 <section class="hero">
   <div class="wrap">
-    <span class="tag">Редизайн сайта · концепт</span>
-    <h1>Гостевой дом «Тёплый склон»: было <span class="arr">→</span> стало</h1>
+    <span class="tag">Концепт редизайна</span>
+    <h1>Гостевой дом «Тёплый склон»: было и стало</h1>
     <p class="lead">Типичный сайт гостевого дома: красивые горы, но цену не узнать без звонка, форма на 10 полей, а на телефоне страница уезжает вбок. Переделал так, чтобы гость за минуту видел цену за свои даты и бронировал без предоплаты и звонков.</p>
     <p class="honest">Бизнес вымышленный. Старую версию я собрал сам из ошибок, которые часто встречаются на сайтах малого бизнеса, чтобы показать разбор на понятном примере. Все цифры ниже измерены на этих двух страницах.</p>
 
@@ -187,7 +185,7 @@ footer { padding-block: 28px 48px; color: var(--muted); font-size: .92rem; }
 <section aria-labelledby="chH" style="padding-top:0">
   <div class="wrap">
     <h2 class="h2" id="chH">Что изменил и почему</h2>
-    <ol class="changes">
+    <ul class="changes">
       <li><h3>Первый экран</h3><dl>
         <div class="a"><dt>Было</dt><dd>Карусель из трёх фото, подпись «Добро пожаловать» и ни одной кнопки.</dd></div>
         <div class="b"><dt>Мешало</dt><dd>За первые секунды непонятно, чем это место лучше других и сколько стоит. Карусель листается сама, человек не успевает прочитать.</dd></div>
@@ -219,8 +217,8 @@ footer { padding-block: 28px 48px; color: var(--muted); font-size: .92rem; }
       <li><h3>Внешний вид</h3><dl>
         <div class="a"><dt>Было</dt><dd>3 шрифта, 6 несвязанных цветов, мигающее «Бронируйте заранее!» и бегущая строка.</dd></div>
         <div class="b"><dt>Мешало</dt><dd>Мигание отвлекает и выглядит дёшево, глазу не за что зацепиться.</dd></div>
-        <div class="c"><dt>Стало</dt><dd>Палитра из цветов самого каньона: тёплый камень и бирюза реки. Два шрифта, одна главная кнопка, спокойная анимация реки, которая выключается, если в телефоне включено «уменьшить движение». Есть тёмная тема.</dd></div></dl></li>
-    </ol>
+        <div class="c"><dt>Стало</dt><dd>Палитра из цветов самого каньона: светлый известняк, бирюза реки и охра для цен. Узкий высокий шрифт заголовков, как стены ущелья. Одна главная кнопка и одно движение, течение реки, которое выключается, если в телефоне включено «уменьшить движение». Есть тёмная тема.</dd></div></dl></li>
+    </ul>
   </div>
 </section>
 

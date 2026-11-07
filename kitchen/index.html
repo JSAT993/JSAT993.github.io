@@ -54,7 +54,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
 .wrap { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .num { font-variant-numeric: tabular-nums; }
-.eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.eyebrow { font-size: 0.95rem; font-weight: 600; color: var(--muted); }
 
 /* Шапка */
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
@@ -81,7 +81,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hero .wrap { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); gap: 48px; align-items: start; }
 .offer { display: grid; gap: 22px; padding-top: 18px; }
 .offer h1 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
-.offer h1 em { font-style: normal; color: var(--accent); }
 .offer .intro { font-size: 1.1rem; color: var(--muted); max-width: 34ch; }
 .gifts { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
 .gifts li { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: center; }
@@ -122,7 +121,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .opt .pic { height: 92px; border-radius: 8px; background: var(--paper); display: grid; place-items: center; }
 .opt .pic svg { width: 100%; height: 100%; }
 .opt .sw { height: 64px; border-radius: 8px; }
-.tier { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; background: var(--sunk); color: var(--muted); justify-self: start; }
+.tier { display: inline-block; font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: var(--sunk); color: var(--muted); justify-self: start; }
 .opts.list { grid-template-columns: 1fr; }
 .opts.list .opt { grid-template-columns: 1fr; padding: 14px 16px; }
 .chk { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -354,7 +353,7 @@ dialog::backdrop { background: rgba(10, 14, 12, 0.55); }
   <div class="wrap">
     <div class="offer">
       <span class="eyebrow">Кухни по размерам вашей квартиры</span>
-      <h1>Узнайте цену своей кухни <em>за&nbsp;1&nbsp;минуту</em></h1>
+      <h1>Узнайте цену своей кухни за&nbsp;1&nbsp;минуту</h1>
       <p class="intro">Ответьте на 6 коротких вопросов и сразу увидите цену и схему кухни.<span class="more"> Точную стоимость назовёт замерщик и зафиксирует в договоре.</span></p>
       <ul class="gifts">
         <li><span class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span><div><b>3D-проект бесплатно</b><span>увидите кухню до того, как платить</span></div></li>
@@ -379,7 +378,7 @@ dialog::backdrop { background: rgba(10, 14, 12, 0.55); }
           </div>
         </div>
         <aside class="plan" aria-label="Схема вашей кухни">
-          <span class="eyebrow">Ваша кухня · вид сверху</span>
+          <span class="eyebrow">Ваша кухня, вид сверху</span>
           <div class="sheet" id="sheet"></div>
           <ul class="spec" id="spec"></ul>
         </aside>
@@ -393,9 +392,9 @@ dialog::backdrop { background: rgba(10, 14, 12, 0.55); }
     <h2>Наши кухни</h2>
     <p class="sub">В этом блоке у реальной компании стоят фотографии её проектов с размерами и ценой. Это демо, поэтому здесь места под фото.</p>
     <div class="works">
-      <figure class="work" style="margin:0"><div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><br>Фото проекта</div></div><figcaption class="cap"><b>Угловая, эмаль «Графит»</b><span>3 200 мм · кварц · 2025</span></figcaption></figure>
-      <figure class="work" style="margin:0"><div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><br>Фото проекта</div></div><figcaption class="cap"><b>Прямая, плёнка «Дуб светлый»</b><span>2 600 мм · ЛДСП · 2025</span></figcaption></figure>
-      <figure class="work" style="margin:0"><div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><br>Фото проекта</div></div><figcaption class="cap"><b>С островом, шпон «Орех»</b><span>4 100 мм + остров 1 800 мм · камень</span></figcaption></figure>
+      <figure class="work" style="margin:0"><div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><br>Фото проекта</div></div><figcaption class="cap"><b>Угловая, эмаль «Графит»</b><span>3 200 мм, кварц, 2025</span></figcaption></figure>
+      <figure class="work" style="margin:0"><div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><br>Фото проекта</div></div><figcaption class="cap"><b>Прямая, плёнка «Дуб светлый»</b><span>2 600 мм, ЛДСП, 2025</span></figcaption></figure>
+      <figure class="work" style="margin:0"><div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><br>Фото проекта</div></div><figcaption class="cap"><b>С островом, шпон «Орех»</b><span>4 100 мм + остров 1 800 мм, камень</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -477,7 +476,7 @@ dialog::backdrop { background: rgba(10, 14, 12, 0.55); }
 
 <footer>
   <div class="wrap">
-    <div class="row"><span>ООО «Кухни Тмин» · ИНН 0000000000 · ОГРН 0000000000000</span><span>Адрес производства: [адрес]</span></div>
+    <div class="row"><span>ООО «Кухни Тмин», ИНН 0000000000, ОГРН 0000000000000</span><span>Адрес производства: [адрес]</span></div>
     <div class="row"><button class="linkbtn" type="button" data-open="policyDlg">Политика конфиденциальности</button><span>Расчёт на сайте предварительный и не является публичной офертой.</span></div>
     <div class="row"><span>Демо-сайт из портфолио. Компания, телефон и реквизиты вымышленные.</span><a href="#admin" style="display:inline-flex;align-items:center;min-height:44px">Заявки (для владельца)</a><a href="../" style="display:inline-flex;align-items:center;min-height:44px">← Все работы в портфолио</a></div>
   </div>
@@ -492,7 +491,7 @@ dialog::backdrop { background: rgba(10, 14, 12, 0.55); }
 <div class="admin" id="admin" hidden>
   <div class="wrap">
     <div class="adm-head">
-      <div><span class="eyebrow">Кабинет владельца · демо</span><h1>Заявки с квиза</h1></div>
+      <div><span class="eyebrow">Кабинет владельца (демо)</span><h1>Заявки с квиза</h1></div>
       <a class="btn ghost sm" href="#top">← На сайт</a>
     </div>
     <div class="stats" id="stats"></div>
@@ -675,7 +674,7 @@ dialog::backdrop { background: rgba(10, 14, 12, 0.55); }
         '<div class="len"><label for="lenR" class="len-val num" id="lenV">' + fmt(st.len) + '<small>мм</small></label>' +
         '<input type="range" id="lenR" min="1500" max="7000" step="100" value="' + st.len + '" aria-describedby="lenS">' +
         '<div class="scale" id="lenS"><span>1,5 м</span><span>7 м</span></div></div>' +
-        '<div class="presets" role="group" aria-label="Типовые размеры">' + [[2400, 'Студия'], [3000, 'Стандарт'], [4200, 'Большая'], [5500, 'Очень большая']].map(function (p) { return '<button type="button" data-len="' + p[0] + '">' + p[1] + ' · ' + (p[0] / 1000).toString().replace('.', ',') + ' м</button>'; }).join('') + '</div>';
+        '<div class="presets" role="group" aria-label="Типовые размеры">' + [[2400, 'Студия'], [3000, 'Стандарт'], [4200, 'Большая'], [5500, 'Очень большая']].map(function (p) { return '<button type="button" data-len="' + p[0] + '">' + p[1] + ', ' + (p[0] / 1000).toString().replace('.', ',') + ' м</button>'; }).join('') + '</div>';
     } else if (name === 'front') {
       h = '<h2>Из чего сделать фасады?</h2><p class="q-hint">Фасады — это дверцы шкафов. От них больше всего зависит цена.</p><div class="opts">' +
         FRONTS.map(function (o) { return optBtn('front', o, '<span class="sw" style="background:' + o.col + '" aria-hidden="true"></span><b>' + o.name + '</b><small>' + o.tex + '</small><span class="tier">' + o.tier + '</span>'); }).join('') + '</div>';
@@ -720,7 +719,7 @@ dialog::backdrop { background: rgba(10, 14, 12, 0.55); }
     // шапка квиза
     var Q = S.filter(function (x) { return ['techList', 'bonus', 'form', 'done'].indexOf(x) < 0; });
     var qn = Q.indexOf(name === 'techList' ? 'tech' : name) + 1;
-    qStep.innerHTML = name === 'form' ? '<b>Последний шаг</b>' : name === 'done' ? '<b>Готово</b>' : name === 'bonus' ? '<b>Подарок</b> · вопросы позади' : 'Вопрос <b>' + qn + '</b> из ' + Q.length;
+    qStep.innerHTML = name === 'form' ? '<b>Последний шаг</b>' : name === 'done' ? '<b>Готово</b>' : name === 'bonus' ? '<b>Подарок</b>, вопросы позади' : 'Вопрос <b>' + qn + '</b> из ' + Q.length;
     var left = Q.length - qn + 1;
     qLeft.textContent = (qn > 0 && left <= 2) ? (left === 1 ? 'Последний вопрос' : 'Осталось 2 вопроса') : '';
     qBar.style.width = (name === 'done' ? 100 : Math.round(st.i / total * 100)) + '%';
@@ -877,7 +876,7 @@ dialog::backdrop { background: rgba(10, 14, 12, 0.55); }
       var sh = find(SHAPES, l.shape), fr = find(FRONTS, l.front), tp = find(TOPS, l.top), bn = find(BONUSES, l.bonus), h = HEAT[l.heat] || HEAT.cold;
       var tags = [sh && sh.name, fmt(l.len) + ' мм', fr && 'фасады: ' + fr.name.toLowerCase(), tp && 'столешница: ' + tp.name.toLowerCase(), l.tech === 'yes' ? 'техника: ' + (l.techList.length ? l.techList.join(', ').toLowerCase() : 'встроенная') : l.tech === 'no' ? 'техника своя' : 'техника: не решили', bn && 'подарок: ' + bn.name].filter(Boolean);
       return '<article class="lead' + (l.status === 'Новая' ? ' new' : '') + '">' +
-        '<div class="who"><b>' + esc(l.name) + (l.sample ? ' <span class="demo-tag" style="display:inline">· пример</span>' : '') + '</b><span>' + esc(l.phone) + ' · ' + esc(l.way) + '</span><span>' + when(l.at) + '</span></div>' +
+        '<div class="who"><b>' + esc(l.name) + (l.sample ? ' <span class="demo-tag" style="display:inline">(пример)</span>' : '') + '</b><span>' + esc(l.phone) + ', ' + esc(l.way) + '</span><span>' + when(l.at) + '</span></div>' +
         '<div class="ans">' + tags.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div>' +
         '<div class="sum"><b>' + fmt(l.lo) + '–' + fmt(l.hi) + ' ₽</b><span class="pill ' + h[0] + '">' + h[1] + '</span>' +
         '<label class="demo-tag" for="s' + l.id + '">Статус</label><select id="s' + l.id + '" data-id="' + l.id + '">' + STATUSES.map(function (s) { return '<option' + (s === l.status ? ' selected' : '') + '>' + s + '</option>'; }).join('') + '</select></div></article>';

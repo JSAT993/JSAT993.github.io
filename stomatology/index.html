@@ -89,7 +89,7 @@ h2 { font-size: clamp(2rem, 4.6cqi, 3.2rem); margin-bottom: 14px; }
 h3 { font-weight: 600; font-size: 1.1rem; line-height: 1.3; }
 p { margin: 0; }
 .muted { color: var(--muted); }
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.875rem; font-weight: 600; color: var(--accent); margin-bottom: 10px; }
 .eyebrow svg { width: 16px; height: 16px; }
 .lead2 { color: var(--muted); max-width: 40em; margin-bottom: 30px; }
 .wrap { max-width: 1200px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -605,7 +605,6 @@ html.phone-view .site::-webkit-scrollbar { display: none; }
 
   <section id="services">
     <div class="wrap">
-      <p class="eyebrow">Услуги и цены</p>
       <h2>Что мы лечим и сколько это стоит</h2>
       <p class="lead2">Цены указаны «от»: точную стоимость врач назовёт после осмотра и напишет в плане лечения до того, как начать.</p>
       <div class="svc-groups" id="svcList"></div>
@@ -615,7 +614,6 @@ html.phone-view .site::-webkit-scrollbar { display: none; }
 
   <section id="process" style="padding-top:0">
     <div class="wrap">
-      <p class="eyebrow">Как проходит лечение</p>
       <h2>Лечение кариеса по шагам</h2>
       <p class="lead2">Перед началом врач объясняет, что будет делать. Так обычно выглядит лечение кариеса.</p>
       <div class="proc" id="proc">
@@ -703,7 +701,6 @@ html.phone-view .site::-webkit-scrollbar { display: none; }
 
   <section id="doctors" style="padding-top:0">
     <div class="wrap">
-      <p class="eyebrow">Команда</p>
       <h2>Врачи</h2>
       <p class="lead2">Четыре врача разных специальностей. Можно записаться к конкретному врачу или выбрать «любой свободный».</p>
       <div class="docs" id="docList"></div>
@@ -728,7 +725,6 @@ html.phone-view .site::-webkit-scrollbar { display: none; }
 
   <section id="contacts" style="padding-top:0">
     <div class="wrap">
-      <p class="eyebrow">Клиника</p>
       <h2>Как у нас всё устроено</h2>
       <p class="lead2">Работаем по лицензии на медицинскую деятельность, включая анестезиологию для лечения в седации.</p>
       <div class="clinic">
@@ -760,7 +756,6 @@ html.phone-view .site::-webkit-scrollbar { display: none; }
 
   <section id="faq" style="padding-top:0">
     <div class="wrap">
-      <p class="eyebrow">Вопросы</p>
       <h2>О чём обычно спрашивают</h2>
       <div class="faq">
         <details><summary>Будет больно?</summary><p>Перед лечением делаем анестезию и проверяем, что она подействовала. Если почувствуете неприятное ощущение, поднимите руку, и врач остановится.</p></details>
@@ -1048,7 +1043,7 @@ html.phone-view .site::-webkit-scrollbar { display: none; }
   function grpHtml(g) {
     return '<div class="grp ' + g.tint + '"><div class="grp-head"><span class="grp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">' + ICONS[g.ic] + '</svg></span><h3>' + g.t + '</h3><p>' + g.d + '</p></div>' +
       g.ids.map(function (id) { var s = svcById[id];
-        return '<button type="button" class="svc" data-book-service="' + s.id + '" aria-label="Записаться: ' + s.name + ', от ' + rub(s.price) + ', ' + s.dur + ' минут"><span class="nm">' + s.name + '</span><span class="price">от ' + rub(s.price) + '</span><span class="meta">' + s.note + ' · ' + s.dur + ' мин</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>';
+        return '<button type="button" class="svc" data-book-service="' + s.id + '" aria-label="Записаться: ' + s.name + ', от ' + rub(s.price) + ', ' + s.dur + ' минут"><span class="nm">' + s.name + '</span><span class="price">от ' + rub(s.price) + '</span><span class="meta">' + s.note + ', ' + s.dur + ' мин</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>';
       }).join('') + '</div>';
   }
   document.getElementById('svcList').innerHTML = '<div class="svc-col">' + grpHtml(GROUPS[0]) + grpHtml(GROUPS[1]) + '</div><div class="svc-col">' + grpHtml(GROUPS[2]) + grpHtml(GROUPS[3]) + '</div>';
@@ -1121,7 +1116,7 @@ html.phone-view .site::-webkit-scrollbar { display: none; }
     if (bk.step === 1) {
       var list = SERV.filter(function (s) { return !bk.fixedDoc || s.docs.indexOf(bk.doctor) >= 0; });
       p.innerHTML = '<p class="bk-title">Что нужно сделать?</p>' + (bk.fixedDoc ? '<p class="muted" style="margin:-8px 0 12px">Услуги врача ' + docById[bk.doctor].name + '</p>' : '') +
-        '<div class="opts">' + list.map(function (s) { return '<button class="opt" type="button" data-svc="' + s.id + '" aria-pressed="' + (bk.service === s.id) + '"><b>' + s.name + '</b><span>от ' + rub(s.price) + ' · ' + s.dur + ' мин</span></button>'; }).join('') + '</div>' +
+        '<div class="opts">' + list.map(function (s) { return '<button class="opt" type="button" data-svc="' + s.id + '" aria-pressed="' + (bk.service === s.id) + '"><b>' + s.name + '</b><span>от ' + rub(s.price) + ', ' + s.dur + ' мин</span></button>'; }).join('') + '</div>' +
         '<p class="muted" style="margin-top:14px;font-size:.9rem">Не знаете, что выбрать? Запишитесь на консультацию: врач осмотрит и составит план.</p>';
     } else if (bk.step === 2) {
       var s = svcById[bk.service];
